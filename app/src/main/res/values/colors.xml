@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="colorTextWhite">#FFFFFFFF</color>
+    <color name="colorTextBlack">#000000</color>
+
+
+    <!--Paleta de colores de la APP-->
+    <color name="letters_1">#96a2a8</color>
+    <color name="letters_2">#5a9cbf</color>
+    <!--Primary Color-->
+    <color name="xtreme_1">#5c6bc0</color>
+    <color name="xtreme_2">#8e99f3</color>
+    <color name="xtreme_3">#26418f</color>
+    <!--Secondary Color-->
+    <color name="xtreme_2_1">#5a9cbf</color>
+    <color name="xtreme_2_2">#8dcdf2</color>
+    <color name="xtreme_2_3">#236e8f</color>
+
+    <color name="placeholder">#6d7bb9</color>
+
+    <color name="stroke">#5E8E99F3</color>
+    <color name="image_btn">#CEB0BBEA</color>
+
+
+</resources>
