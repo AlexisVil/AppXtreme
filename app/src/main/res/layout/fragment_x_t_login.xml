@@ -8,12 +8,10 @@
     android:orientation="vertical"
     android:weightSum="4"
     tools:context=".main.appactivity.XtremeActivity">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -21,7 +19,6 @@
             android:layout_marginLeft="48dp"
             android:layout_marginRight="48dp"
             android:orientation="vertical">
-
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -30,13 +27,11 @@
                 android:src="@drawable/ic_greenmulti" />
         </LinearLayout>
     </RelativeLayout>
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
         android:elevation="36dp">
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -45,13 +40,11 @@
             android:text="LOGIN"
             android:textColor="@color/colorTextWhite"
             android:textSize="26dp" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:orientation="vertical">
-
             <EditText
                 android:id="@+id/userTxt"
                 android:layout_width="match_parent"
@@ -64,10 +57,8 @@
                 android:inputType="textEmailAddress"
                 android:paddingLeft="26dp"
                 android:paddingRight="26dp"
-                android:textColor="@color/colorTextBlack"
+                android:textColor="@color/colorTextWhite"
                 android:textColorHint="@color/colorTextWhite" />
-
-
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
@@ -78,7 +69,6 @@
                 android:textColorHint="@color/colorTextWhite"
                 app:endIconMode="password_toggle"
                 app:endIconTint="@color/white">
-
                 <EditText
                     android:id="@+id/passTxt"
                     android:layout_width="match_parent"
@@ -89,10 +79,9 @@
                     android:inputType="textPassword"
                     android:paddingLeft="26dp"
                     android:paddingRight="26dp"
-                    android:textColor="@color/colorTextBlack"
+                    android:textColor="@color/colorTextWhite"
                     app:boxBackgroundColor="@android:color/transparent" />
             </com.google.android.material.textfield.TextInputLayout>
-
             <EditText
                 android:id="@+id/operatorTxt"
                 android:layout_width="match_parent"
@@ -103,22 +92,20 @@
                 android:drawableStart="@drawable/ic_id"
                 android:drawablePadding="15dp"
                 android:hint="@string/operador"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:paddingLeft="26dp"
                 android:paddingRight="26dp"
-                android:textColor="@color/colorTextBlack"
+                android:textColor="@color/colorTextWhite"
                 android:textColorHint="@color/colorTextWhite" />
-
             <CheckBox
+                android:id="@+id/keepSignin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="48dp"
                 android:layout_marginTop="18dp"
-
-                android:text="Remember me"
+                android:text="@string/checkbox"
                 android:textColor="@color/colorTextBlack"
                 android:textSize="18dp" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -128,8 +115,6 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:weightSum="2">
-
-
                 <Button
                     android:id="@+id/signin"
                     android:layout_width="0dp"
@@ -143,13 +128,5 @@
                     app:backgroundTint="#ffffff" />
             </LinearLayout>
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="26dp"
-            android:orientation="horizontal"></LinearLayout>
     </RelativeLayout>
 </LinearLayout>

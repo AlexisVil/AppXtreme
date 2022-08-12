@@ -2,6 +2,7 @@ package mx.com.evotae.appxtreme.main.login.ui
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,9 +16,11 @@ import mx.com.evotae.appxtreme.databinding.ActivityMainBinding
 import mx.com.evotae.appxtreme.databinding.FragmentXTLoginBinding
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
 import mx.com.evotae.appxtreme.framework.util.extensions.savePreferencesToString
+import mx.com.evotae.appxtreme.main.appactivity.XTInicioActivity
 import mx.com.evotae.appxtreme.main.login.viewmodel.XTViewModelLogin
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import servicecordinator.model.response.XTResponseLogin
+import servicecordinator.retrofit.managercall.OPERATOR_APP
 import servicecordinator.retrofit.managercall.PWD_APP
 import servicecordinator.retrofit.managercall.USER_APP
 
@@ -58,7 +61,13 @@ class XTLoginFragment : XTFragmentBase() {
     fun initListeners() {
         binding.apply {
             signin.setOnClickListener {
-                viewModelLogin.login("login", userTxt.text.toString(), passTxt.text.toString(), "80f8cf43-0d26-4876-966e-cc90e13e0f0c", operatorTxt.text.toString())
+                viewModelLogin.login(
+                    "login",
+                    userTxt.text.toString(),
+                    passTxt.text.toString(),
+                    "80f8cf43-0d26-4876-966e-cc90e13e0f0c",
+                    operatorTxt.text.toString()
+                )
             }
 
         }
@@ -73,6 +82,11 @@ class XTLoginFragment : XTFragmentBase() {
     private fun handleLogin(): (XTResponseLogin?) -> Unit = { data ->
         USER_APP.savePreferencesToString(binding.userTxt.toString())
         PWD_APP.savePreferencesToString(binding.passTxt.toString())
+        OPERATOR_APP.savePreferencesToString(operatorTxt.text.toString())
+        /*
+        val intent = Intent(safeActivity, XTInicioActivity::class.java)
+        startActivity(intent)
+         */
     }
 
     fun navigateToLoginSucces() {

@@ -21,8 +21,3 @@ interface XTLoginApi {
 
     ): Deferred<Response<XTResponseGeneral<XTResponseLogin>>>
 }
-
-///appmovil/Telcel?idOperacion=login&user=DEMOPDV&pwd=123456&regid=80f8cf43-0d26-4876-966e-cc90e13e0f0c&claveOperador=Demo1
-
-//@GET("group/{id}/users")
-//Call<List<User>> groupList(@Path("id") int groupId, @Query("sort") String sort);

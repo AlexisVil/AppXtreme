@@ -1,5 +1,6 @@
 package mx.com.evotae.appxtreme.main.login.viewmodel
 
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
@@ -21,7 +22,6 @@ class XTViewModelLogin(
             val resultLogin = cuLogin.login(idOperacion,user, pwd, regid, claveOperador)
             if (resultLogin.sucess){
                 "NOMBRE -> ${resultLogin.data?.result?.nombreOp?.log()}"
-
                 resultLogin.data?.result?.let {
                     loginMLD.postValue(it)
                 }

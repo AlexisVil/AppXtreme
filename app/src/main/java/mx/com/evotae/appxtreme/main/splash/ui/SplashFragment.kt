@@ -15,6 +15,8 @@ import mx.com.evotae.appxtreme.R
 import mx.com.evotae.appxtreme.databinding.FragmentSplashBinding
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
 import mx.com.evotae.appxtreme.framework.util.extensions.getPreferenceToString
+import mx.com.evotae.appxtreme.main.appactivity.XTInicioActivity
+import servicecordinator.retrofit.managercall.OPERATOR_APP
 import servicecordinator.retrofit.managercall.PWD_APP
 import servicecordinator.retrofit.managercall.USER_APP
 
@@ -24,6 +26,7 @@ class SplashFragment : XTFragmentBase() {
     private lateinit var safeActivity: Activity
     var user_app = ""
     var pwd_app = ""
+    var operator_app = ""
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -45,6 +48,7 @@ class SplashFragment : XTFragmentBase() {
         super.onViewCreated(view, savedInstanceState)
         user_app = USER_APP.getPreferenceToString().toString()
         pwd_app = PWD_APP.getPreferenceToString().toString()
+        operator_app = OPERATOR_APP.getPreferenceToString().toString()
         //Listeners
         initListeners()
     }
@@ -64,6 +68,7 @@ class SplashFragment : XTFragmentBase() {
                 //bottom nav en ese activity
                 //nav fragment
                 //Main xtreme con grafo y el bottom navigation
+
             }
         }, DURATION.toLong())
     }

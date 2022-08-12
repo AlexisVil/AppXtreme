@@ -4,10 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import mx.com.evotae.appxtreme.databinding.ActivityMainBinding
-import mx.com.evotae.appxtreme.framework.util.extensions.getPreferenceToString
-import mx.com.evotae.appxtreme.framework.util.extensions.savePreferencesToString
-import servicecordinator.retrofit.managercall.PWD_APP
-import servicecordinator.retrofit.managercall.USER_APP
+
 
 class XtremeActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
