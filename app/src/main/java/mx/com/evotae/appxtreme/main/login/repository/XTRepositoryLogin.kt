@@ -6,12 +6,12 @@ import servicecordinator.retrofit.model.dataclass.XTResponseData
 import servicecordinator.retrofit.model.dataclass.XTResponseGeneral
 
 interface XTRepositoryLogin {
-    suspend fun login(): XTResponseData<XTResponseGeneral<XTResponseLogin>?>
+    suspend fun login(idOperacion: String,user: String, pwd: String, regid: String, claveOperador: String): XTResponseData<XTResponseGeneral<XTResponseLogin>?>
 }
 
 class XTRepositoryLoginImpl(private val dataSourceLogin: XTDataSourceLogin): XTRepositoryLogin{
-    override suspend fun login(): XTResponseData<XTResponseGeneral<XTResponseLogin>?> {
-        return dataSourceLogin.login()
+    override suspend fun login(idOperacion: String,user: String, pwd: String, regid: String, claveOperador: String): XTResponseData<XTResponseGeneral<XTResponseLogin>?> {
+        return dataSourceLogin.login(idOperacion,user, pwd, regid, claveOperador)
     }
 
 }

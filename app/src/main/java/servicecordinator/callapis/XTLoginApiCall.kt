@@ -19,11 +19,11 @@ class XTLoginApiCall(private val context: Context): XTManagerCall() {
 
 
 
-    suspend fun login(): XTResponseData<XTResponseGeneral<XTResponseLogin>?> {
+    suspend fun login(idOperacion: String,user: String, pwd: String, regid: String, claveOperador: String): XTResponseData<XTResponseGeneral<XTResponseLogin>?> {
         return managerCallApi(
             context = context,
             call = {
-                callApi.postLogin().await()
+                callApi.postLogin(idOperacion, user, pwd, regid, claveOperador).await()
             }
         )
     }

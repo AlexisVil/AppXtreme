@@ -16,9 +16,9 @@ class XTViewModelLogin(
     val login: LiveData<XTResponseLogin>
         get() = loginMLD
 
-    fun login(){
+    fun login(idOperacion: String,user: String, pwd: String, regid: String, claveOperador: String){
         viewModelScope.launch {
-            val resultLogin = cuLogin.login()
+            val resultLogin = cuLogin.login(idOperacion,user, pwd, regid, claveOperador)
             if (resultLogin.sucess){
                 "NOMBRE -> ${resultLogin.data?.result?.nombreOp?.log()}"
 

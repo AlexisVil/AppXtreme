@@ -8,16 +8,22 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.findNavController
 import mx.com.evotae.appxtreme.R
 import mx.com.evotae.appxtreme.databinding.FragmentSplashBinding
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
+import mx.com.evotae.appxtreme.framework.util.extensions.getPreferenceToString
+import servicecordinator.retrofit.managercall.PWD_APP
+import servicecordinator.retrofit.managercall.USER_APP
 
 
 class SplashFragment : XTFragmentBase() {
     lateinit var binding: FragmentSplashBinding
     private lateinit var safeActivity: Activity
+    var user_app = ""
+    var pwd_app = ""
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -25,7 +31,6 @@ class SplashFragment : XTFragmentBase() {
             safeActivity = context as Activity
         }
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,18 +43,28 @@ class SplashFragment : XTFragmentBase() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        user_app = USER_APP.getPreferenceToString().toString()
+        pwd_app = PWD_APP.getPreferenceToString().toString()
         //Listeners
         initListeners()
     }
 
     //Listeners
-
     fun initListeners() {
         val DURATION = 2500
+        user_app.toString()
 
         val handler = Handler()
         handler.postDelayed({
-            navigationToLogin()
+            if (user_app.isEmpty() && pwd_app.isEmpty()) {
+                navigationToLogin()
+            } else {
+                Toast.makeText(safeActivity, "Ya hizo login", Toast.LENGTH_SHORT).show()
+                //intent ir a otro activity
+                //bottom nav en ese activity
+                //nav fragment
+                //Main xtreme con grafo y el bottom navigation
+            }
         }, DURATION.toLong())
     }
 

@@ -9,13 +9,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.fragment_x_t_login.*
 import mx.com.evotae.appxtreme.R
 import mx.com.evotae.appxtreme.databinding.ActivityMainBinding
 import mx.com.evotae.appxtreme.databinding.FragmentXTLoginBinding
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
+import mx.com.evotae.appxtreme.framework.util.extensions.savePreferencesToString
 import mx.com.evotae.appxtreme.main.login.viewmodel.XTViewModelLogin
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import servicecordinator.model.response.XTResponseLogin
+import servicecordinator.retrofit.managercall.PWD_APP
+import servicecordinator.retrofit.managercall.USER_APP
 
 
 class XTLoginFragment : XTFragmentBase() {
@@ -54,8 +58,9 @@ class XTLoginFragment : XTFragmentBase() {
     fun initListeners() {
         binding.apply {
             signin.setOnClickListener {
-                viewModelLogin.login()
+                viewModelLogin.login("login", userTxt.text.toString(), passTxt.text.toString(), "80f8cf43-0d26-4876-966e-cc90e13e0f0c", operatorTxt.text.toString())
             }
+
         }
     }
 
@@ -66,11 +71,13 @@ class XTLoginFragment : XTFragmentBase() {
     }
 
     private fun handleLogin(): (XTResponseLogin?) -> Unit = { data ->
-        navigateToLoginSucces()
+        USER_APP.savePreferencesToString(binding.userTxt.toString())
+        PWD_APP.savePreferencesToString(binding.passTxt.toString())
     }
 
     fun navigateToLoginSucces() {
         val navigate = XTLoginFragmentDirections.actionXTLoginFragmentToBlankFragment()
         findNavController().navigate(navigate)
     }
+
 }
