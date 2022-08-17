@@ -47,6 +47,7 @@
     <string name="btn_saldo">Saldo Disponible</string>
     <string name="btn_pago">Reportar Pago</string>
     <string name="btn_ventas">Ventas recientes</string>
+    <string name="btnLogout">Cerrar Sesión</string>
 
     <!--SearchView-->
     <string name="search">Buscar</string>

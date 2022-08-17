@@ -4,19 +4,16 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_x_t_login.*
-import mx.com.evotae.appxtreme.R
-import mx.com.evotae.appxtreme.databinding.ActivityMainBinding
 import mx.com.evotae.appxtreme.databinding.FragmentXTLoginBinding
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
 import mx.com.evotae.appxtreme.framework.util.extensions.savePreferencesToString
-import mx.com.evotae.appxtreme.main.appactivity.XTInicioActivity
+import mx.com.evotae.appxtreme.main.appactivity.XTInitActivity
 import mx.com.evotae.appxtreme.main.login.viewmodel.XTViewModelLogin
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import servicecordinator.model.response.XTResponseLogin
@@ -83,10 +80,8 @@ class XTLoginFragment : XTFragmentBase() {
         USER_APP.savePreferencesToString(binding.userTxt.toString())
         PWD_APP.savePreferencesToString(binding.passTxt.toString())
         OPERATOR_APP.savePreferencesToString(operatorTxt.text.toString())
-        /*
-        val intent = Intent(safeActivity, XTInicioActivity::class.java)
-        startActivity(intent)
-         */
+        //Toast.makeText(safeActivity, "Iniciando", Toast.LENGTH_SHORT).show()
+        startActivity(Intent(safeActivity, XTInitActivity::class.java))
     }
 
     fun navigateToLoginSucces() {

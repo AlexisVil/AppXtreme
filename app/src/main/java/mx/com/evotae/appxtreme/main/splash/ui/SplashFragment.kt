@@ -9,13 +9,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.findNavController
-import mx.com.evotae.appxtreme.R
 import mx.com.evotae.appxtreme.databinding.FragmentSplashBinding
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
 import mx.com.evotae.appxtreme.framework.util.extensions.getPreferenceToString
-import mx.com.evotae.appxtreme.main.appactivity.XTInicioActivity
+import mx.com.evotae.appxtreme.main.appactivity.XTInitActivity
 import servicecordinator.retrofit.managercall.OPERATOR_APP
 import servicecordinator.retrofit.managercall.PWD_APP
 import servicecordinator.retrofit.managercall.USER_APP
@@ -68,6 +66,7 @@ class SplashFragment : XTFragmentBase() {
                 //bottom nav en ese activity
                 //nav fragment
                 //Main xtreme con grafo y el bottom navigation
+                startActivity(Intent(safeActivity,XTInitActivity::class.java))
 
             }
         }, DURATION.toLong())

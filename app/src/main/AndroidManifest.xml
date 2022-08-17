@@ -17,8 +17,19 @@
         android:theme="@style/Theme.AppXtreme"
         tools:targetApi="n">
         <activity
-            android:name=".XTInicioActivity"
-            android:exported="false" />
+            android:name=".main.appactivity.XTInitActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="www.tae.xtremecard.com.mx"
+                    android:scheme="https" />
+            </intent-filter>
+
+        </activity>
         <activity
             android:name=".main.appactivity.XtremeActivity"
             android:exported="true"

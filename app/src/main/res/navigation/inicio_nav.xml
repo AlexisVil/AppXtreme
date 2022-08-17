@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/inicio_nav"
+    app:startDestination="@id/XTTaeFragment">
+
+    <fragment
+        android:id="@+id/XTTaeFragment"
+        android:name="mx.com.evotae.appxtreme.main.tae.ui.XTTaeFragment"
+        android:label="fragment_x_t_tae"
+        tools:layout="@layout/fragment_x_t_tae" />
+</navigation>

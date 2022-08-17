@@ -10,15 +10,14 @@ import com.google.android.material.navigation.NavigationView
 import mx.com.evotae.appxtreme.R
 import mx.com.evotae.appxtreme.databinding.ActivityXtinicioBinding
 
-class XTInicioActivity : AppCompatActivity() {
-    lateinit var binding: ActivityXtinicioBinding
+class XTInitActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityXtinicioBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         //Toolbar config
-        val toolbar = binding.toolbar
-        setSupportActionBar(toolbar)
-
+   //     val toolbar = binding.toolbar
+     //   setSupportActionBar(toolbar)
+        supportActionBar?.hide()
         binding = ActivityXtinicioBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
