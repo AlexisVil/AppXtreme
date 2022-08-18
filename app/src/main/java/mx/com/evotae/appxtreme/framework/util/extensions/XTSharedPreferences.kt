@@ -25,5 +25,11 @@ private fun createPreferences(): SharedPreferences?{
 private fun createEditPreferences(): SharedPreferences.Editor?{
     return XTConstant.appContext?.getSharedPreferences(preferences(), Context.MODE_PRIVATE)?.edit()
 }
+//Limpiar valores
+fun wipe(){
+    val edit = createEditPreferences()
+    edit?.clear()
+    edit?.commit()
+}
 
 //Guarda variables en la APP

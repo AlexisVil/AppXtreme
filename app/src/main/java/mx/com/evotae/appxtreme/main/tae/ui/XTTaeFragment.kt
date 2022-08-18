@@ -12,6 +12,8 @@ import android.widget.Toast
 import mx.com.evotae.appxtreme.R
 import mx.com.evotae.appxtreme.databinding.FragmentXTTaeBinding
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
+import mx.com.evotae.appxtreme.framework.util.extensions.preferences
+import mx.com.evotae.appxtreme.framework.util.extensions.wipe
 import mx.com.evotae.appxtreme.main.appactivity.XtremeActivity
 
 class XTTaeFragment : XTFragmentBase() {
@@ -42,8 +44,8 @@ class XTTaeFragment : XTFragmentBase() {
         binding.apply {
             btnLogout.setOnClickListener {
                 Toast.makeText(safeActivity, "Cerrando sesion", Toast.LENGTH_SHORT).show()
+                wipe()
                 startActivity(Intent(safeActivity, XtremeActivity::class.java))
-
             }
         }
     }

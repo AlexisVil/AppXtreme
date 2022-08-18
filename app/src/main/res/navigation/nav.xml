@@ -9,11 +9,7 @@
         android:id="@+id/XTLoginFragment"
         android:name="mx.com.evotae.appxtreme.main.login.ui.XTLoginFragment"
         android:label="fragment_x_t_login"
-        tools:layout="@layout/fragment_x_t_login" >
-        <action
-            android:id="@+id/action_XTLoginFragment_to_blankFragment"
-            app:destination="@id/blankFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_x_t_login" />
     <fragment
         android:id="@+id/splashFragment"
         android:name="mx.com.evotae.appxtreme.main.splash.ui.SplashFragment"
@@ -25,9 +21,4 @@
             app:exitAnim="@anim/slide_out_right"
             app:popExitAnim="@anim/slide_out_left" />
     </fragment>
-    <fragment
-        android:id="@+id/blankFragment"
-        android:name="mx.com.evotae.appxtreme.main.BlankFragment"
-        android:label="fragment_blank"
-        tools:layout="@layout/fragment_blank" />
 </navigation>

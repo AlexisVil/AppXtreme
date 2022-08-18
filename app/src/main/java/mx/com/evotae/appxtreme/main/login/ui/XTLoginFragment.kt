@@ -80,13 +80,13 @@ class XTLoginFragment : XTFragmentBase() {
         USER_APP.savePreferencesToString(binding.userTxt.toString())
         PWD_APP.savePreferencesToString(binding.passTxt.toString())
         OPERATOR_APP.savePreferencesToString(operatorTxt.text.toString())
-        //Toast.makeText(safeActivity, "Iniciando", Toast.LENGTH_SHORT).show()
-        startActivity(Intent(safeActivity, XTInitActivity::class.java))
+        navigateToLoginSucces()
+        Toast.makeText(safeActivity, "Bienvenido $USER_APP", Toast.LENGTH_SHORT).show()
     }
 
     fun navigateToLoginSucces() {
-        val navigate = XTLoginFragmentDirections.actionXTLoginFragmentToBlankFragment()
-        findNavController().navigate(navigate)
+        startActivity(Intent(safeActivity, XTInitActivity::class.java))
+        //val navigate = XTLoginFragmentDirections.actionXTLoginFragmentToBlankFragment()
+        //findNavController().navigate(navigate)
     }
-
 }
