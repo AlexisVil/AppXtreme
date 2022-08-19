@@ -3,7 +3,11 @@ package mx.com.evotae.appxtreme.main.appactivity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
@@ -20,14 +24,21 @@ class XTInitActivity : AppCompatActivity() {
         supportActionBar?.hide()
         binding = ActivityXtinicioBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        val navController = navHostFragment.navController
+        setupBottomNavMenu(navController)
+
     }
 
-
+    //Conecta la vista de la bottom bar
     private fun setupBottomNavMenu(navController: NavController) {
-        // TODO STEP 9.3 - Use NavigationUI to set up Bottom Nav
-        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        bottomNav?.setupWithNavController(navController)
-
+        binding.bottomNavigation?.setupWithNavController(navController)
     }
+
+    //Rewgresa un boolen con el item que se selecciona
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        val navContoller = findNavController(R.id.fragmentContainerView)
+//        return item.onNavDestinationSelected(navContoller) || super.onOptionsItemSelected(item)
+//    }
 
 }

@@ -3,16 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="50dp"
+    android:paddingTop="50dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".main.tae.ui.XTTaeFragment">
 
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        app:background="@drawable/btn_shadow"
-        android:text="@string/btnLogout"
-        />
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerTae"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </FrameLayout>

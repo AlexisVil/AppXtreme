@@ -3,10 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/inicio_nav"
-    app:startDestination="@id/XTTaeFragment">
+    app:startDestination="@id/XTTae_dest">
 
     <fragment
-        android:id="@+id/XTTaeFragment"
+        android:id="@+id/XTService_dest"
+        android:name="mx.com.evotae.appxtreme.main.service.ui.XTServiceFragment"
+        android:label="fragment_x_t_service"
+        tools:layout="@layout/fragment_x_t_service" />
+    <fragment
+        android:id="@+id/XTUser_dest"
+        android:name="mx.com.evotae.appxtreme.main.user.ui.XTUserFragment"
+        android:label="fragment_x_t_user"
+        tools:layout="@layout/fragment_x_t_user" />
+    <fragment
+        android:id="@+id/XTTae_dest"
         android:name="mx.com.evotae.appxtreme.main.tae.ui.XTTaeFragment"
         android:label="fragment_x_t_tae"
         tools:layout="@layout/fragment_x_t_tae" />

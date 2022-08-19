@@ -9,12 +9,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
 import mx.com.evotae.appxtreme.R
 import mx.com.evotae.appxtreme.databinding.FragmentXTTaeBinding
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
 import mx.com.evotae.appxtreme.framework.util.extensions.preferences
 import mx.com.evotae.appxtreme.framework.util.extensions.wipe
 import mx.com.evotae.appxtreme.main.appactivity.XtremeActivity
+import mx.com.evotae.appxtreme.main.tae.adapter.TaeAdapter
+import mx.com.evotae.appxtreme.main.tae.model.TaeProvider
 
 class XTTaeFragment : XTFragmentBase() {
     lateinit var binding: FragmentXTTaeBinding
@@ -37,17 +40,10 @@ class XTTaeFragment : XTFragmentBase() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initListeners()
+        binding.recyclerTae.layoutManager = GridLayoutManager(safeActivity, 2)
+        binding.recyclerTae.adapter = TaeAdapter(TaeProvider.taeList)
     }
 
-    fun initListeners(){
-        binding.apply {
-            btnLogout.setOnClickListener {
-                Toast.makeText(safeActivity, "Cerrando sesion", Toast.LENGTH_SHORT).show()
-                wipe()
-                startActivity(Intent(safeActivity, XtremeActivity::class.java))
-            }
-        }
-    }
+
 
 }
