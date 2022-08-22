@@ -1,0 +1,14 @@
+package mx.com.evotae.appxtreme.main.tae.usescases
+
+import mx.com.evotae.appxtreme.main.tae.model.XTRepositoryTaeP
+import mx.com.evotae.appxtreme.main.tae.model.XTTaeModel
+
+interface XTUsesCasesTae {
+    suspend fun obtenerListaTae() : List<XTTaeModel>
+}
+
+class XTUsesCasesImpl{
+
+//    override suspend fun obtenerListaTae(): List<XTTaeModel>{
+//    }
+}

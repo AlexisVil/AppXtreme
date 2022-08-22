@@ -5,4 +5,5 @@ import mx.com.evotae.appxtreme.framework.util.commons.managerevents.SingleLiveEv
 
 class XTViewModelTae : XTViewModelBase() {
     //private var taeModel = SingleLiveEvent<>
+
 }

@@ -81,7 +81,7 @@ class XTLoginFragment : XTFragmentBase() {
         PWD_APP.savePreferencesToString(binding.passTxt.toString())
         OPERATOR_APP.savePreferencesToString(operatorTxt.text.toString())
         navigateToLoginSucces()
-        Toast.makeText(safeActivity, "Bienvenido $USER_APP", Toast.LENGTH_SHORT).show()
+        Toast.makeText(safeActivity, "Bienvenido ${USER_APP.toString()}", Toast.LENGTH_SHORT).show()
     }
 
     fun navigateToLoginSucces() {

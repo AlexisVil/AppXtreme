@@ -7,15 +7,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import mx.com.evotae.appxtreme.R
 import mx.com.evotae.appxtreme.databinding.ItemButtonBinding
-import mx.com.evotae.appxtreme.main.tae.model.Tae
+import mx.com.evotae.appxtreme.main.tae.model.XTTaeModel
 
-class TaeAdapter(private val taeList: List<Tae>): RecyclerView.Adapter<TaeAdapter.TaeViewHolder>() {
+class TaeAdapter(private val taeList: List<XTTaeModel>, private val onClickListener: (XTTaeModel) -> Unit): RecyclerView.Adapter<TaeAdapter.TaeViewHolder>() {
     class TaeViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val binding = ItemButtonBinding.bind(view)
-        fun render(taeModel: Tae){
+        fun render(taeModel: XTTaeModel, onClickListener: (XTTaeModel) -> Unit){
             binding.tvName.text = taeModel.name
             binding.tvId.text = taeModel.id.toString()
             Glide.with(binding.ivPhoto.context).load(taeModel.photo).into(binding.ivPhoto)
+
+            itemView.setOnClickListener { onClickListener(taeModel) }
         }
 
     }
@@ -27,7 +29,7 @@ class TaeAdapter(private val taeList: List<Tae>): RecyclerView.Adapter<TaeAdapte
 
     override fun onBindViewHolder(holder: TaeViewHolder, position: Int) {
         val item = taeList[position]
-        holder.render(item)
+        holder.render(item,onClickListener)
     }
 
     override fun getItemCount(): Int = taeList.size
