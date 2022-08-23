@@ -14,10 +14,32 @@
         android:id="@+id/XTUser_dest"
         android:name="mx.com.evotae.appxtreme.main.user.ui.XTUserFragment"
         android:label="fragment_x_t_user"
-        tools:layout="@layout/fragment_x_t_user" />
+        tools:layout="@layout/fragment_x_t_user" >
+        <action
+            android:id="@+id/action_XTUser_dest_to_reportarPagoFragment"
+            app:destination="@id/reportarPagoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_in_left" />
+    </fragment>
     <fragment
         android:id="@+id/XTTae_dest"
         android:name="mx.com.evotae.appxtreme.main.tae.ui.XTTaeFragment"
         android:label="fragment_x_t_tae"
-        tools:layout="@layout/fragment_x_t_tae" />
+        tools:layout="@layout/fragment_x_t_tae" >
+        <action
+            android:id="@+id/action_XTTae_dest_to_XTRecargaFragment"
+            app:destination="@id/XTRecargaFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/reportarPagoFragment"
+        android:name="mx.com.evotae.appxtreme.main.reportarpago.ui.ReportarPagoFragment"
+        android:label="fragment_reportar_pago"
+        tools:layout="@layout/fragment_reportar_pago" />
+    <fragment
+        android:id="@+id/XTRecargaFragment"
+        android:name="mx.com.evotae.appxtreme.main.recargar.ui.XTRecargaFragment"
+        android:label="fragment_x_t_recarga"
+        tools:layout="@layout/fragment_x_t_recarga" />
 </navigation>

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import mx.com.evotae.appxtreme.databinding.FragmentXTTaeBinding
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
@@ -42,6 +43,12 @@ class XTTaeFragment : XTFragmentBase() {
     }
 
     fun onItemSelected(taeModel: XTTaeModel){
-        Toast.makeText(safeActivity, taeModel.name, Toast.LENGTH_SHORT).show()
+        //Toast.makeText(safeActivity, taeModel.name, Toast.LENGTH_SHORT).show()
+        openItem()
+    }
+
+    fun openItem(){
+        val navigate = XTTaeFragmentDirections.actionXTTaeDestToXTRecargaFragment()
+        findNavController().navigate(navigate)
     }
 }

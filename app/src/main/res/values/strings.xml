@@ -53,4 +53,11 @@
     <!--SearchView-->
     <string name="search">Buscar</string>
     <string name="search_hint">Buscar producto</string>
+
+    <!--Recarga Fragment-->
+    <string name="btn_recarga">Recarga</string>
+    <string name="producto">Seleccionar Producto</string>
+    <string name="input_numero">Ingresar número</string>
+    <string name="input_confirmar">Confirmar número</string>
+
 </resources>

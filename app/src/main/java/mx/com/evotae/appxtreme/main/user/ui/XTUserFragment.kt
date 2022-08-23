@@ -9,6 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.fragment_reportar_pago.*
 import mx.com.evotae.appxtreme.R
 import mx.com.evotae.appxtreme.databinding.FragmentXTUserBinding
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
@@ -42,10 +44,14 @@ class XTUserFragment : XTFragmentBase() {
 
     fun initListeners() {
         binding.apply {
-            btnLogout.setOnClickListener {
+            btnLogout?.setOnClickListener {
                 Toast.makeText(safeActivity, "Cerrando sesion", Toast.LENGTH_SHORT).show()
                 wipe()
                 startActivity(Intent(safeActivity, XtremeActivity::class.java))
+            }
+            btnPago?.setOnClickListener {
+                val navigate = XTUserFragmentDirections.actionXTUserDestToReportarPagoFragment()
+                findNavController().navigate(navigate)
             }
         }
     }

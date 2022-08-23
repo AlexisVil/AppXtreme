@@ -61,13 +61,8 @@ class SplashFragment : XTFragmentBase() {
             if (user_app.isEmpty() && pwd_app.isEmpty()) {
                 navigationToLogin()
             } else {
-                Toast.makeText(safeActivity, "Ya hizo login", Toast.LENGTH_SHORT).show()
-                //intent ir a otro activity
-                //bottom nav en ese activity
-                //nav fragment
-                //Main xtreme con grafo y el bottom navigation
+                Toast.makeText(safeActivity, "Sesión iniciada $user_app", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(safeActivity,XTInitActivity::class.java))
-
             }
         }, DURATION.toLong())
     }
