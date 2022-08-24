@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/reportarPagoFragment"
-        android:name="mx.com.evotae.appxtreme.main.reportarpago.ui.ReportarPagoFragment"
+        android:name="mx.com.evotae.appxtreme.main.reportarpago.ui.XTReportarPagoFragment"
         android:label="fragment_reportar_pago"
         tools:layout="@layout/fragment_reportar_pago" />
     <fragment

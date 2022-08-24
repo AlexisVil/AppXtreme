@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:paddingTop="40dp"
     android:paddingBottom="10dp"
-    tools:context=".main.reportarpago.ui.ReportarPagoFragment">
+    tools:context=".main.reportarpago.ui.XTReportarPagoFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

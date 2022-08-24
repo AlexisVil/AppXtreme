@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_x_t_login.*
 import mx.com.evotae.appxtreme.databinding.FragmentXTLoginBinding
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
+import mx.com.evotae.appxtreme.framework.util.extensions.getPreferenceToString
 import mx.com.evotae.appxtreme.framework.util.extensions.savePreferencesToString
 import mx.com.evotae.appxtreme.main.appactivity.XTInitActivity
 import mx.com.evotae.appxtreme.main.login.viewmodel.XTViewModelLogin
@@ -81,7 +82,7 @@ class XTLoginFragment : XTFragmentBase() {
         PWD_APP.savePreferencesToString(binding.passTxt.toString())
         OPERATOR_APP.savePreferencesToString(operatorTxt.text.toString())
         navigateToLoginSucces()
-        Toast.makeText(safeActivity, "Bienvenido $USER_APP", Toast.LENGTH_SHORT).show()
+        Toast.makeText(safeActivity, "Bienvenido ${USER_APP.getPreferenceToString()}", Toast.LENGTH_SHORT).show()
     }
 
     fun navigateToLoginSucces() {

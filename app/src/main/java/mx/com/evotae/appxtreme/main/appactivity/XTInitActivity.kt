@@ -13,6 +13,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import mx.com.evotae.appxtreme.R
 import mx.com.evotae.appxtreme.databinding.ActivityXtinicioBinding
+import mx.com.evotae.appxtreme.framework.util.commons.managerevents.DatePickerFragment
 
 class XTInitActivity : AppCompatActivity() {
     private lateinit var binding: ActivityXtinicioBinding
@@ -34,11 +35,4 @@ class XTInitActivity : AppCompatActivity() {
     private fun setupBottomNavMenu(navController: NavController) {
         binding.bottomNavigation?.setupWithNavController(navController)
     }
-
-    //Rewgresa un boolen con el item que se selecciona
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        val navContoller = findNavController(R.id.fragmentContainerView)
-//        return item.onNavDestinationSelected(navContoller) || super.onOptionsItemSelected(item)
-//    }
-
 }
