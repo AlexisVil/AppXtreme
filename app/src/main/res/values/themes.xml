@@ -14,6 +14,8 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
+        <item name="android:datePickerDialogTheme">@style/AppTheme.DatePickerDialog</item>
+
     </style>
 
     <style name="Widget.App.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
@@ -23,5 +25,34 @@
     <style name="ThemeOverlay.App.BottomNavigationView" parent="">
         <item name="colorPrimary">@color/xtreme_2</item>
         <item name="colorOnPrimary">@color/xtreme_3</item>
+    </style>
+<!--
+Style datePicker
+-->
+    <!--
+    <style name="datePickerTheme" parent ="android:Theme.Material.Light.Dialog">
+        <item name="android:colorAccent">#8e99f3</item>
+        <item name="android:colorControlActivated">#5a9cbf</item>
+        <item name="android:textColorPrimary">#8e99f3</item>
+    </style>
+    -->
+    <style name="AppTheme.DatePickerDialog" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="android:colorAccent">@color/xtreme_2</item>
+        <item name="android:colorControlActivated">@color/xtreme_2_2</item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/AppTheme.Alert.Button.Positive</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/AppTheme.Alert.Button.Negative</item>
+        <item name="android:buttonBarNeutralButtonStyle">@style/AppTheme.Alert.Button.Neutral</item>
+    </style>
+
+    <style name="AppTheme.Alert.Button.Positive" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/xtreme_2</item>
+    </style>
+
+    <style name="AppTheme.Alert.Button.Negative" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/xtreme_2</item>
+    </style>
+
+    <style name="AppTheme.Alert.Button.Neutral" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/xtreme_2</item>
     </style>
 </resources>
