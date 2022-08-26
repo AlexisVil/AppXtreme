@@ -87,7 +87,5 @@ class XTLoginFragment : XTFragmentBase() {
 
     fun navigateToLoginSucces() {
         startActivity(Intent(safeActivity, XTInitActivity::class.java))
-        //val navigate = XTLoginFragmentDirections.actionXTLoginFragmentToBlankFragment()
-        //findNavController().navigate(navigate)
     }
 }

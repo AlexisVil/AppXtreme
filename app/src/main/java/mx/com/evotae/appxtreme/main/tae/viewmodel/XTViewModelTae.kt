@@ -18,8 +18,8 @@ class XTViewModelTae(private val cuBrands: XTUsesCasesBrand) : XTViewModelBase()
         viewModelScope.launch {
             val resultGetBrands = cuBrands.getBrands(idOperacion, firma)
             if(resultGetBrands.sucess){
-                "MARCA -> ${resultGetBrands.data?.result?.carrier?.log()}"
-                resultGetBrands?.data?.result?.let {
+                "NOMBRE -> ${resultGetBrands.data?.result?.idCarrier?.log()}"
+                resultGetBrands.data?.result?.let {
                     getBrandsMLD.postValue(it)
                 }
             }else {
