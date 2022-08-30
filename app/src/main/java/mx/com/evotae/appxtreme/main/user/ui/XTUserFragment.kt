@@ -16,11 +16,15 @@ import mx.com.evotae.appxtreme.databinding.FragmentXTUserBinding
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
 import mx.com.evotae.appxtreme.framework.util.extensions.wipe
 import mx.com.evotae.appxtreme.main.appactivity.XtremeActivity
+import mx.com.evotae.appxtreme.main.user.viewmodel.XTViewModelCheckBalance
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import servicecordinator.model.response.XTResponseCheckBalance
 
 class XTUserFragment : XTFragmentBase() {
 
     lateinit var binding: FragmentXTUserBinding
     private lateinit var safeActivity: Activity
+    private val viewModelCheckBalance: XTViewModelCheckBalance by sharedViewModel()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -53,6 +57,24 @@ class XTUserFragment : XTFragmentBase() {
                 val navigate = XTUserFragmentDirections.actionXTUserDestToReportarPagoFragment()
                 findNavController().navigate(navigate)
             }
+            btnSaldo?.setOnClickListener {
+                viewModelCheckBalance.checkBalance(
+                    "consultaSaldo",
+                    "2cb4fffb7223c1518c0fff47f1011dd2b1f2f26431f445f0db06ec99c56ae72e"
+                )
+            }
+
         }
     }
+
+    private fun handleCheckBalance(): (XTResponseCheckBalance?) -> Unit = { data ->
+        Toast.makeText(safeActivity, "Consultando saldo", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun initObservers() {
+        viewModelCheckBalance.launchLoader.observe(viewLifecycleOwner, handleLoader())
+        viewModelCheckBalance.launchError.observe(viewLifecycleOwner, handleError())
+        viewModelCheckBalance.checkBalance.observe(viewLifecycleOwner, handleCheckBalance())
+    }
+
 }

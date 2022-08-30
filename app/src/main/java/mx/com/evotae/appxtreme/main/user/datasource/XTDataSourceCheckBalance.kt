@@ -1,4 +1,4 @@
-package mx.com.evotae.appxtreme.main.reportarpago.datasource
+package mx.com.evotae.appxtreme.main.user.datasource
 
 import servicecordinator.callapis.XTCheckBalanceApiCall
 import servicecordinator.model.response.XTResponseCheckBalance

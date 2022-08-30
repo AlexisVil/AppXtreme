@@ -62,6 +62,21 @@ class ServicesProvider {
                 "Naturgy",
                 12,
                 "https://s03.s3c.es/imag/_v0/770x420/1/3/0/naturgy-azul.jpg"
+            ),
+            Services(
+                "GOBIERNODF CDMX",
+                13,
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/CDMX_Logo.svg/640px-CDMX_Logo.svg.png"
+                ),
+            Services(
+                "FACTURA MOVISTAR",
+                14,
+                "https://guiafactura.com/wp-content/uploads/2021/01/DESCARGAR-FACTURA-MOVISTAR.png"
+            ),
+            Services(
+                "CINEPOLIS",
+                15,
+                "https://storage.googleapis.com/www-paredro-com/uploads/2019/04/LogoCinepolis.jpg"
             )
         )
     }

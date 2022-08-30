@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.fragment_reportar_pago.*
 import mx.com.evotae.appxtreme.R
 import mx.com.evotae.appxtreme.databinding.FragmentReportarPagoBinding
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
-import mx.com.evotae.appxtreme.main.reportarpago.viewmodel.XTViewModelCheckBalance
+import mx.com.evotae.appxtreme.main.user.viewmodel.XTViewModelCheckBalance
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import servicecordinator.model.response.XTResponseCheckBalance
 import java.text.SimpleDateFormat
@@ -22,8 +22,6 @@ import java.util.*
 class XTReportarPagoFragment : XTFragmentBase() {
     lateinit var binding: FragmentReportarPagoBinding
     private lateinit var safeActivity: Activity
-    
-    private val viewModelCheckBalance: XTViewModelCheckBalance by sharedViewModel()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -43,7 +41,7 @@ class XTReportarPagoFragment : XTFragmentBase() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         
-        initObservers()
+        //initObservers()
         initListeners()
     }
 
@@ -52,22 +50,8 @@ class XTReportarPagoFragment : XTFragmentBase() {
             etFecha.setOnClickListener {
                 createDatePicker()
             }
-            etRecarga.setOnClickListener {
-                viewModelCheckBalance.checkBalance("consultaSaldo", "2cb4fffb7223c1518c0fff47f1011dd2b1f2f26431f445f0db06ec99c56ae72e")
-            }
         }
     }
-
-    private fun initObservers() {
-        viewModelCheckBalance.launchLoader.observe(viewLifecycleOwner, handleLoader())
-        viewModelCheckBalance.launchError.observe(viewLifecycleOwner, handleError())
-        viewModelCheckBalance.checkBalance.observe(viewLifecycleOwner, handleCheckBalance())
-    }
-
-    private fun handleCheckBalance(): (XTResponseCheckBalance?) -> Unit = { data ->
-        Toast.makeText(safeActivity, "Consultando saldo", Toast.LENGTH_SHORT).show()
-    }
-
     private fun createDatePicker(){
         val c = Calendar.getInstance()
         val datePicker = DatePickerDialog.OnDateSetListener { view: DatePicker?, year: Int, month: Int, dayOfMonth: Int ->

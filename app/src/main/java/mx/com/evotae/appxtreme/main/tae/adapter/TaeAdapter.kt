@@ -14,7 +14,7 @@ class TaeAdapter(private val taeList: List<XTTaeModel>, private val onClickListe
         val binding = ItemButtonBinding.bind(view)
         fun render(taeModel: XTTaeModel, onClickListener: (XTTaeModel) -> Unit){
             binding.tvName.text = taeModel.name
-            binding.tvId.text = taeModel.id.toString()
+            binding.tvId.text = taeModel.idCarrier.toString()
             Glide.with(binding.ivPhoto.context).load(taeModel.photo).into(binding.ivPhoto)
 
             itemView.setOnClickListener { onClickListener(taeModel) }

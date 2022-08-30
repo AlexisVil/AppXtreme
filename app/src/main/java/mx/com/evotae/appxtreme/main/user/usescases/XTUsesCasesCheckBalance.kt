@@ -1,20 +1,20 @@
-package mx.com.evotae.appxtreme.main.reportarpago.repository
+package mx.com.evotae.appxtreme.main.user.usescases
 
-import mx.com.evotae.appxtreme.main.reportarpago.datasource.XTDataSourceCheckBalance
+import mx.com.evotae.appxtreme.main.user.repository.XTRepositoryCheckBalance
 import servicecordinator.model.response.XTResponseCheckBalance
 import servicecordinator.retrofit.model.dataclass.XTResponseData
 import servicecordinator.retrofit.model.dataclass.XTResponseGeneral
 
-interface XTRepositoryCheckBalance {
+interface XTUsesCasesCheckBalance {
     suspend fun checkBalance(idOperacion: String, firma: String): XTResponseData<XTResponseGeneral<XTResponseCheckBalance>?>
 }
-
-class XTRepositoryCheckBalanceImpl(private val dataSourceCheckBalance: XTDataSourceCheckBalance) : XTRepositoryCheckBalance{
+class XTUsesCasesCheckBalanceImpl(private val repository: XTRepositoryCheckBalance):
+    XTUsesCasesCheckBalance {
     override suspend fun checkBalance(
         idOperacion: String,
         firma: String
     ): XTResponseData<XTResponseGeneral<XTResponseCheckBalance>?> {
-        return dataSourceCheckBalance.checkBalance(idOperacion, firma)
+        return repository.checkBalance(idOperacion, firma)
     }
 
 }
