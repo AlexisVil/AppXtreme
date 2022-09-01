@@ -17,7 +17,7 @@ class XTBrandApiCall(private val context: Context): XTManagerCall() {
         .setClass(XTBrandApi::class.java)
         .builder().instance()
 
-    suspend fun getBrands(idOperacion: String, firma: String): XTResponseData<XTResponseGeneral<XTResponseBrand>?> {
+    suspend fun getBrands(idOperacion: String, firma: String): XTResponseData<XTResponseGeneral<ArrayList<XTResponseBrand>>?> {
         return managerCallApi(
             context = context,
             call={

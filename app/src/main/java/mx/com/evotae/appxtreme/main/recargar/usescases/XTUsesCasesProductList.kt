@@ -6,7 +6,7 @@ import servicecordinator.retrofit.model.dataclass.XTResponseData
 import servicecordinator.retrofit.model.dataclass.XTResponseGeneral
 
 interface XTUsesCasesProductList {
-    suspend fun getProductList(idOperacion: String, marca: String, firma: String): XTResponseData<XTResponseGeneral<XTResponseProductList>?>
+    suspend fun getProductList(idOperacion: String, marca: String, firma: String): XTResponseData<XTResponseGeneral<ArrayList<XTResponseProductList>>?>
 }
 
 class XTUsesCasesProductListImpl(private val repository: XTRepositoryProductList): XTUsesCasesProductList {
@@ -14,7 +14,7 @@ class XTUsesCasesProductListImpl(private val repository: XTRepositoryProductList
         idOperacion: String,
         marca: String,
         firma: String
-    ): XTResponseData<XTResponseGeneral<XTResponseProductList>?> {
+    ): XTResponseData<XTResponseGeneral<ArrayList<XTResponseProductList>>?> {
         return repository.getProductList(idOperacion, marca, firma)
     }
 

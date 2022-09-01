@@ -6,12 +6,12 @@ import servicecordinator.retrofit.model.dataclass.XTResponseData
 import servicecordinator.retrofit.model.dataclass.XTResponseGeneral
 
 interface XTUsesCasesBrand {
-    suspend fun getBrands(idOperacion: String, firma: String): XTResponseData<XTResponseGeneral<XTResponseBrand>?>
+    suspend fun getBrands(idOperacion: String, firma: String): XTResponseData<XTResponseGeneral<ArrayList<XTResponseBrand>>?>
 }
 
 class XTUsesCasesBrandImpl(private val repository: XTRepositoryBrand): XTUsesCasesBrand {
     override suspend fun getBrands(
         idOperacion: String,
         firma: String
-    ): XTResponseData<XTResponseGeneral<XTResponseBrand>?> = repository.getBrands(idOperacion, firma)
+    ): XTResponseData<XTResponseGeneral<ArrayList<XTResponseBrand>>?> = repository.getBrands(idOperacion, firma)
 }

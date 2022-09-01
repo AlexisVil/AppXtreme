@@ -15,5 +15,5 @@ interface XTCheckBalanceApi {
     fun checkBalance(
         @Query("idOperacion") idOperacion: String?,
         @Query("firma") firma: String?
-    ): Deferred<Response<XTResponseGeneral<XTResponseCheckBalance>>>
+    ): Deferred<Response<XTResponseGeneral<ArrayList<XTResponseCheckBalance>>>>
 }

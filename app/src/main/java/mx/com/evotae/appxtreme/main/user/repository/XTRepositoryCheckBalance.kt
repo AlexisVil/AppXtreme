@@ -6,7 +6,7 @@ import servicecordinator.retrofit.model.dataclass.XTResponseData
 import servicecordinator.retrofit.model.dataclass.XTResponseGeneral
 
 interface XTRepositoryCheckBalance {
-    suspend fun checkBalance(idOperacion: String, firma: String): XTResponseData<XTResponseGeneral<XTResponseCheckBalance>?>
+    suspend fun checkBalance(idOperacion: String, firma: String): XTResponseData<XTResponseGeneral<ArrayList<XTResponseCheckBalance>>?>
 }
 
 class XTRepositoryCheckBalanceImpl(private val dataSourceCheckBalance: XTDataSourceCheckBalance) :
@@ -14,7 +14,7 @@ class XTRepositoryCheckBalanceImpl(private val dataSourceCheckBalance: XTDataSou
     override suspend fun checkBalance(
         idOperacion: String,
         firma: String
-    ): XTResponseData<XTResponseGeneral<XTResponseCheckBalance>?> {
+    ): XTResponseData<XTResponseGeneral<ArrayList<XTResponseCheckBalance>>?> {
         return dataSourceCheckBalance.checkBalance(idOperacion, firma)
     }
 

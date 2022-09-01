@@ -12,8 +12,8 @@ import servicecordinator.model.response.XTResponseCheckBalance
 class XTViewModelCheckBalance(
     private val cuCheckBalance: XTUsesCasesCheckBalance
 ) : XTViewModelBase() {
-    private var checkBalanceMLD = SingleLiveEvent<XTResponseCheckBalance>()
-    val checkBalance: LiveData<XTResponseCheckBalance>
+    private var checkBalanceMLD = SingleLiveEvent<ArrayList<XTResponseCheckBalance>>()
+    val checkBalance: LiveData<ArrayList<XTResponseCheckBalance>>
         get() = checkBalanceMLD
 
 
@@ -21,12 +21,15 @@ class XTViewModelCheckBalance(
         viewModelScope.launch {
             val resultCheckBalance = cuCheckBalance.checkBalance(idOperacion, firma)
             if (resultCheckBalance.sucess) {
-                "SALDO -> ${resultCheckBalance?.data?.result?.saldoBolsa.toString().log()}"
-                resultCheckBalance?.data?.result?.let {
+                resultCheckBalance.data?.result?.forEach {
+                    "BOLSA -> ${it.tipoBolsa}".log()
+                    "SALDO -> ${it.saldoBolsa}".log()
+                }
+
+                resultCheckBalance.data?.result?.let {
                     checkBalanceMLD.postValue(it)
                 }
-            }
-            else {
+            } else {
                 resultCheckBalance.exception.let {
                     showError(it?.message.toString())
                 }

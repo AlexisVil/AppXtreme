@@ -14,5 +14,5 @@ interface XTProductListApi {
         @Query("idOperacion") idOperacion: String?,
         @Query("marca") marca: String?,
         @Query("firma") firma: String?
-    ): Deferred<Response<XTResponseGeneral<XTResponseProductList>>>
+    ): Deferred<Response<XTResponseGeneral<ArrayList<XTResponseProductList>>>>
 }

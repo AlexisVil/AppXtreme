@@ -6,7 +6,7 @@ import servicecordinator.retrofit.model.dataclass.XTResponseData
 import servicecordinator.retrofit.model.dataclass.XTResponseGeneral
 
 class XTDataSourceProductList(private val callApi: XTProductListApiCall) {
-    suspend fun getProductList(idOperacion: String, marca: String, firma: String): XTResponseData<XTResponseGeneral<XTResponseProductList>?>{
+    suspend fun getProductList(idOperacion: String, marca: String, firma: String): XTResponseData<XTResponseGeneral<ArrayList<XTResponseProductList>>?>{
         return callApi.getProductList(idOperacion, marca, firma)
 
     }

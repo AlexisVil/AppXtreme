@@ -17,7 +17,7 @@ class XTProductListApiCall(private val context: Context): XTManagerCall() {
         .setClass(XTProductListApi::class.java)
         .builder().instance()
 
-    suspend fun getProductList(idOperacion: String, marca: String, firma: String): XTResponseData<XTResponseGeneral<XTResponseProductList>?> {
+    suspend fun getProductList(idOperacion: String, marca: String, firma: String): XTResponseData<XTResponseGeneral<ArrayList<XTResponseProductList>>?> {
         return managerCallApi(
             context = context,
             call = {

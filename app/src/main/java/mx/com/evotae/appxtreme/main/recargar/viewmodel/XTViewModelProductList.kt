@@ -14,18 +14,19 @@ import servicecordinator.retrofit.model.dataclass.XTResponseGeneral
 class XTViewModelProductList(
     private val cuProductList: XTUsesCasesProductList
 ) : XTViewModelBase() {
-    lateinit var productArray : ArrayList<XTResponseData<XTResponseGeneral<XTResponseProductList>>?>
-    private val getProductListMLD = SingleLiveEvent<XTResponseProductList>()
-
-    val getProductList: LiveData<XTResponseProductList>
+    private val getProductListMLD = SingleLiveEvent<ArrayList<XTResponseProductList>>()
+    val getProductList: LiveData<ArrayList<XTResponseProductList>>
         get() = getProductListMLD
 
     fun getProductList(idOperacion: String, marca: String, firma: String){
         viewModelScope.launch {
             val resultProdcutList = cuProductList.getProductList(idOperacion, marca, firma)
-            productArray = ArrayList()
             if (resultProdcutList.sucess){
-                "PRODUCTO -> ${resultProdcutList?.data?.result?.descripcion?.log()}"
+                resultProdcutList?.data?.result?.forEach {
+                    "CARRIER -> ${it.carrier}".log()
+                    "DESCRIPCION DE PRODUCTO -> ${it.descripcion}"
+                    "MONTO -> ${it.monto.toString()}".log()
+                }
                 resultProdcutList.data?.result?.let {
                     getProductListMLD.postValue(it)
                 }

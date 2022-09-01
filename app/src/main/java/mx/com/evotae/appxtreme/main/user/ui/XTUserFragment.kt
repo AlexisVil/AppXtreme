@@ -1,6 +1,7 @@
 package mx.com.evotae.appxtreme.main.user.ui
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -14,6 +15,7 @@ import kotlinx.android.synthetic.main.fragment_reportar_pago.*
 import mx.com.evotae.appxtreme.R
 import mx.com.evotae.appxtreme.databinding.FragmentXTUserBinding
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
+import mx.com.evotae.appxtreme.framework.util.extensions.log
 import mx.com.evotae.appxtreme.framework.util.extensions.wipe
 import mx.com.evotae.appxtreme.main.appactivity.XtremeActivity
 import mx.com.evotae.appxtreme.main.user.viewmodel.XTViewModelCheckBalance
@@ -43,21 +45,23 @@ class XTUserFragment : XTFragmentBase() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initObservers()
         initListeners()
     }
 
     fun initListeners() {
         binding.apply {
-            btnLogout?.setOnClickListener {
+            btnLogout.setOnClickListener {
                 Toast.makeText(safeActivity, "Cerrando sesion", Toast.LENGTH_SHORT).show()
                 wipe()
                 startActivity(Intent(safeActivity, XtremeActivity::class.java))
             }
-            btnPago?.setOnClickListener {
+            btnPago.setOnClickListener {
                 val navigate = XTUserFragmentDirections.actionXTUserDestToReportarPagoFragment()
                 findNavController().navigate(navigate)
             }
-            btnSaldo?.setOnClickListener {
+            btnSaldo.setOnClickListener {
+                //crearDialogo()
                 viewModelCheckBalance.checkBalance(
                     "consultaSaldo",
                     "2cb4fffb7223c1518c0fff47f1011dd2b1f2f26431f445f0db06ec99c56ae72e"
@@ -67,8 +71,15 @@ class XTUserFragment : XTFragmentBase() {
         }
     }
 
-    private fun handleCheckBalance(): (XTResponseCheckBalance?) -> Unit = { data ->
-        Toast.makeText(safeActivity, "Consultando saldo", Toast.LENGTH_SHORT).show()
+    fun handleCheckBalance(): (ArrayList<XTResponseCheckBalance>?) -> Unit = {
+        val saldos = arrayOf(
+            it?.get(0)?.tipoBolsa.toString(),
+            it?.get(0)?.saldoBolsa.toString(),
+            it?.get(1)?.tipoBolsa.toString(),
+            it?.get(1)?.saldoBolsa.toString()
+        )
+        var mensaje = saldos.get(0) + ": " + saldos.get(1) +" \n" + saldos.get(2) + ": " + saldos.get(3)
+        crearDialogo(mensaje)
     }
 
     private fun initObservers() {
@@ -77,4 +88,15 @@ class XTUserFragment : XTFragmentBase() {
         viewModelCheckBalance.checkBalance.observe(viewLifecycleOwner, handleCheckBalance())
     }
 
+    fun crearDialogo(saldo: String) {
+        val ventanaDialogo: AlertDialog = AlertDialog.Builder(safeActivity)
+            .setTitle("Saldo Disponible")
+            .setMessage(saldo)
+            .setIcon(R.drawable.ic_check_balance)
+            .setPositiveButton("Aceptar") { _, _ ->
+                Toast.makeText(safeActivity, "Saldo Consultado", Toast.LENGTH_SHORT).show()
+            }
+            .create()
+        ventanaDialogo.show()
+    }
 }

@@ -16,7 +16,7 @@ class XTCheckBalanceApiCall(private val context: Context): XTManagerCall() {
         .setHost(Routers.HOST)
         .setClass(XTCheckBalanceApi::class.java)
         .builder().instance()
-    suspend fun checkBalance(idOperacion: String, fima: String): XTResponseData<XTResponseGeneral<XTResponseCheckBalance>?>
+    suspend fun checkBalance(idOperacion: String, fima: String): XTResponseData<XTResponseGeneral<ArrayList<XTResponseCheckBalance>>?>
     {
         return managerCallApi(
             context = context,

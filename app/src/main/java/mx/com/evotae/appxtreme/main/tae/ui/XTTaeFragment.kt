@@ -78,7 +78,7 @@ class XTTaeFragment : XTFragmentBase() {
         viewModelTae.getBrands.observe(viewLifecycleOwner,handlebrand())
     }
 
-    private fun handlebrand(): (XTResponseBrand?) -> Unit = { data ->
+    private fun handlebrand(): (ArrayList<XTResponseBrand>?) -> Unit = { data ->
         Toast.makeText(safeActivity, "Obteniendo Marcas", Toast.LENGTH_SHORT).show()
     }
 

@@ -23,7 +23,7 @@ class XTRecargaFragment : XTFragmentBase() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if ( context != null ){
+        if (context != null) {
             safeActivity = context as Activity
         }
     }
@@ -45,7 +45,11 @@ class XTRecargaFragment : XTFragmentBase() {
     private fun initListeners() {
         binding.apply {
             etProducto.setOnClickListener {
-                viewModelProductList.getProductList("listaProductos", "SERVICIOSTELCEL", "2cb4fffb7223c1518c0fff47f1011dd2b1f2f26431f445f0db06ec99c56ae72e")
+                viewModelProductList.getProductList(
+                    "listaProductos",
+                    "SERVICIOSTELCEL",
+                    "2cb4fffb7223c1518c0fff47f1011dd2b1f2f26431f445f0db06ec99c56ae72e"
+                )
             }
         }
     }
@@ -56,9 +60,7 @@ class XTRecargaFragment : XTFragmentBase() {
         viewModelProductList.getProductList.observe(viewLifecycleOwner, handleProductList())
     }
 
-    private fun handleProductList(): (XTResponseProductList?) -> Unit = { data ->
+    private fun handleProductList(): (ArrayList<XTResponseProductList>?) -> Unit = { data ->
         Toast.makeText(safeActivity, "Lista de Productos", Toast.LENGTH_SHORT).show()
     }
-    
-
 }

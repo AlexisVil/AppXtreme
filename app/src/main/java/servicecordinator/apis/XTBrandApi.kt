@@ -13,5 +13,5 @@ interface XTBrandApi {
     fun getBrand(
         @Query("idOperacion") idOperacion: String?,
         @Query("firma") firma: String?
-    ) :Deferred<Response<XTResponseGeneral<XTResponseBrand>>>
+    ) :Deferred<Response<XTResponseGeneral<ArrayList<XTResponseBrand>>>>
 }

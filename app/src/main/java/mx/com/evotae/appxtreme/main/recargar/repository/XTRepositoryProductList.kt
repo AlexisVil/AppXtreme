@@ -6,14 +6,14 @@ import servicecordinator.retrofit.model.dataclass.XTResponseData
 import servicecordinator.retrofit.model.dataclass.XTResponseGeneral
 
 interface XTRepositoryProductList {
-    suspend fun getProductList(idOperacion: String, marca: String, firma: String): XTResponseData<XTResponseGeneral<XTResponseProductList>?>
+    suspend fun getProductList(idOperacion: String, marca: String, firma: String): XTResponseData<XTResponseGeneral<ArrayList<XTResponseProductList>>?>
 }
 class XTRepositoryProductListImpl(private val dataSourceProductList: XTDataSourceProductList): XTRepositoryProductList {
     override suspend fun getProductList(
         idOperacion: String,
         marca: String,
         firma: String
-    ): XTResponseData<XTResponseGeneral<XTResponseProductList>?> {
+    ): XTResponseData<XTResponseGeneral<ArrayList<XTResponseProductList>>?> {
         return dataSourceProductList.getProductList(idOperacion, marca, firma)
     }
 }
