@@ -8,10 +8,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import mx.com.evotae.appxtreme.R
 import mx.com.evotae.appxtreme.databinding.FragmentXTRecargaBinding
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
 import mx.com.evotae.appxtreme.main.recargar.viewmodel.XTViewModelProductList
+import mx.com.evotae.appxtreme.main.tae.model.XTTaeModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import servicecordinator.model.response.XTResponseProductList
 
@@ -20,6 +23,7 @@ class XTRecargaFragment : XTFragmentBase() {
     lateinit var binding: FragmentXTRecargaBinding
     private lateinit var safeActivity: Activity
     private val viewModelProductList: XTViewModelProductList by sharedViewModel()
+    private val args: XTRecargaFragmentArgs by navArgs()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -51,6 +55,7 @@ class XTRecargaFragment : XTFragmentBase() {
                     "2cb4fffb7223c1518c0fff47f1011dd2b1f2f26431f445f0db06ec99c56ae72e"
                 )
             }
+            Glide.with(safeActivity).load(args.xtTaeModel.photo).into(binding.ivCarrier)
         }
     }
 

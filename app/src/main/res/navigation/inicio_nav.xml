@@ -41,5 +41,9 @@
         android:id="@+id/XTRecargaFragment"
         android:name="mx.com.evotae.appxtreme.main.recargar.ui.XTRecargaFragment"
         android:label="fragment_x_t_recarga"
-        tools:layout="@layout/fragment_x_t_recarga" />
+        tools:layout="@layout/fragment_x_t_recarga" >
+        <argument
+            android:name="XTTaeModel"
+            app:argType="mx.com.evotae.appxtreme.main.tae.model.XTTaeModel" />
+    </fragment>
 </navigation>

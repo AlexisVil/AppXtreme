@@ -3,9 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ALEXIS/AndroidStudioProjects/AppXtreme/app/src/main/res/layout/activity_xtinicio.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ALEXIS/AndroidStudioProjects/AppXtreme/app/src/main/res/layout/fragment_blank_2.xml" value="0.31476449275362317" />
         <entry key="..\:/Users/ALEXIS/AndroidStudioProjects/AppXtreme/app/src/main/res/layout/fragment_x_t_login.xml" value="0.31476449275362317" />
+        <entry key="..\:/Users/ALEXIS/AndroidStudioProjects/AppXtreme/app/src/main/res/layout/fragment_x_t_recarga.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ALEXIS/AndroidStudioProjects/AppXtreme/app/src/main/res/layout/fragment_x_t_tae.xml" value="0.31476449275362317" />
+        <entry key="..\:/Users/ALEXIS/AndroidStudioProjects/AppXtreme/app/src/main/res/menu/top_bar.xml" value="0.365625" />
         <entry key="..\:/Users/ALOPEZ/AndroidStudioProjects/AppXtreme/app/src/main/res/drawable/btn_shadow.xml" value="0.202" />
         <entry key="..\:/Users/ALOPEZ/AndroidStudioProjects/AppXtreme/app/src/main/res/drawable/btn_shadow_color.xml" value="0.1535" />
         <entry key="..\:/Users/ALOPEZ/AndroidStudioProjects/AppXtreme/app/src/main/res/drawable/ic_id.xml" value="0.202" />

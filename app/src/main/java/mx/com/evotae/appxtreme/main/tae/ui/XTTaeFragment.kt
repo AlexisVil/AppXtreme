@@ -9,11 +9,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import mx.com.evotae.appxtreme.databinding.FragmentXTRecargaBinding
 import mx.com.evotae.appxtreme.databinding.FragmentXTTaeBinding
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
-import mx.com.evotae.appxtreme.framework.base.XTViewModelBase
-import mx.com.evotae.appxtreme.main.recargar.ui.XTRecargaFragment
 import mx.com.evotae.appxtreme.main.tae.adapter.TaeAdapter
 import mx.com.evotae.appxtreme.main.tae.model.XTRepositoryTaeP
 import mx.com.evotae.appxtreme.main.tae.model.XTTaeModel
@@ -24,6 +21,7 @@ import servicecordinator.model.response.XTResponseBrand
 class XTTaeFragment : XTFragmentBase() {
     lateinit var binding: FragmentXTTaeBinding
     private lateinit var safeActivity: Activity
+    private lateinit var selectedItem: XTTaeModel
 
     private val viewModelTae: XTViewModelTae by sharedViewModel() //Encapsula el viewModel
 
@@ -53,13 +51,7 @@ class XTTaeFragment : XTFragmentBase() {
     }
 
     fun onItemSelected(taeModel: XTTaeModel){
-        val bundle = Bundle()
-        val ivCarrier = taeModel.photo
-        bundle.putString("iCarrier", ivCarrier)
-        val bindingRecarga: FragmentXTRecargaBinding
-        bindingRecarga = FragmentXTRecargaBinding.inflate(layoutInflater)
-        //bindingRecarga.arguments = bundle
-
+        selectedItem = taeModel
         openItem()
         viewModelTae.getBrands("obtenerMarcas", "5f59d36da33080b4a60511d8292029a32c2b248351cded1aa41cd1303e7e4803")
     }
@@ -84,7 +76,9 @@ class XTTaeFragment : XTFragmentBase() {
 
 
     fun openItem(){
-        val navigate = XTTaeFragmentDirections.actionXTTaeDestToXTRecargaFragment()
+        val xtTae = XTTaeModel(selectedItem.name, selectedItem.idCarrier, selectedItem.photo)
+        println(selectedItem.name + " " + selectedItem.idCarrier)
+        val navigate = XTTaeFragmentDirections.actionXTTaeDestToXTRecargaFragment(xtTae)
         findNavController().navigate(navigate)
     }
 }

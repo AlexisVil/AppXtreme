@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/reportarPagoFragment"
+        android:title="Reportar Pago"/>
+    <item
+        android:id="@+id/XTTae_dest"
+        android:title="Recarga electrónica"/>
+    <item
+        android:id="@+id/XTService_dest"
+        android:title="Pago de Servicio"/>
+
+</menu>
