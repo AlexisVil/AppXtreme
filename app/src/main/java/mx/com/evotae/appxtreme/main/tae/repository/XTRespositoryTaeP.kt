@@ -46,7 +46,7 @@ class XTRepositoryTaeP {
             ),
             XTTaeModel(
                 "JrMovil",
-                41,
+                42,
                 "https://jrmovil.com/wp-content/uploads/2021/04/cropped-cropped-JR-movil-fondo-transparente-01.png"
             ),
             XTTaeModel(
@@ -71,7 +71,7 @@ class XTRepositoryTaeP {
             ),
             XTTaeModel(
                 "Diveracy",
-                42,
+                41,
                 "https://pbs.twimg.com/profile_banners/1040278766390530048/1536857373/1500x500"
             )
         )

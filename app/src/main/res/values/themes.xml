@@ -56,4 +56,9 @@ Style datePicker
         <item name="android:textColor">@color/xtreme_2</item>
     </style>
 
+    <!--Spinner-->
+    <style name="spinnerItemStyle" parent="android:Widget.TextView.SpinnerItem">
+        <item name="android:layout_height">70dp</item>
+    </style>
+
 </resources>
