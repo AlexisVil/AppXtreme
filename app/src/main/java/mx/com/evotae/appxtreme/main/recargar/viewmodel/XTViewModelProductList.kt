@@ -24,7 +24,7 @@ class XTViewModelProductList(
             if (resultProdcutList.sucess){
                 resultProdcutList?.data?.result?.forEach {
                     "CARRIER -> ${it.carrier}".log()
-                    "DESCRIPCION DE PRODUCTO -> ${it.descripcion}"
+                    "DESCRIPCION DE PRODUCTO -> ${it.descripcion}".log()
                     "MONTO -> ${it.monto.toString()}".log()
                 }
                 resultProdcutList.data?.result?.let {

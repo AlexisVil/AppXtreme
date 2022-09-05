@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import mx.com.evotae.appxtreme.databinding.FragmentXTTaeBinding
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
 import mx.com.evotae.appxtreme.main.tae.adapter.TaeAdapter
+import mx.com.evotae.appxtreme.main.tae.datasource.XTDataCarrier
 import mx.com.evotae.appxtreme.main.tae.model.XTRepositoryTaeP
 import mx.com.evotae.appxtreme.main.tae.model.XTTaeModel
 import mx.com.evotae.appxtreme.main.tae.viewmodel.XTViewModelTae
@@ -22,7 +23,6 @@ class XTTaeFragment : XTFragmentBase() {
     lateinit var binding: FragmentXTTaeBinding
     private lateinit var safeActivity: Activity
     private lateinit var selectedItem: XTTaeModel
-
     private val viewModelTae: XTViewModelTae by sharedViewModel() //Encapsula el viewModel
 
     override fun onAttach(context: Context) {
@@ -51,13 +51,17 @@ class XTTaeFragment : XTFragmentBase() {
     }
 
     fun onItemSelected(taeModel: XTTaeModel){
+        var idSelected = taeModel.idCarrier.toString()
+        println(XTDataCarrier.carriersMap[idSelected])
+
         selectedItem = taeModel
+        selectedItem.name = XTDataCarrier.carriersMap[idSelected].toString()
         openItem()
-        viewModelTae.getBrands("obtenerMarcas", "5f59d36da33080b4a60511d8292029a32c2b248351cded1aa41cd1303e7e4803")
     }
 
     //Listeners initialization
     fun initListeners(){
+        viewModelTae.getBrands("obtenerMarcas", "5f59d36da33080b4a60511d8292029a32c2b248351cded1aa41cd1303e7e4803")
         binding.recyclerTae.layoutManager = GridLayoutManager(safeActivity, 2)
         binding.recyclerTae.adapter = TaeAdapter(XTRepositoryTaeP.taeList) {onItemSelected(it)}
     }
@@ -71,13 +75,13 @@ class XTTaeFragment : XTFragmentBase() {
     }
 
     private fun handlebrand(): (ArrayList<XTResponseBrand>?) -> Unit = { data ->
-        Toast.makeText(safeActivity, "Obteniendo Marcas", Toast.LENGTH_SHORT).show()
+
+        Toast.makeText(safeActivity, "Recarga Electrónica", Toast.LENGTH_SHORT).show()
     }
 
 
     fun openItem(){
-        val xtTae = XTTaeModel(selectedItem.name, selectedItem.idCarrier, selectedItem.photo)
-        println(selectedItem.name + " " + selectedItem.idCarrier)
+        val xtTae = XTTaeModel(selectedItem.name, selectedItem.idCarrier, selectedItem.photo) //Mandar datos a traves de SafeArgs
         val navigate = XTTaeFragmentDirections.actionXTTaeDestToXTRecargaFragment(xtTae)
         findNavController().navigate(navigate)
     }

@@ -4,7 +4,7 @@ import mx.com.evotae.appxtreme.main.tae.model.XTRepositoryTaeP
 import mx.com.evotae.appxtreme.main.tae.model.XTTaeModel
 
 interface XTUsesCasesTae {
-    suspend fun obtenerListaTae() : List<XTTaeModel>
+    suspend fun obtenerTae() : List<XTTaeModel>
 }
 
 class XTUsesCasesImpl{

@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.navigation.fragment.navArgs
@@ -26,6 +27,8 @@ class XTRecargaFragment : XTFragmentBase() {
     private lateinit var safeActivity: Activity
     private val viewModelProductList: XTViewModelProductList by sharedViewModel()
     private val args: XTRecargaFragmentArgs by navArgs()
+    var productos = arrayListOf<String>()
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -44,20 +47,18 @@ class XTRecargaFragment : XTFragmentBase() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        renderSpinner()
         initObservers()
         initListeners()
     }
 
     private fun initListeners() {
+        viewModelProductList.getProductList(
+            "listaProductos",
+            args.xtTaeModel.name,
+            "2cb4fffb7223c1518c0fff47f1011dd2b1f2f26431f445f0db06ec99c56ae72e"
+        )
         binding.apply {
-//            spinnerProducto.setOnClickListener {
-//                viewModelProductList.getProductList(
-//                    "listaProductos",
-//                    "SERVICIOSTELCEL",
-//                    "2cb4fffb7223c1518c0fff47f1011dd2b1f2f26431f445f0db06ec99c56ae72e"
-//                )
-//            }
+            //Renderiza imágen en el fragment
             Glide.with(safeActivity).load(args.xtTaeModel.photo).into(binding.ivCarrier)
         }
     }
@@ -69,20 +70,32 @@ class XTRecargaFragment : XTFragmentBase() {
     }
 
     private fun handleProductList(): (ArrayList<XTResponseProductList>?) -> Unit = { data ->
-        Toast.makeText(safeActivity, "Lista de Productos", Toast.LENGTH_SHORT).show()
+        Toast.makeText(safeActivity, "Obteniendo Productos", Toast.LENGTH_SHORT).show()
+        data?.forEach {
+            productos.add(it.descripcion)
+        }
+        println("Productos desde consola: $productos")
+        renderSpinner()
     }
 
     private fun renderSpinner() {
-        val productos = arrayListOf<String>(
-            "Telcel 10",
-            "Telcel 100.0",
-            "Telcel 50.00",
-            "Telcel 200.00",
-            "Telcel 500.00"
-        )
         val adapter =
-            ArrayAdapter(safeActivity, R.layout.spinner_xtreme_item, productos)
+            ArrayAdapter(safeActivity, android.R.layout.simple_spinner_item, productos)
         spinnerProducto.adapter = adapter
+        println("SPINNER -> $productos")
+        spinnerProducto.onItemSelectedListener = object :
+            AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                Toast.makeText(safeActivity, productos[position], Toast.LENGTH_SHORT).show()
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+        }
     }
-
 }

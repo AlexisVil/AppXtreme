@@ -2,9 +2,9 @@ package mx.com.evotae.appxtreme.main.tae.datasource
 
 class XTDataCarrier {
     companion object {
-        private val carriersMap = mutableMapOf<String, String>(
+        val carriersMap = mutableMapOf<String, String>(
             "1" to "TELCEL",
-            "25" to "SRVICIOSMOVISTAR",
+            "25" to "SERVICIOSMOVISTAR",
             "2" to "SERVICIOSTELCEL",
             "4" to "ATT/UNEFON",
             "16" to "MOVISTAR",
