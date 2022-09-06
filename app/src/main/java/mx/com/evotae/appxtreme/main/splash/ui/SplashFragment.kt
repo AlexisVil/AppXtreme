@@ -61,7 +61,7 @@ class SplashFragment : XTFragmentBase() {
             if (user_app.isEmpty() && pwd_app.isEmpty()) {
                 navigationToLogin()
             } else {
-                Toast.makeText(safeActivity, "Sesión iniciada ${USER_APP}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(safeActivity, "Sesión iniciada ${OPERATOR_APP.getPreferenceToString().toString()}", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(safeActivity,XTInitActivity::class.java))
             }
         }, DURATION.toLong())

@@ -12,15 +12,18 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_reportar_pago.*
+import kotlinx.android.synthetic.main.item_button.*
 import mx.com.evotae.appxtreme.R
 import mx.com.evotae.appxtreme.databinding.FragmentXTUserBinding
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
+import mx.com.evotae.appxtreme.framework.util.extensions.getPreferenceToString
 import mx.com.evotae.appxtreme.framework.util.extensions.log
 import mx.com.evotae.appxtreme.framework.util.extensions.wipe
 import mx.com.evotae.appxtreme.main.appactivity.XtremeActivity
 import mx.com.evotae.appxtreme.main.user.viewmodel.XTViewModelCheckBalance
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import servicecordinator.model.response.XTResponseCheckBalance
+import servicecordinator.retrofit.managercall.OPERATOR_APP
 
 class XTUserFragment : XTFragmentBase() {
 
@@ -51,6 +54,7 @@ class XTUserFragment : XTFragmentBase() {
 
     fun initListeners() {
         binding.apply {
+            tvOperator.text = OPERATOR_APP.getPreferenceToString().toString()
             btnLogout.setOnClickListener {
                 Toast.makeText(safeActivity, "Cerrando sesion", Toast.LENGTH_SHORT).show()
                 wipe()

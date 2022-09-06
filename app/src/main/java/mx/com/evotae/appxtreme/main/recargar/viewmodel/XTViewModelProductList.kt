@@ -26,6 +26,7 @@ class XTViewModelProductList(
                     "CARRIER -> ${it.carrier}".log()
                     "DESCRIPCION DE PRODUCTO -> ${it.descripcion}".log()
                     "MONTO -> ${it.monto.toString()}".log()
+                    "ID -> ${it.id}".log()
                 }
                 resultProdcutList.data?.result?.let {
                     getProductListMLD.postValue(it)
