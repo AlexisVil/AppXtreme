@@ -1,6 +1,7 @@
 package mx.com.evotae.appxtreme.main.recargar.ui
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_x_t_recarga.*
@@ -17,6 +19,7 @@ import mx.com.evotae.appxtreme.R
 import mx.com.evotae.appxtreme.databinding.FragmentXTRecargaBinding
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
 import mx.com.evotae.appxtreme.framework.util.extensions.getPreferenceToString
+import mx.com.evotae.appxtreme.main.dialogs.ui.TicketDialog
 import mx.com.evotae.appxtreme.main.recargar.viewmodel.XTViewModelProductList
 import mx.com.evotae.appxtreme.main.recargar.viewmodel.XTViewModelSellRecharge
 import mx.com.evotae.appxtreme.main.tae.model.XTTaeModel
@@ -38,6 +41,9 @@ class XTRecargaFragment : XTFragmentBase() {
     var mapOfProducts = mutableMapOf<String, String>()
     lateinit var idCurrentProduct: String
     lateinit var numeroCelular: String
+    lateinit var nTicket: String
+    lateinit var nMonto: String
+    lateinit var nDate: String
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -66,18 +72,25 @@ class XTRecargaFragment : XTFragmentBase() {
             args.xtTaeModel.name,
             "2cb4fffb7223c1518c0fff47f1011dd2b1f2f26431f445f0db06ec99c56ae72e"
         )
+
         binding.apply {
-            val inputNumber = etNumber.text.toString()
-            val confirm = etConfirmar.text.toString()
+
             btnRecargar.setOnClickListener {
-                if (!(inputNumber.length < 10) && !(confirm.length < 10)) {
-                    if (confirm.equals(inputNumber)) {
-                        numeroCelular = inputNumber
-                        Toast.makeText(
-                            safeActivity,
-                            "PWd: ${PWD_APP.getPreferenceToString().toString()}",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                if (!(etNumber.text.toString().length < 10)) {
+                    println(
+                        "Numero correcto ${
+                            USER_APP.getPreferenceToString().toString()
+                        } \ncon operador ${OPERATOR_APP.getPreferenceToString().toString()}" +
+                                "\nPWD: ${PWD_APP.getPreferenceToString().toString()}"
+                    )
+                    numeroCelular = etNumber.text.toString()
+                    println("Numero a recargar: $numeroCelular")
+                    if (etNumber.text.toString() != etConfirmar.text.toString()) {
+                        etConfirmar.requestFocus()
+                        Toast.makeText(safeActivity, "No coincide numero", Toast.LENGTH_SHORT)
+                            .show()
+                    } else {
+                        println("Recarga exitosa")
                         viewModelSellRecharge.sellRecharge(
                             "ventaRecarga",
                             USER_APP.getPreferenceToString().toString(),
@@ -85,19 +98,17 @@ class XTRecargaFragment : XTFragmentBase() {
                             OPERATOR_APP.getPreferenceToString().toString(),
                             "80f8cf43-0d26-4876-966e-cc90e13e0f0c",
                             "",
-                            idCurrentProduct,
-                            "5555555555"
+                            "100",
+                            numeroCelular
                         )
-                    } else {
-                        Toast.makeText(safeActivity, "Numeros no coinciden", Toast.LENGTH_SHORT)
-                            .show()
+                        etNumber.setText("")
+                        etConfirmar.setText("")
                     }
                 } else {
+                    //Nuimero debe tener 10 digitos
                     etNumber.requestFocus()
-                    Toast.makeText(safeActivity, "Numero debe tener 10 dígitos", Toast.LENGTH_SHORT)
-                        .show()
+                    etConfirmar.requestFocus()
                 }
-
             }
             //Renderiza imágen en el fragment
             Glide.with(safeActivity).load(args.xtTaeModel.photo).into(binding.ivCarrier)
@@ -116,11 +127,13 @@ class XTRecargaFragment : XTFragmentBase() {
     }
 
     private fun handleSellRecharge(): (XTResponseSellRecharge?) -> Unit = { data ->
-        Toast.makeText(
-            safeActivity,
-            "Recarga Exitosa" + " " + "Ticket: ${data?.ticket}",
-            Toast.LENGTH_SHORT
-        ).show()
+        nTicket = data?.ticket.toString()
+        nMonto = data?.monto.toString()
+        nDate = data?.fecha.toString()
+        Toast.makeText(safeActivity, "Recarga exitosa", Toast.LENGTH_SHORT).show()
+        TicketDialog(nTicket, nMonto, numeroCelular,nDate).show(parentFragmentManager, "Dialog")
+
+        //mostrarTicket()
     }
 
     private fun handleProductList(): (ArrayList<XTResponseProductList>?) -> Unit = { data ->
@@ -154,5 +167,16 @@ class XTRecargaFragment : XTFragmentBase() {
                 TODO("Not yet implemented")
             }
         }
+    }
+
+    private fun mostrarTicket(){
+        val ticket: AlertDialog = AlertDialog.Builder(safeActivity)
+            .setTitle("Ticket")
+            .setMessage("Recarga exitosa \nNumero de Ticket: ${nTicket}")
+            .setPositiveButton("Ok"){ dialog,_ ->
+                dialog.dismiss()
+            }
+            .create()
+        ticket.show()
     }
 }

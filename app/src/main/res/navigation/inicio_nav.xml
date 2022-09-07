@@ -45,5 +45,12 @@
         <argument
             android:name="XTTaeModel"
             app:argType="mx.com.evotae.appxtreme.main.tae.model.XTTaeModel" />
+        <action
+            android:id="@+id/action_XTRecargaFragment_to_ticketDialog"
+            app:destination="@id/ticketDialog" />
     </fragment>
+    <dialog
+        android:id="@+id/ticketDialog"
+        android:name="mx.com.evotae.appxtreme.main.dialogs.ui.TicketDialog"
+        android:label="TicketDialog" />
 </navigation>

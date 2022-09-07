@@ -78,8 +78,8 @@ class XTLoginFragment : XTFragmentBase() {
     }
 
     private fun handleLogin(): (XTResponseLogin?) -> Unit = { data ->
-        val userSaved = USER_APP.savePreferencesToString(binding.userTxt.toString())
-        PWD_APP.savePreferencesToString(binding.passTxt.toString())
+        USER_APP.savePreferencesToString(userTxt.text.toString())
+        PWD_APP.savePreferencesToString(passTxt.text.toString())
         OPERATOR_APP.savePreferencesToString(operatorTxt.text.toString())
         navigateToLoginSucces()
         Toast.makeText(safeActivity, "Bienvenido ${OPERATOR_APP.getPreferenceToString().toString()}", Toast.LENGTH_SHORT).show()

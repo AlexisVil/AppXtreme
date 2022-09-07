@@ -60,4 +60,9 @@
     <string name="input_numero">Ingresar número</string>
     <string name="input_confirmar">Confirmar número</string>
 
+    <!--Dialog Fragments-->
+    <string name="dg_recarga">Recarga exitosa</string>
+    <string name="btn_ticket">Aceptar</string>
+    <string name="btn_screen">Screenshot</string>
+
 </resources>
