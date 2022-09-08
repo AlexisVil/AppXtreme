@@ -8,25 +8,16 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
 import androidx.fragment.app.DialogFragment
-import mx.com.evotae.appxtreme.databinding.DialogTicketFragmentBinding
+import mx.com.evotae.appxtreme.databinding.DialogErrorRecargaBinding
 
-class TicketDialog(
-    private val ticket: String,
-    private val monto: String,
-    private val numero: String,
-    private val fecha: String
-): DialogFragment() {
-
-    private lateinit var binding: DialogTicketFragmentBinding
+class ErrorDialog(private val message: String): DialogFragment() {
+    private lateinit var binding: DialogErrorRecargaBinding
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        binding = DialogTicketFragmentBinding.inflate(LayoutInflater.from(context))
+        binding= DialogErrorRecargaBinding.inflate(LayoutInflater.from(context))
         val builder = AlertDialog.Builder(requireActivity())
         builder.setView(binding.root)
         binding.apply {
-            tvTicket.text = ticket
-            tvMonto.text = "$ ${monto}"
-            tvChargedNumber.text = numero
-            tvDate.text = fecha
+            tvMessage.text = message
             btnAccept.setOnClickListener {
                 dismiss()
             }

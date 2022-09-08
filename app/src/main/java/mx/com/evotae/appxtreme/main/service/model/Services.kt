@@ -6,7 +6,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Services(
-    val name : String,
+    var name : String,
     val id: Int,
     val photo: String
 ) : Parcelable

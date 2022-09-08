@@ -88,5 +88,8 @@ dependencies {
 
     //date picker
     implementation 'com.wdullaer:materialdatetimepicker:4.2.3'
+    //ZXING scanner
+    implementation('com.journeyapps:zxing-android-embedded:4.1.0') { transitive = false }
+    implementation 'com.google.zxing:core:3.3.0'
 
 }

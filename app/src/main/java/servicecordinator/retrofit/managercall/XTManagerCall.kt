@@ -70,6 +70,7 @@ open class XTManagerCall {
         } catch (ex: Exception) {
             "LOG-$TAG Exception -> ${ex.message}".log()
             exception = Exception(MESSAGE_ERROR_GENERAL)
+
         }
         return exception?.let {
             XTResultApi.Error(it)

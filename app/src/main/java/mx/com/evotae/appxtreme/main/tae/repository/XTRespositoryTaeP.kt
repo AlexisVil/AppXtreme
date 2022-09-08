@@ -10,12 +10,12 @@ class XTRepositoryTaeP {
                 "https://media.pasionmovil.com/2012/04/telcel-logo-e1334884696429.jpg"
             ),
             XTTaeModel(
-                "PAQUETES TELCEL",
+                "Paquetes Telcel",
                 2,
                 "https://telceltijuana.com/images/planTelcel.png"
             ),
             XTTaeModel(
-                "PAQUETES MOVISTAR",
+                "Paquetes Movistar",
                 25,
                 "https://selectra.mx/sites/selectra.mx/files/styles/_default/public/images/planes-movistar-825x293_1.png"
             ),

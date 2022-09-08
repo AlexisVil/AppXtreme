@@ -2,10 +2,12 @@ package mx.com.evotae.appxtreme.main.recargar.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.NonDisposableHandle.parent
 import kotlinx.coroutines.launch
 import mx.com.evotae.appxtreme.framework.base.XTViewModelBase
 import mx.com.evotae.appxtreme.framework.util.commons.managerevents.SingleLiveEvent
 import mx.com.evotae.appxtreme.framework.util.extensions.log
+import mx.com.evotae.appxtreme.main.dialogs.ui.ErrorDialog
 import mx.com.evotae.appxtreme.main.recargar.usescases.XTUsesCasesSellRecharge
 import servicecordinator.model.response.XTResponseSellRecharge
 
@@ -45,6 +47,7 @@ class XTViewModelSellRecharge(
                 }
             } else{
                 resultRecharge.exception.let {
+                    val error= resultRecharge.data?.toString()
                     showError(it?.message.toString())
                 }
             }

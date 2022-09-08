@@ -19,6 +19,7 @@ import mx.com.evotae.appxtreme.R
 import mx.com.evotae.appxtreme.databinding.FragmentXTRecargaBinding
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
 import mx.com.evotae.appxtreme.framework.util.extensions.getPreferenceToString
+import mx.com.evotae.appxtreme.main.dialogs.ui.ErrorDialog
 import mx.com.evotae.appxtreme.main.dialogs.ui.TicketDialog
 import mx.com.evotae.appxtreme.main.recargar.viewmodel.XTViewModelProductList
 import mx.com.evotae.appxtreme.main.recargar.viewmodel.XTViewModelSellRecharge
@@ -29,6 +30,7 @@ import servicecordinator.model.response.XTResponseSellRecharge
 import servicecordinator.retrofit.managercall.OPERATOR_APP
 import servicecordinator.retrofit.managercall.PWD_APP
 import servicecordinator.retrofit.managercall.USER_APP
+import servicecordinator.retrofit.model.dataclass.XTResponseGeneral
 
 class XTRecargaFragment : XTFragmentBase() {
 
@@ -44,6 +46,7 @@ class XTRecargaFragment : XTFragmentBase() {
     lateinit var nTicket: String
     lateinit var nMonto: String
     lateinit var nDate: String
+    lateinit var messageFailed: String
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -87,7 +90,7 @@ class XTRecargaFragment : XTFragmentBase() {
                     println("Numero a recargar: $numeroCelular")
                     if (etNumber.text.toString() != etConfirmar.text.toString()) {
                         etConfirmar.requestFocus()
-                        Toast.makeText(safeActivity, "No coincide numero", Toast.LENGTH_SHORT)
+                        Toast.makeText(safeActivity, "No coincide número", Toast.LENGTH_SHORT)
                             .show()
                     } else {
                         println("Recarga exitosa")
@@ -98,7 +101,7 @@ class XTRecargaFragment : XTFragmentBase() {
                             OPERATOR_APP.getPreferenceToString().toString(),
                             "80f8cf43-0d26-4876-966e-cc90e13e0f0c",
                             "",
-                            "100",
+                            "40000",
                             numeroCelular
                         )
                         etNumber.setText("")
@@ -122,8 +125,9 @@ class XTRecargaFragment : XTFragmentBase() {
         viewModelProductList.getProductList.observe(viewLifecycleOwner, handleProductList())
         //Observadores para Venta de Recarga
         viewModelSellRecharge.launchLoader.observe(viewLifecycleOwner, handleLoader())
-        viewModelSellRecharge.launchError.observe(viewLifecycleOwner, handleError())
+        //viewModelSellRecharge.launchError.observe(viewLifecycleOwner, handleError())
         viewModelSellRecharge.sellRecharge.observe(viewLifecycleOwner, handleSellRecharge())
+        viewModelSellRecharge.launchError.observe(viewLifecycleOwner, handleErrorRecharge())
     }
 
     private fun handleSellRecharge(): (XTResponseSellRecharge?) -> Unit = { data ->
@@ -132,8 +136,6 @@ class XTRecargaFragment : XTFragmentBase() {
         nDate = data?.fecha.toString()
         Toast.makeText(safeActivity, "Recarga exitosa", Toast.LENGTH_SHORT).show()
         TicketDialog(nTicket, nMonto, numeroCelular,nDate).show(parentFragmentManager, "Dialog")
-
-        //mostrarTicket()
     }
 
     private fun handleProductList(): (ArrayList<XTResponseProductList>?) -> Unit = { data ->
@@ -160,23 +162,11 @@ class XTRecargaFragment : XTFragmentBase() {
             ) {
                 val currentProduct = productos[position].toString()
                 idCurrentProduct = mapOfProducts[currentProduct].toString()
-                //Toast.makeText(safeActivity, idCurrentProduct, Toast.LENGTH_SHORT).show()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 TODO("Not yet implemented")
             }
         }
-    }
-
-    private fun mostrarTicket(){
-        val ticket: AlertDialog = AlertDialog.Builder(safeActivity)
-            .setTitle("Ticket")
-            .setMessage("Recarga exitosa \nNumero de Ticket: ${nTicket}")
-            .setPositiveButton("Ok"){ dialog,_ ->
-                dialog.dismiss()
-            }
-            .create()
-        ticket.show()
     }
 }

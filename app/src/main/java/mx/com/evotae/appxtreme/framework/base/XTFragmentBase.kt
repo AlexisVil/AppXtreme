@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import mx.com.evotae.appxtreme.main.dialogs.ui.ErrorDialog
 
 open class XTFragmentBase : Fragment() {
 
@@ -18,6 +19,10 @@ open class XTFragmentBase : Fragment() {
 
     protected fun handleError(): (String) -> Unit = {
         Toast.makeText(safeActivity, "Error: ${it}", Toast.LENGTH_SHORT).show()
+    }
+
+    protected fun handleErrorRecharge(): (String) -> Unit = {
+        ErrorDialog(it).show(parentFragmentManager, "Dialog Error")
     }
 
     protected fun handleLoader(): (Boolean) -> Unit = {

@@ -9,7 +9,15 @@
         android:id="@+id/XTService_dest"
         android:name="mx.com.evotae.appxtreme.main.service.ui.XTServiceFragment"
         android:label="fragment_x_t_service"
-        tools:layout="@layout/fragment_x_t_service" />
+        tools:layout="@layout/fragment_x_t_service" >
+        <action
+            android:id="@+id/action_XTService_dest_to_XTPagarServicioFragment"
+            app:destination="@id/XTPagarServicioFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/XTUser_dest"
         android:name="mx.com.evotae.appxtreme.main.user.ui.XTUserFragment"
@@ -19,7 +27,9 @@
             android:id="@+id/action_XTUser_dest_to_reportarPagoFragment"
             app:destination="@id/reportarPagoFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_in_left" />
+            app:exitAnim="@anim/slide_in_left"
+            app:popUpTo="@id/XTUser_dest"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/XTTae_dest"
@@ -30,7 +40,9 @@
             android:id="@+id/action_XTTae_dest_to_XTRecargaFragment"
             app:destination="@id/XTRecargaFragment"
             app:enterAnim="@anim/fade_in"
-            app:exitAnim="@anim/slide_out_left" />
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/reportarPagoFragment"
@@ -47,10 +59,23 @@
             app:argType="mx.com.evotae.appxtreme.main.tae.model.XTTaeModel" />
         <action
             android:id="@+id/action_XTRecargaFragment_to_ticketDialog"
-            app:destination="@id/ticketDialog" />
+            app:destination="@id/ticketDialog"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
     </fragment>
     <dialog
         android:id="@+id/ticketDialog"
         android:name="mx.com.evotae.appxtreme.main.dialogs.ui.TicketDialog"
         android:label="TicketDialog" />
+    <fragment
+        android:id="@+id/XTPagarServicioFragment"
+        android:name="mx.com.evotae.appxtreme.main.service.ui.XTPagarServicioFragment"
+        android:label="fragment_x_t_pagar_servicio"
+        tools:layout="@layout/fragment_x_t_pagar_servicio" >
+        <argument
+            android:name="services"
+            app:argType="mx.com.evotae.appxtreme.main.service.model.Services" />
+    </fragment>
 </navigation>

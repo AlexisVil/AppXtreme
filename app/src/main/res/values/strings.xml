@@ -64,5 +64,10 @@
     <string name="dg_recarga">Recarga exitosa</string>
     <string name="btn_ticket">Aceptar</string>
     <string name="btn_screen">Screenshot</string>
+    <string name="dg_errorR">Algo salió mal</string>
 
+    <!--Pagar Servicios-->
+    <string name="referencia">Número de referencia:</string>
+    <string name="montoS">Monto a pagar:</string>
+    <string name="btnPagar">Realizar Pago</string>
 </resources>
