@@ -73,6 +73,11 @@ class XTRepositoryTaeP {
                 "Diveracy",
                 41,
                 "https://pbs.twimg.com/profile_banners/1040278766390530048/1536857373/1500x500"
+            ),
+            XTTaeModel(
+                "Recarga SIM",
+                23,
+                "https://cdn-icons-png.flaticon.com/512/4298/4298126.png"
             )
         )
     }

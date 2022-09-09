@@ -31,7 +31,7 @@ class ServiceAdapter(private val servicesList: List<Services>, private val onCli
     }
 
     override fun onBindViewHolder(holder: ServicesViewHolder, position: Int) {
-        val item =servicesList[position]
+        val item = servicesList[position]
         holder.render(item,onClickListener)
     }
 

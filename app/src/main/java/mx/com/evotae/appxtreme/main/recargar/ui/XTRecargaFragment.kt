@@ -40,7 +40,7 @@ class XTRecargaFragment : XTFragmentBase() {
     private val viewModelSellRecharge: XTViewModelSellRecharge by sharedViewModel()
     private val args: XTRecargaFragmentArgs by navArgs()
     var productos = arrayListOf<String>()
-    var mapOfProducts = mutableMapOf<String, String>()
+    private var mapOfProducts = mutableMapOf<String, String>()
     lateinit var idCurrentProduct: String
     lateinit var numeroCelular: String
     lateinit var nTicket: String
@@ -80,12 +80,6 @@ class XTRecargaFragment : XTFragmentBase() {
 
             btnRecargar.setOnClickListener {
                 if (!(etNumber.text.toString().length < 10)) {
-                    println(
-                        "Numero correcto ${
-                            USER_APP.getPreferenceToString().toString()
-                        } \ncon operador ${OPERATOR_APP.getPreferenceToString().toString()}" +
-                                "\nPWD: ${PWD_APP.getPreferenceToString().toString()}"
-                    )
                     numeroCelular = etNumber.text.toString()
                     println("Numero a recargar: $numeroCelular")
                     if (etNumber.text.toString() != etConfirmar.text.toString()) {

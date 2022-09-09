@@ -24,7 +24,7 @@ import mx.com.evotae.appxtreme.main.tae.ui.XTTaeFragmentDirections
 class XTServiceFragment : XTFragmentBase() {
     lateinit var binding : FragmentXTServiceBinding
     private lateinit var safeActivity : Activity
-    lateinit var selectedService: Services
+    private lateinit var selectedService: Services
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -49,8 +49,6 @@ class XTServiceFragment : XTFragmentBase() {
 
     private fun onItemSelected(servicesModel: Services) {
         var idSelected = servicesModel.id.toString()
-        //println(XTDataCarrier.carriersMap[idSelected])
-
         selectedService = servicesModel
         selectedService.name = XTServicesCarrier.carriersMap[idSelected].toString()
         openItem()
