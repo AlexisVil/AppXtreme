@@ -70,4 +70,7 @@
     <string name="referencia">Número de referencia:</string>
     <string name="montoS">Monto a pagar:</string>
     <string name="btnPagar">Realizar Pago</string>
+
+    <!--Progress Bar-->
+    <string name="loading">Cargando...</string>
 </resources>

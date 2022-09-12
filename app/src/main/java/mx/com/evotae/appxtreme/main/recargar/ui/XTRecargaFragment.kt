@@ -1,17 +1,16 @@
 package mx.com.evotae.appxtreme.main.recargar.ui
 
 import android.app.Activity
-import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_x_t_recarga.*
@@ -19,18 +18,16 @@ import mx.com.evotae.appxtreme.R
 import mx.com.evotae.appxtreme.databinding.FragmentXTRecargaBinding
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
 import mx.com.evotae.appxtreme.framework.util.extensions.getPreferenceToString
-import mx.com.evotae.appxtreme.main.dialogs.ui.ErrorDialog
 import mx.com.evotae.appxtreme.main.dialogs.ui.TicketDialog
 import mx.com.evotae.appxtreme.main.recargar.viewmodel.XTViewModelProductList
 import mx.com.evotae.appxtreme.main.recargar.viewmodel.XTViewModelSellRecharge
-import mx.com.evotae.appxtreme.main.tae.model.XTTaeModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import servicecordinator.model.response.XTResponseProductList
 import servicecordinator.model.response.XTResponseSellRecharge
 import servicecordinator.retrofit.managercall.OPERATOR_APP
 import servicecordinator.retrofit.managercall.PWD_APP
 import servicecordinator.retrofit.managercall.USER_APP
-import servicecordinator.retrofit.model.dataclass.XTResponseGeneral
+import java.time.Duration
 
 class XTRecargaFragment : XTFragmentBase() {
 
@@ -87,7 +84,8 @@ class XTRecargaFragment : XTFragmentBase() {
                         Toast.makeText(safeActivity, "No coincide número", Toast.LENGTH_SHORT)
                             .show()
                     } else {
-                        println("Recarga exitosa")
+                        //println("Recarga exitosa")
+                        customProgressDialog()
                         viewModelSellRecharge.sellRecharge(
                             "ventaRecarga",
                             USER_APP.getPreferenceToString().toString(),
@@ -129,7 +127,10 @@ class XTRecargaFragment : XTFragmentBase() {
         nMonto = data?.monto.toString()
         nDate = data?.fecha.toString()
         Toast.makeText(safeActivity, "Recarga exitosa", Toast.LENGTH_SHORT).show()
-        TicketDialog(nTicket, nMonto, numeroCelular,nDate).show(parentFragmentManager, "Dialog")
+        TicketDialog(nTicket, nMonto, numeroCelular, nDate).show(
+            parentFragmentManager,
+            "Dialog"
+        )
     }
 
     private fun handleProductList(): (ArrayList<XTResponseProductList>?) -> Unit = { data ->
@@ -162,5 +163,19 @@ class XTRecargaFragment : XTFragmentBase() {
                 TODO("Not yet implemented")
             }
         }
+    }
+
+    /**
+     * Custom Dialog
+     */
+    private fun customProgressDialog() {
+        val customProgressDialog = Dialog(safeActivity)
+        customProgressDialog.setContentView(R.layout.custom_progress_dialog)
+        val handler = Handler()
+        val DURATION = 1500
+        handler.postDelayed({customProgressDialog.show()},
+            DURATION.toLong()
+        )
+        customProgressDialog.dismiss()
     }
 }

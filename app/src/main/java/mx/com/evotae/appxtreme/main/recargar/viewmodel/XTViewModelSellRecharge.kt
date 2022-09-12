@@ -45,11 +45,14 @@ class XTViewModelSellRecharge(
                 resultRecharge.data?.result?.let {
                     sellRechargeMLD.postValue(it)
                 }
-            } else{
-                resultRecharge.exception.let {
-                    val error= resultRecharge.data?.toString()
-                    showError(it?.message.toString())
-                }
+            }
+             else{
+//                resultRecharge.exception.let {
+//                    val error= resultRecharge.data
+//                    //showError(it?.message.toString())
+//                    showError(error?.mensaje.toString())
+//                }
+                 println("MENSAJE ${resultRecharge.data?.operation.toString()}")
             }
         }
     }
