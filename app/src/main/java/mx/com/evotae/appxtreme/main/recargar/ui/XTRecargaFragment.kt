@@ -21,6 +21,7 @@ import mx.com.evotae.appxtreme.framework.util.extensions.getPreferenceToString
 import mx.com.evotae.appxtreme.main.dialogs.ui.TicketDialog
 import mx.com.evotae.appxtreme.main.recargar.viewmodel.XTViewModelProductList
 import mx.com.evotae.appxtreme.main.recargar.viewmodel.XTViewModelSellRecharge
+import mx.com.evotae.appxtreme.main.tae.datasource.XTDataCarrier
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import servicecordinator.model.response.XTResponseProductList
 import servicecordinator.model.response.XTResponseSellRecharge
@@ -43,7 +44,8 @@ class XTRecargaFragment : XTFragmentBase() {
     lateinit var nTicket: String
     lateinit var nMonto: String
     lateinit var nDate: String
-    lateinit var messageFailed: String
+    lateinit var nombreProducto: String
+    lateinit var selectedId: String
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -67,9 +69,11 @@ class XTRecargaFragment : XTFragmentBase() {
     }
 
     private fun initListeners() {
+        selectedId = args.xtTaeModel.idCarrier.toString()
+        nombreProducto = XTDataCarrier.carriersMap[selectedId].toString()
         viewModelProductList.getProductList(
             "listaProductos",
-            args.xtTaeModel.name,
+            nombreProducto,
             "2cb4fffb7223c1518c0fff47f1011dd2b1f2f26431f445f0db06ec99c56ae72e"
         )
 
@@ -93,7 +97,7 @@ class XTRecargaFragment : XTFragmentBase() {
                             OPERATOR_APP.getPreferenceToString().toString(),
                             "80f8cf43-0d26-4876-966e-cc90e13e0f0c",
                             "",
-                            "40000",
+                            "100",
                             numeroCelular
                         )
                         etNumber.setText("")
@@ -101,6 +105,8 @@ class XTRecargaFragment : XTFragmentBase() {
                     }
                 } else {
                     //Nuimero debe tener 10 digitos
+                    Toast.makeText(safeActivity, "Número debe tener 10 dígitos", Toast.LENGTH_SHORT)
+                        .show()
                     etNumber.requestFocus()
                     etConfirmar.requestFocus()
                 }
@@ -173,7 +179,8 @@ class XTRecargaFragment : XTFragmentBase() {
         customProgressDialog.setContentView(R.layout.custom_progress_dialog)
         val handler = Handler()
         val DURATION = 1500
-        handler.postDelayed({customProgressDialog.show()},
+        handler.postDelayed(
+            { customProgressDialog.show() },
             DURATION.toLong()
         )
         customProgressDialog.dismiss()

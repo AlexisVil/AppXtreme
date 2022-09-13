@@ -9,8 +9,8 @@ import mx.com.evotae.appxtreme.R
 import mx.com.evotae.appxtreme.databinding.ItemButtonBinding
 import mx.com.evotae.appxtreme.main.tae.model.XTTaeModel
 
-class TaeAdapter(private val taeList: List<XTTaeModel>, private val onClickListener: (XTTaeModel) -> Unit): RecyclerView.Adapter<TaeAdapter.TaeViewHolder>() {
-    class TaeViewHolder(view: View): RecyclerView.ViewHolder(view) {
+class XTTaeAdapter(private val taeList: List<XTTaeModel>, private val onClickListener: (XTTaeModel) -> Unit): RecyclerView.Adapter<XTTaeAdapter.XTTaeViewHolder>() {
+    class XTTaeViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val binding = ItemButtonBinding.bind(view)
         fun render(taeModel: XTTaeModel, onClickListener: (XTTaeModel) -> Unit){
             binding.tvName.text = taeModel.name
@@ -22,12 +22,12 @@ class TaeAdapter(private val taeList: List<XTTaeModel>, private val onClickListe
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaeViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): XTTaeViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        return TaeViewHolder(layoutInflater.inflate(R.layout.item_button, parent, false))
+        return XTTaeViewHolder(layoutInflater.inflate(R.layout.item_button, parent, false))
     }
 
-    override fun onBindViewHolder(holder: TaeViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: XTTaeViewHolder, position: Int) {
         val item = taeList[position]
         holder.render(item,onClickListener)
     }

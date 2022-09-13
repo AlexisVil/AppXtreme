@@ -6,10 +6,6 @@ class XTResponseGeneral<T>(
     @SerializedName("operacionExitosa") //Nombre del JSON lo toma como el valor :serialized
     val operation: Boolean = false,
 
-    //Mensaje de la respuesta
-    @SerializedName("mensaje")
-    val mensaje: String = "",
-
     @SerializedName("objeto")
     val result: T? = null
 )

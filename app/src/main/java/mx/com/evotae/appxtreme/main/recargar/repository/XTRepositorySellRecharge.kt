@@ -30,7 +30,7 @@ class XTRepositorySellRechargeImpl(private val dataSourceSellRecharge: XTDataSou
         id: String,
         numeroCelular: String
     ): XTResponseData<XTResponseGeneral<XTResponseSellRecharge>?> {
-        return dataSourceSellRecharge.sellReacharge(
+        return dataSourceSellRecharge.sellRecharge(
             idOperacion,
             user,
             pwd,

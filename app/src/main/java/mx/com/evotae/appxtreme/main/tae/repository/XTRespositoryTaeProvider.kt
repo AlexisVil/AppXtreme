@@ -1,6 +1,8 @@
-package mx.com.evotae.appxtreme.main.tae.model
+package mx.com.evotae.appxtreme.main.tae.repository
 
-class XTRepositoryTaeP {
+import mx.com.evotae.appxtreme.main.tae.model.XTTaeModel
+
+class XTRepositoryTaeProvider {
     companion object {
 
         val taeList = listOf<XTTaeModel>(

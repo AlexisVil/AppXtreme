@@ -5,7 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 
 @Parcelize
-data class Services(
+data class XTServicesModel(
     var name : String,
     val id: Int,
     val photo: String

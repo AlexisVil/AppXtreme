@@ -47,12 +47,11 @@ class XTViewModelSellRecharge(
                 }
             }
              else{
-//                resultRecharge.exception.let {
-//                    val error= resultRecharge.data
-//                    //showError(it?.message.toString())
-//                    showError(error?.mensaje.toString())
-//                }
-                 println("MENSAJE ${resultRecharge.data?.operation.toString()}")
+                resultRecharge.exception.let {
+                    showError(it?.message.toString())
+
+                }
+
             }
         }
     }

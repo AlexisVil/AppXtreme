@@ -74,8 +74,11 @@
         android:name="mx.com.evotae.appxtreme.main.service.ui.XTPagarServicioFragment"
         android:label="fragment_x_t_pagar_servicio"
         tools:layout="@layout/fragment_x_t_pagar_servicio" >
+        <action
+            android:id="@+id/action_XTPagarServicioFragment_to_ticketDialog"
+            app:destination="@id/ticketDialog" />
         <argument
-            android:name="services"
-            app:argType="mx.com.evotae.appxtreme.main.service.model.Services" />
+            android:name="XTServiceModel"
+            app:argType="mx.com.evotae.appxtreme.main.service.model.XTServicesModel" />
     </fragment>
 </navigation>

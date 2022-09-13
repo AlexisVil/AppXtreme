@@ -1,6 +1,7 @@
 package servicecordinator.apis
 
 import kotlinx.coroutines.Deferred
+import retrofit2.Response
 import retrofit2.http.POST
 import retrofit2.http.Query
 import servicecordinator.model.response.XTResponsePayService
@@ -8,7 +9,7 @@ import servicecordinator.retrofit.model.dataclass.XTResponseData
 import servicecordinator.retrofit.model.dataclass.XTResponseGeneral
 import servicecordinator.router.Routers
 
-interface XTPayService {
+interface XTPayServiceApi {
     @POST(Routers.ENDPOINT)
     fun payService(
         @Query("idOperacion") idOperacion: String?,
@@ -20,5 +21,5 @@ interface XTPayService {
         @Query("id") id: String?,
         @Query("numeroCuenta") numeroCuenta: String?,
         @Query("montovar") montovar: String?
-    ): Deferred<XTResponseData<XTResponseGeneral<XTResponsePayService>>>
+    ): Deferred<Response<XTResponseGeneral<XTResponsePayService>>>
 }

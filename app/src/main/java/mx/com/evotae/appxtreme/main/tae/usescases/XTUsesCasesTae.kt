@@ -1,6 +1,5 @@
 package mx.com.evotae.appxtreme.main.tae.usescases
 
-import mx.com.evotae.appxtreme.main.tae.model.XTRepositoryTaeP
 import mx.com.evotae.appxtreme.main.tae.model.XTTaeModel
 
 interface XTUsesCasesTae {

@@ -30,8 +30,7 @@ class XTDataCarrier {
             "43" to "Bait",
             "44" to "SPACE",
             "45" to "PILLOFON",
-            "0" to "TESTRECARGA",
-            "23" to "SIMCARD"
+            "0" to "TESTRECARGA"
         )
     }
 }
