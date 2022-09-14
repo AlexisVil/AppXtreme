@@ -5,8 +5,10 @@ import mx.com.evotae.appxtreme.framework.util.extensions.log
 import retrofit2.HttpException
 import retrofit2.Response
 import servicecordinator.retrofit.model.dataclass.XTResponseData
+import servicecordinator.retrofit.model.dataclass.XTResponseError
 import servicecordinator.retrofit.model.dataclass.XTResultApi
 import servicecordinator.retrofit.model.exception.XTConectionException
+import servicecordinator.retrofit.model.exception.XTExceptionGeneral
 import servicecordinator.retrofit.model.exception.XTValidationDefault
 import servicecordinator.retrofit.model.inter.XTValidationCode
 import java.lang.Exception
@@ -39,7 +41,7 @@ open class XTManagerCall {
                 }
             }
             is XTResultApi.Error -> {
-                dataResponse.exception = result.exception
+                dataResponse.exception = result.exceptionGeneral
             }
         }
         return dataResponse
@@ -51,7 +53,7 @@ open class XTManagerCall {
         validation: XTValidationCode<Response<T>>? = XTValidationDefault(),
         context: Context? = null
     ): XTResultApi<T> {
-        var exception: Exception? = null
+        var exception: XTResponseError? = null
         var data: T? = null
         try {
             val response = call.invoke()
@@ -63,17 +65,20 @@ open class XTManagerCall {
 
         } catch (ex: XTConectionException) {
             "LOG-$TAG Connection Exception -> ${ex.message}".log()
-            exception = Exception(ex.message)
+            exception = XTResponseError(mensaje = ex.message)
         } catch (ex: HttpException) {
             "LOG-$TAG HTTP Exception -> ${ex.message}".log()
-            exception = Exception(MESSAGE_ERROR_GENERAL_NETWORK)
+            exception = XTResponseError(mensaje = MESSAGE_ERROR_GENERAL_NETWORK)
+        } catch(ex: XTExceptionGeneral){
+            "LOG-$TAG HTTP Exception -> ${ex.xtResponseError}".log()
+            exception = ex.xtResponseError
         } catch (ex: Exception) {
             "LOG-$TAG Exception -> ${ex.message}".log()
-            exception = Exception(MESSAGE_ERROR_GENERAL)
-
+            exception = XTResponseError(mensaje = MESSAGE_ERROR_GENERAL)
         }
         return exception?.let {
-            XTResultApi.Error(it)
+            //XTResultApi.Error(it)
+            XTResultApi.Error(XTExceptionGeneral(it))
         }?:kotlin.run {
             XTResultApi.Succes(data)
         }
