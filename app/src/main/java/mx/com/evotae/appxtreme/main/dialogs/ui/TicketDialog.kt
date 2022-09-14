@@ -36,4 +36,6 @@ class TicketDialog(
         dialog.window!!.setGravity(Gravity.CENTER_HORIZONTAL)
         return dialog
     }
+
+
 }

@@ -19,7 +19,6 @@ class XTTaeAdapter(private val taeList: List<XTTaeModel>, private val onClickLis
 
             itemView.setOnClickListener { onClickListener(taeModel) }
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): XTTaeViewHolder {

@@ -20,16 +20,24 @@ import mx.com.evotae.appxtreme.framework.util.extensions.getPreferenceToString
 import mx.com.evotae.appxtreme.framework.util.extensions.log
 import mx.com.evotae.appxtreme.framework.util.extensions.wipe
 import mx.com.evotae.appxtreme.main.appactivity.XtremeActivity
+import mx.com.evotae.appxtreme.main.dialogs.ui.VentasRecientes
+import mx.com.evotae.appxtreme.main.user.adapter.XTVentasAdapter
 import mx.com.evotae.appxtreme.main.user.viewmodel.XTViewModelCheckBalance
+import mx.com.evotae.appxtreme.main.user.viewmodel.XTViewModelTransactions
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import servicecordinator.model.response.XTResponseCheckBalance
+import servicecordinator.model.response.XTResponseTransactions
 import servicecordinator.retrofit.managercall.OPERATOR_APP
+import servicecordinator.retrofit.managercall.PWD_APP
+import servicecordinator.retrofit.managercall.USER_APP
 
 class XTUserFragment : XTFragmentBase() {
 
     lateinit var binding: FragmentXTUserBinding
     private lateinit var safeActivity: Activity
     private val viewModelCheckBalance: XTViewModelCheckBalance by sharedViewModel()
+    private val viewModelTransactions: XTViewModelTransactions by sharedViewModel()
+    var transactionsList = mutableListOf<String>()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -71,6 +79,15 @@ class XTUserFragment : XTFragmentBase() {
                     "2cb4fffb7223c1518c0fff47f1011dd2b1f2f26431f445f0db06ec99c56ae72e"
                 )
             }
+            btnVentas.setOnClickListener {
+                viewModelTransactions.transactions(
+                    "movimientos",
+                    USER_APP.getPreferenceToString().toString(),
+                    PWD_APP.getPreferenceToString().toString(),
+                    OPERATOR_APP.getPreferenceToString().toString()
+                )
+                //VentasRecientes(transactionsList).show(parentFragmentManager, "Dialog")
+            }
 
         }
     }
@@ -87,9 +104,28 @@ class XTUserFragment : XTFragmentBase() {
     }
 
     private fun initObservers() {
+        //Observadores CheckBalance Saldo Disponible
         viewModelCheckBalance.launchLoader.observe(viewLifecycleOwner, handleLoader())
         viewModelCheckBalance.launchError.observe(viewLifecycleOwner, handleError())
         viewModelCheckBalance.checkBalance.observe(viewLifecycleOwner, handleCheckBalance())
+        //Observadores Ultimos movimientos Last Transactions
+        viewModelTransactions.launchLoader.observe(viewLifecycleOwner, handleLoader())
+        viewModelTransactions.launchError.observe(viewLifecycleOwner,handleError())
+        viewModelTransactions.transactions.observe(viewLifecycleOwner, handleTransactions())
+    }
+
+    private fun handleTransactions(): (ArrayList<XTResponseTransactions>?) -> Unit= { dataArray ->
+        dataArray?.forEach {
+            var element = "${it.fecha}\n ${it.numero} \n ${it.descripcion}"
+            println(element)
+            transactionsList.add(element)
+        }
+        println(transactionsList)
+        VentasRecientes(transactionsList).show(parentFragmentManager, "Ventas")
+//        dataArray?.let { objeto ->
+//            transactionsList.add(objeto)
+//        }
+//        println("LISTA ULTIMOS MOV -> $transactionsList")
     }
 
     fun crearDialogo(saldo: String) {

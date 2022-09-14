@@ -23,6 +23,7 @@
         <entry key="..\:/Users/ALOPEZ/AndroidStudioProjects/AppXtreme/app/src/main/res/layout/dialog_error_recarga.xml" value="0.23125" />
         <entry key="..\:/Users/ALOPEZ/AndroidStudioProjects/AppXtreme/app/src/main/res/layout/dialog_ticket.xml" value="0.23125" />
         <entry key="..\:/Users/ALOPEZ/AndroidStudioProjects/AppXtreme/app/src/main/res/layout/dialog_ticket_fragment.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/ALOPEZ/AndroidStudioProjects/AppXtreme/app/src/main/res/layout/dialog_ventas.xml" value="0.23125" />
         <entry key="..\:/Users/ALOPEZ/AndroidStudioProjects/AppXtreme/app/src/main/res/layout/fragment_blank.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/ALOPEZ/AndroidStudioProjects/AppXtreme/app/src/main/res/layout/fragment_reportar_pago.xml" value="0.264" />
         <entry key="..\:/Users/ALOPEZ/AndroidStudioProjects/AppXtreme/app/src/main/res/layout/fragment_splash.xml" value="0.25" />
@@ -34,6 +35,7 @@
         <entry key="..\:/Users/ALOPEZ/AndroidStudioProjects/AppXtreme/app/src/main/res/layout/fragment_x_t_user.xml" value="0.264" />
         <entry key="..\:/Users/ALOPEZ/AndroidStudioProjects/AppXtreme/app/src/main/res/layout/item_button.xml" value="0.4" />
         <entry key="..\:/Users/ALOPEZ/AndroidStudioProjects/AppXtreme/app/src/main/res/layout/item_row.xml" value="0.25" />
+        <entry key="..\:/Users/ALOPEZ/AndroidStudioProjects/AppXtreme/app/src/main/res/layout/item_ventas.xml" value="0.264" />
         <entry key="..\:/Users/ALOPEZ/AndroidStudioProjects/AppXtreme/app/src/main/res/layout/spinner_xtreme_item.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/ALOPEZ/AndroidStudioProjects/AppXtreme/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.25" />
       </map>

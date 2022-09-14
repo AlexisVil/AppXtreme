@@ -123,7 +123,6 @@ class XTRecargaFragment : XTFragmentBase() {
         viewModelProductList.getProductList.observe(viewLifecycleOwner, handleProductList())
         //Observadores para Venta de Recarga
         viewModelSellRecharge.launchLoader.observe(viewLifecycleOwner, handleLoader())
-        //viewModelSellRecharge.launchError.observe(viewLifecycleOwner, handleError())
         viewModelSellRecharge.sellRecharge.observe(viewLifecycleOwner, handleSellRecharge())
         viewModelSellRecharge.launchError.observe(viewLifecycleOwner, handleErrorRecharge())
     }

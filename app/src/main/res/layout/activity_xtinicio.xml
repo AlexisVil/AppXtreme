@@ -19,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/xtreme_3"
+        app:titleTextColor="@color/white"
         android:theme="@style/ThemeOverlay.MaterialComponents.Toolbar.Primary" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

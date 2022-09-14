@@ -13,6 +13,4 @@ interface XTUsesCasesLogin {
 class XTUsesCasesLoginImpl(private val repository: XTRepositoryLogin): XTUsesCasesLogin{
     override suspend fun login(idOperacion: String,user: String, pwd: String, regid: String, claveOperador: String): XTResponseData<XTResponseGeneral<XTResponseLogin>?> =
         repository.login(idOperacion,user, pwd, regid, claveOperador)
-
-
 }

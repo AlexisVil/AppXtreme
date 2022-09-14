@@ -88,7 +88,7 @@ class XTPagarServicioFragment : XTFragmentBase() {
                 initScanner()
             }
             btnServicio.setOnClickListener {
-                if (!(etRef.text.toString().length < 10)) {
+                if (!(etRef.text.toString().length < 4)) {
                     numeroReferencia = etRef.text.toString()
                     if (etMontoServicio.text.toString().isEmpty()) {
                         Toast.makeText(safeActivity, "Ingrese un monto", Toast.LENGTH_SHORT).show()
@@ -109,7 +109,7 @@ class XTPagarServicioFragment : XTFragmentBase() {
                 } else {
                     Toast.makeText(
                         safeActivity,
-                        "Referencia debe tener 10 dígitos",
+                        "Referencia incorrecta",
                         Toast.LENGTH_SHORT
                     ).show()
                     etRef.requestFocus()
@@ -127,9 +127,9 @@ class XTPagarServicioFragment : XTFragmentBase() {
         viewModelProductList.launchLoader.observe(viewLifecycleOwner, handleLoader())
         viewModelProductList.launchError.observe(viewLifecycleOwner, handleError())
         viewModelProductList.getProductList.observe(viewLifecycleOwner, handleProductList())
-        //Observadores para Venta de Recarga
+        //Observadores para Pago de servicio
         viewModelPayService.launchLoader.observe(viewLifecycleOwner, handleLoader())
-        viewModelPayService.launchError.observe(viewLifecycleOwner, handleError())
+        viewModelPayService.launchError.observe(viewLifecycleOwner, handleErrorRecharge())
         viewModelPayService.payService.observe(viewLifecycleOwner, handlerPayService())
     }
 

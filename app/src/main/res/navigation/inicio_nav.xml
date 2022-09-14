@@ -30,6 +30,13 @@
             app:exitAnim="@anim/slide_in_left"
             app:popUpTo="@id/XTUser_dest"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_XTUser_dest_to_ventasRecientes"
+            app:destination="@id/ventasRecientes"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/XTTae_dest"
@@ -81,4 +88,8 @@
             android:name="XTServiceModel"
             app:argType="mx.com.evotae.appxtreme.main.service.model.XTServicesModel" />
     </fragment>
+    <dialog
+        android:id="@+id/ventasRecientes"
+        android:name="mx.com.evotae.appxtreme.main.dialogs.ui.VentasRecientes"
+        android:label="VentasRecientes" />
 </navigation>
