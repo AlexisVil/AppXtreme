@@ -47,6 +47,7 @@ class XTPagarServicioFragment : XTFragmentBase() {
     private lateinit var nTicket: String
     private lateinit var nMonto: String
     private lateinit var nDate: String
+    private lateinit var nAuto: String
     lateinit var nombreProducto: String
     lateinit var selectedId: String
     lateinit var montoIngresado: String
@@ -145,8 +146,9 @@ class XTPagarServicioFragment : XTFragmentBase() {
         nTicket = data?.ticket.toString()
         nMonto = data?.monto.toString()
         nDate = data?.fecha.toString()
+        nAuto = data?.autorizacionTelcel.toString()
         Toast.makeText(safeActivity, "Pago Realizado", Toast.LENGTH_SHORT).show()
-        TicketDialog(nTicket, nMonto, numeroReferencia, nDate).show(parentFragmentManager, "Dialog")
+        TicketDialog(nTicket, nMonto, nAuto,numeroReferencia, nDate).show(parentFragmentManager, "Dialog")
     }
 
 

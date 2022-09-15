@@ -13,6 +13,7 @@ import mx.com.evotae.appxtreme.databinding.DialogTicketFragmentBinding
 class TicketDialog(
     private val ticket: String,
     private val monto: String,
+    private val auto: String,
     private val numero: String,
     private val fecha: String
 ): DialogFragment() {

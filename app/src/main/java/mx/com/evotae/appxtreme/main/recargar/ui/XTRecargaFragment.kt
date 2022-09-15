@@ -44,6 +44,7 @@ class XTRecargaFragment : XTFragmentBase() {
     lateinit var nTicket: String
     lateinit var nMonto: String
     lateinit var nDate: String
+    lateinit var nAuto: String
     lateinit var nombreProducto: String
     lateinit var selectedId: String
 
@@ -131,8 +132,9 @@ class XTRecargaFragment : XTFragmentBase() {
         nTicket = data?.ticket.toString()
         nMonto = data?.monto.toString()
         nDate = data?.fecha.toString()
+        nAuto = data?.autorizacionTelcel.toString()
         Toast.makeText(safeActivity, "Recarga exitosa", Toast.LENGTH_SHORT).show()
-        TicketDialog(nTicket, nMonto, numeroCelular, nDate).show(
+        TicketDialog(nTicket, nMonto, nAuto,numeroCelular, nDate).show(
             parentFragmentManager,
             "Dialog"
         )
@@ -169,7 +171,6 @@ class XTRecargaFragment : XTFragmentBase() {
             }
         }
     }
-
     /**
      * Custom Dialog
      */

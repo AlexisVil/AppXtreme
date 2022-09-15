@@ -54,7 +54,7 @@
     <fragment
         android:id="@+id/reportarPagoFragment"
         android:name="mx.com.evotae.appxtreme.main.reportarpago.ui.XTReportarPagoFragment"
-        android:label="Reportar PAgo"
+        android:label="Reportar Pago"
         tools:layout="@layout/fragment_reportar_pago" />
     <fragment
         android:id="@+id/XTRecargaFragment"
