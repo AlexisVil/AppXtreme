@@ -31,8 +31,8 @@ class XTViewModelTransactions(
                 }
             }
             else{
-                resultTransactions.exception.let {
-                    showError(it?.message.toString())
+                resultTransactions.exception?.let {
+                    showError(it.message.toString())
                 }
             }
         }

@@ -23,6 +23,7 @@ class VentasRecientes(private val transactionList: List<String>): DialogFragment
         val dialog = builder.create()
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.window!!.setGravity(Gravity.CENTER_HORIZONTAL)
+        dialog.setCancelable(true)
         return dialog
     }
 }

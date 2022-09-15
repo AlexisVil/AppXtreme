@@ -10,5 +10,8 @@ val modulesApp: List<Module> =
         moduleCheckBalance,
         moduleSellRecharge,
         modulePayService,
-        moduleTransactions
+        moduleTransactions,
+        moduleBankDeposit,
+        moduleGetBanks,
+        modulePayBank
     )
