@@ -61,9 +61,83 @@ class XTReportarPagoFragment : XTFragmentBase() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        //Init Oberservers
         initObservers()
+        //Init Listeners
         initListeners()
+    }
+    fun initListeners() {
+        viewModelGetBanks.getBanks("obtener_Bancos")
+        viewModelBankDeposit.bankDeposit("TipoDeposito")
+        binding.apply {
+            etFecha.setOnClickListener {
+                createDatePicker()
+            }
+            etBanco.setOnClickListener {
+                var optionBank: Array<String> = bancos.toTypedArray()
+                bancosDialog(optionBank)
+            }
+            etDeposito.setOnClickListener {
+                var optionTransfer: Array<String> = tipoDeposito.toTypedArray()
+                transferenciaDialog(optionTransfer)
+            }
+            btnReportar.setOnClickListener {
+                viewModelPayBank.payBank(
+                    "pagos_reportarPago",
+                        USER_APP.getPreferenceToString().toString(),
+                        PWD_APP.getPreferenceToString().toString(),
+                        OPERATOR_APP.getPreferenceToString().toString(),
+                        etBanco.text.toString(),
+                        etDeposito.text.toString(),
+                        "",
+                        etRef.text.toString(),
+                        etFecha.text.toString(),
+                        "00",
+                        "59",
+                        "0",
+                        "0",
+                        "0",
+                        "",
+                        "80f8cf43-0d26-4876-966e-cc90e13e0f0c"
+                )
+//                if ((etBanco.text.toString().isNotEmpty()) && (etDeposito.text.toString()
+//                        .isNotEmpty())
+//                    && (etRef.text.toString().isNotEmpty()) && (etFecha.text.toString()
+//                        .isNotEmpty())
+//                    && (etMonto.text.toString().isNotEmpty()) && (etRecarga.text.toString()
+//                        .isNotEmpty())
+//                    && (etServicios.text.toString().isNotEmpty())
+//                ) {
+//                    viewModelPayBank.payBank(
+//                        "pagos_reportarPago",
+//                        USER_APP.getPreferenceToString().toString(),
+//                        PWD_APP.getPreferenceToString().toString(),
+//                        OPERATOR_APP.getPreferenceToString().toString(),
+//                        "BANCOMER",
+//                        "TRANSFERENCIA SPEI",
+//                        "",
+//                        "433373",
+//                        "2021/12/05",
+//                        "00",
+//                        "59",
+//                        "0",
+//                        "0",
+//                        "0",
+//                        "",
+//                        "80f8cf43-0d26-4876-966e-cc90e13e0f0c"
+//                    )
+//                } else {
+//                    etBanco.requestFocus()
+//                    etDeposito.requestFocus()
+//                    etRef.requestFocus()
+//                    etFecha.requestFocus()
+//                    etMonto.requestFocus()
+//                    etRecarga.requestFocus()
+//                    etServicios.requestFocus()
+//                    Toast.makeText(safeActivity, "Complete los campos", Toast.LENGTH_SHORT).show()
+//                }
+            }
+        }
     }
 
     private fun initObservers() {
@@ -83,80 +157,20 @@ class XTReportarPagoFragment : XTFragmentBase() {
 
     private fun handlePayBank(): (XTResponsePayBank?) -> Unit = { data ->
         nMensajeBanco = data?.objeto.toString()
+        println(nMensajeBanco)
+        Toast.makeText(safeActivity, "Pago exitoso", Toast.LENGTH_SHORT).show()
     }
-
     private fun handleBankDeposit(): (ArrayList<XTResponseBankDeposit>?) -> Unit = { arrayDeposit ->
         arrayDeposit?.forEach { type ->
             tipoDeposito.add(type.tipo.toString())
         }
-        transferenciaDialog()
-        println("TIPO DE TRANSFERENCIA -> $tipoDeposito")
     }
-
     private fun handleGetBanks(): (ArrayList<XTResponseGetBanks>?) -> Unit = {
         it?.forEach { bancoData ->
             mapOfBanks.put(bancoData.id.toString(), bancoData.nombre.toString())
             bancos.add(bancoData.nombre.toString())
         }
-        var optionBank: Array<String> = bancos.toTypedArray()
-        println("BANCOS $bancos")
-        println("OptionBank $optionBank")
-        bancosDialog(optionBank)
     }
-
-    private fun initListeners() {
-        binding.apply {
-            etFecha.setOnClickListener {
-                createDatePicker()
-            }
-            etBanco.setOnClickListener {
-                viewModelGetBanks.getBanks("obtener_Bancos")
-            }
-            etDeposito.setOnClickListener {
-                viewModelBankDeposit.bankDeposit("TipoDeposito")
-            }
-            btnReportar.setOnClickListener {
-                if ((etBanco.text.toString().isNotEmpty()) && (etDeposito.text.toString()
-                        .isNotEmpty())
-                    && (etRef.text.toString().isNotEmpty()) && (etFecha.text.toString()
-                        .isNotEmpty())
-                    && (etMonto.text.toString().isNotEmpty()) && (etRecarga.text.toString()
-                        .isNotEmpty())
-                    && (etServicios.text.toString().isNotEmpty())
-                ) {
-                    viewModelPayBank.payBank(
-                        "pagos_reportarPago",
-                        USER_APP.getPreferenceToString().toString(),
-                        PWD_APP.getPreferenceToString().toString(),
-                        OPERATOR_APP.getPreferenceToString().toString(),
-                        etBanco.text.toString(),
-                        etDeposito.text.toString(),
-                        "",
-                        etRef.text.toString(),
-                        etFecha.text.toString(),
-                        "00",
-                        "59",
-                        etMonto.text.toString(),
-                        etRecarga.text.toString(),
-                        etServicios.text.toString(),
-                        "80f8cf43-0d26-4876-966e-cc90e13e0f0c"
-                    )
-                    Toast.makeText(safeActivity, "Pago exitoso", Toast.LENGTH_SHORT).show()
-                } else {
-                    etBanco.requestFocus()
-                    etDeposito.requestFocus()
-                    etRef.requestFocus()
-                    etFecha.requestFocus()
-                    etMonto.requestFocus()
-                    etRecarga.requestFocus()
-                    etServicios.requestFocus()
-                    Toast.makeText(safeActivity, "Complete los campos", Toast.LENGTH_SHORT).show()
-                }
-
-            }
-        }
-    }
-
     private fun createDatePicker() {
         val c = Calendar.getInstance()
         val datePicker =
@@ -175,41 +189,32 @@ class XTReportarPagoFragment : XTFragmentBase() {
             c.get(Calendar.DAY_OF_MONTH)
         ).show()
     }
-
     private fun updateLabel(c: Calendar) {
         val calenderFormat = "yyyy/MM/dd"
         val sdf = SimpleDateFormat(calenderFormat, Locale.ROOT)
         etFecha.setText(sdf.format(c.timeInMillis))
     }
-
     fun bancosDialog(opciones: Array<String>) {
-//        println("BANCOS: ${bancos}")
-//        val bankOptions = bancos.toTypedArray()
         val singleChoiceDialog: AlertDialog = AlertDialog.Builder(safeActivity)
             .setTitle("Selecciona un banco")
             .setSingleChoiceItems(opciones, 0) { _, position ->
                 etBanco.setText(opciones[position])
             }
             .setPositiveButton("Aceptar") { _, _ ->
-                Toast.makeText(safeActivity, "Aceptar", Toast.LENGTH_SHORT).show()
             }
             .create()
         singleChoiceDialog.show()
     }
+    fun transferenciaDialog(transfer: Array<String>) {
 
-    fun transferenciaDialog() {
-        val transfer = tipoDeposito.toTypedArray()
         val singleChoiceDialog: AlertDialog = AlertDialog.Builder(safeActivity)
             .setTitle("Selecciona un tipo")
             .setSingleChoiceItems(transfer, 0) { _, position ->
                 etDeposito.setText(transfer[position])
             }
             .setPositiveButton("Aceptar") { _, _ ->
-                Toast.makeText(safeActivity, "Aceptar", Toast.LENGTH_SHORT).show()
             }
             .create()
         singleChoiceDialog.show()
     }
-
-
 }

@@ -21,6 +21,7 @@ class XTDataSourcePayBank(private val callApi: XTPayBankApiCall) {
         monto: String,
         recargas: String,
         servicios: String,
+        comentarioView: String,
         regid: String
     ): XTResponseData<XTResponseGeneral<XTResponsePayBank>?> {
         return callApi.payBank(
@@ -38,6 +39,7 @@ class XTDataSourcePayBank(private val callApi: XTPayBankApiCall) {
             monto,
             recargas,
             servicios,
+            comentarioView,
             regid
         )
     }

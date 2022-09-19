@@ -21,6 +21,7 @@ interface XTRepositoryPayBank {
         monto: String,
         recargas: String,
         servicios: String,
+        comentarioView: String,
         regid: String
     ): XTResponseData<XTResponseGeneral<XTResponsePayBank>?>
 }
@@ -42,6 +43,7 @@ class XTRepositoryPayBankImpl(private val dataSourcePayBank: XTDataSourcePayBank
         monto: String,
         recargas: String,
         servicios: String,
+        comentarioView: String,
         regid: String
     ): XTResponseData<XTResponseGeneral<XTResponsePayBank>?> {
         return dataSourcePayBank.payBank(
@@ -59,8 +61,8 @@ class XTRepositoryPayBankImpl(private val dataSourcePayBank: XTDataSourcePayBank
             monto,
             recargas,
             servicios,
+            comentarioView,
             regid
         )
     }
-
 }

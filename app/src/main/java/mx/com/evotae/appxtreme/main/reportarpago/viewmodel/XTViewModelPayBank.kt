@@ -31,6 +31,7 @@ class XTViewModelPayBank(
         monto: String,
         recargas: String,
         servicios: String,
+        comentarioView: String,
         regid: String
     ) {
         viewModelScope.launch {
@@ -49,19 +50,19 @@ class XTViewModelPayBank(
                 monto,
                 recargas,
                 servicios,
+                comentarioView,
                 regid
             )
             if (resultPayBank.sucess) {
-                "MENSAJE BANCO -> ${resultPayBank.data?.result?.mensaje?.log()}"
+                "PAYBANK -> ${resultPayBank.data?.result?.objeto?.log()}"
                 resultPayBank.data?.result?.let {
                     payBankMLD.postValue(it)
                 }
             } else {
-                resultPayBank.exception?.let {
-                    showError(it.message.toString())
+                resultPayBank.exception.let {
+                    showError(it?.message.toString())
                 }
             }
         }
-
     }
 }

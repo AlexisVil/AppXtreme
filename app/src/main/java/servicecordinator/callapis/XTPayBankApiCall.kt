@@ -32,6 +32,7 @@ class XTPayBankApiCall(private val context: Context) : XTManagerCall() {
         monto: String,
         recargas: String,
         servicios: String,
+        comentarioView: String,
         regid: String
     ): XTResponseData<XTResponseGeneral<XTResponsePayBank>?> {
         return managerCallApi(
@@ -52,6 +53,7 @@ class XTPayBankApiCall(private val context: Context) : XTManagerCall() {
                     monto,
                     recargas,
                     servicios,
+                    comentarioView,
                     regid
                 ).await()
             }

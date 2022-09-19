@@ -21,6 +21,7 @@ interface XTUsesCasesPayBank {
         monto: String,
         recargas: String,
         servicios: String,
+        comentarioView: String,
         regid: String
     ): XTResponseData<XTResponseGeneral<XTResponsePayBank>?>
 }
@@ -41,6 +42,7 @@ class XTUsesCasesPayBankImpl(private val repository: XTRepositoryPayBank) : XTUs
         monto: String,
         recargas: String,
         servicios: String,
+        comentarioView: String,
         regid: String
     ): XTResponseData<XTResponseGeneral<XTResponsePayBank>?> =
         repository.payBank(
@@ -58,6 +60,7 @@ class XTUsesCasesPayBankImpl(private val repository: XTRepositoryPayBank) : XTUs
             monto,
             recargas,
             servicios,
+            comentarioView,
             regid
         )
 

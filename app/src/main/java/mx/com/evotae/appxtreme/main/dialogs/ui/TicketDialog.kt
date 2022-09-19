@@ -27,6 +27,7 @@ class TicketDialog(
             tvTicket.text = ticket
             tvMonto.text = "$ ${monto}"
             tvChargedNumber.text = numero
+            tvAuto.text = auto
             tvDate.text = fecha
             btnAccept.setOnClickListener {
                 dismiss()

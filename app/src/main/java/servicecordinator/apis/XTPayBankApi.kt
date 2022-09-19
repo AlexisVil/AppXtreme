@@ -25,6 +25,7 @@ interface XTPayBankApi {
         @Query("monto") monto: String?,
         @Query("recargas") recargas: String?,
         @Query("servicios") servicios: String?,
+        @Query("comentarioView") comentarioView: String?,
         @Query("regid") regid: String?
     ): Deferred<Response<XTResponseGeneral<XTResponsePayBank>>>
 }

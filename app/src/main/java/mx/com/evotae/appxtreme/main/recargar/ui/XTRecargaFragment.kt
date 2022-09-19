@@ -98,7 +98,7 @@ class XTRecargaFragment : XTFragmentBase() {
                             OPERATOR_APP.getPreferenceToString().toString(),
                             "80f8cf43-0d26-4876-966e-cc90e13e0f0c",
                             "",
-                            "100",
+                            "40000",
                             numeroCelular
                         )
                         etNumber.setText("")
