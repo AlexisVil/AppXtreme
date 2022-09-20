@@ -65,6 +65,7 @@
     <string name="btn_ticket">Aceptar</string>
     <string name="btn_screen">Screenshot</string>
     <string name="dg_errorR">Algo salió mal</string>
+    <string name="dg_pago">Pago exitoso</string>
 
     <!--Pagar Servicios-->
     <string name="referencia">Número de referencia:</string>

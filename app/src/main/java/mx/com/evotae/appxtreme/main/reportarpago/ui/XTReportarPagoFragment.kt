@@ -195,7 +195,7 @@ class XTReportarPagoFragment : XTFragmentBase() {
         etFecha.setText(sdf.format(c.timeInMillis))
     }
     fun bancosDialog(opciones: Array<String>) {
-        val singleChoiceDialog: AlertDialog = AlertDialog.Builder(safeActivity)
+        val singleChoiceDialog: AlertDialog = AlertDialog.Builder(safeActivity, R.style.AppTheme_DatePickerDialog)
             .setTitle("Selecciona un banco")
             .setSingleChoiceItems(opciones, 0) { _, position ->
                 etBanco.setText(opciones[position])
@@ -207,7 +207,7 @@ class XTReportarPagoFragment : XTFragmentBase() {
     }
     fun transferenciaDialog(transfer: Array<String>) {
 
-        val singleChoiceDialog: AlertDialog = AlertDialog.Builder(safeActivity)
+        val singleChoiceDialog: AlertDialog = AlertDialog.Builder(safeActivity, R.style.AppTheme_DatePickerDialog)
             .setTitle("Selecciona un tipo")
             .setSingleChoiceItems(transfer, 0) { _, position ->
                 etDeposito.setText(transfer[position])
