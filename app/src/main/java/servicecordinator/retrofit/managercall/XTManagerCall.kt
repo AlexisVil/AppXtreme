@@ -73,12 +73,15 @@ open class XTManagerCall {
         } catch(ex: XTExceptionGeneral){
             "LOG-$TAG HTTP Exception -> ${ex.xtResponseError}".log()
             exception = ex.xtResponseError
-        } catch (ex: Exception) {
+        }
+        catch (ex: Exception) {
             "LOG-$TAG Exception -> ${ex.message}".log()
-            exception = XTResponseError(mensaje = MESSAGE_ERROR_GENERAL)
+            //exception = XTResponseError(mensaje = MESSAGE_ERROR_GENERAL)
+            exception = XTResponseError(mensaje = ex.message)
         }
         return exception?.let {
-            //XTResultApi.Error(it)
+           // XTResultApi.Error(it)
+            //it.mensaje
             XTResultApi.Error(XTExceptionGeneral(it))
         }?:kotlin.run {
             XTResultApi.Succes(data)

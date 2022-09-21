@@ -9,15 +9,15 @@ import java.lang.Exception
 
 class XTValidationDefault<T> : XTValidationCode<Response<T>> {
     override fun executeValidation(response: Response<T>) {
+        try {
+            val gson = Gson()
+            val type = object : TypeToken<XTResponseError>() {}.type
+            val errorResponse: XTResponseError = gson.fromJson(response.body().toString(), type)
+            throw XTExceptionGeneral(errorResponse)
+        } catch (e: Exception) {
+            println("Mensaje Validation Default" + e.message.toString())
+        }
         if (!response.code().toString().contains("20"))
-        //throw Exception(response.message())
-            try {
-                val gson = Gson()
-                val type = object : TypeToken<XTResponseError>() {}.type
-                val errorResponse: XTResponseError = gson.fromJson(response.errorBody().toString(), type)
-                throw XTExceptionGeneral(errorResponse)
-            } catch (e: Exception) {
-                println("Mensaje Validation Default" + e.message.toString())
-            }
+            throw Exception(response.message())
     }
 }
