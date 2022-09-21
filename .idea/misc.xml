@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ALEXIS/AndroidStudioProjects/AppXtreme/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2295" />
+        <entry key="..\:/Users/ALEXIS/AndroidStudioProjects/AppXtreme/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2295" />
         <entry key="..\:/Users/ALEXIS/AndroidStudioProjects/AppXtreme/app/src/main/res/layout/activity_xtinicio.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/ALEXIS/AndroidStudioProjects/AppXtreme/app/src/main/res/layout/fragment_blank.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/ALEXIS/AndroidStudioProjects/AppXtreme/app/src/main/res/layout/fragment_blank_2.xml" value="0.31476449275362317" />
         <entry key="..\:/Users/ALEXIS/AndroidStudioProjects/AppXtreme/app/src/main/res/layout/fragment_x_t_login.xml" value="0.31476449275362317" />
         <entry key="..\:/Users/ALEXIS/AndroidStudioProjects/AppXtreme/app/src/main/res/layout/fragment_x_t_recarga.xml" value="0.36666666666666664" />
@@ -11,6 +14,7 @@
         <entry key="..\:/Users/ALEXIS/AndroidStudioProjects/AppXtreme/app/src/main/res/layout/spinner_dropdown_item.xml" value="0.365625" />
         <entry key="..\:/Users/ALEXIS/AndroidStudioProjects/AppXtreme/app/src/main/res/layout/spinner_xtreme_item.xml" value="0.365625" />
         <entry key="..\:/Users/ALEXIS/AndroidStudioProjects/AppXtreme/app/src/main/res/menu/top_bar.xml" value="0.365625" />
+        <entry key="..\:/Users/ALEXIS/AndroidStudioProjects/AppXtreme/app/src/main/res/mipmap-anydpi-v26/ic_launcher_xtreme.xml" value="0.2295" />
         <entry key="..\:/Users/ALOPEZ/AndroidStudioProjects/AppXtreme/app/src/main/res/drawable/btn_shadow.xml" value="0.202" />
         <entry key="..\:/Users/ALOPEZ/AndroidStudioProjects/AppXtreme/app/src/main/res/drawable/btn_shadow_color.xml" value="0.1535" />
         <entry key="..\:/Users/ALOPEZ/AndroidStudioProjects/AppXtreme/app/src/main/res/drawable/ic_id.xml" value="0.202" />

@@ -59,7 +59,7 @@ class XTTaeFragment : XTFragmentBase() {
 
     //Listeners initialization
     fun initListeners(){
-        viewModelTae.getBrands("obtenerMarcas", "5f59d36da33080b4a60511d8292029a32c2b248351cded1aa41cd1303e7e4803")
+        viewModelTae.getBrands("obtenerMarca", "5f59d36da33080b4a60511d8292029a32c2b248351cded1aa41cd1303e7e4803")
         binding.recyclerTae.layoutManager = GridLayoutManager(safeActivity, 2)
         binding.recyclerTae.adapter = XTTaeAdapter(XTRepositoryTaeProvider.taeList) {onItemSelected(it)}
     }

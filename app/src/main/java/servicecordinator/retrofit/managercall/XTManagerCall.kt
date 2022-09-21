@@ -42,6 +42,7 @@ open class XTManagerCall {
             }
             is XTResultApi.Error -> {
                 dataResponse.exception = result.exceptionGeneral
+
             }
         }
         return dataResponse
