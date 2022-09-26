@@ -27,9 +27,7 @@ import mx.com.evotae.appxtreme.main.user.viewmodel.XTViewModelTransactions
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import servicecordinator.model.response.XTResponseCheckBalance
 import servicecordinator.model.response.XTResponseTransactions
-import servicecordinator.retrofit.managercall.OPERATOR_APP
-import servicecordinator.retrofit.managercall.PWD_APP
-import servicecordinator.retrofit.managercall.USER_APP
+import servicecordinator.retrofit.managercall.*
 
 class XTUserFragment : XTFragmentBase() {
 
@@ -62,7 +60,10 @@ class XTUserFragment : XTFragmentBase() {
 
     fun initListeners() {
         binding.apply {
-            tvOperator.text = OPERATOR_APP.getPreferenceToString().toString()
+            tvOperator.text = NOMBRE_PDV.getPreferenceToString().toString()
+            tvIdPDV.text = IDPDV.getPreferenceToString().toString()
+            println(IDPDV.getPreferenceToString().toString())
+            println(NOMBRE_PDV.getPreferenceToString().toString())
             btnLogout.setOnClickListener {
                 Toast.makeText(safeActivity, "Cerrando sesion", Toast.LENGTH_SHORT).show()
                 wipe()

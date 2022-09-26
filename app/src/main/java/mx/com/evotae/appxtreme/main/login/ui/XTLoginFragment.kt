@@ -18,9 +18,7 @@ import mx.com.evotae.appxtreme.main.appactivity.XTInitActivity
 import mx.com.evotae.appxtreme.main.login.viewmodel.XTViewModelLogin
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import servicecordinator.model.response.XTResponseLogin
-import servicecordinator.retrofit.managercall.OPERATOR_APP
-import servicecordinator.retrofit.managercall.PWD_APP
-import servicecordinator.retrofit.managercall.USER_APP
+import servicecordinator.retrofit.managercall.*
 
 
 class XTLoginFragment : XTFragmentBase() {
@@ -59,15 +57,26 @@ class XTLoginFragment : XTFragmentBase() {
     fun initListeners() {
         binding.apply {
             signin.setOnClickListener {
-                viewModelLogin.login(
-                    "login",
-                    userTxt.text.toString(),
-                    passTxt.text.toString(),
-                    "80f8cf43-0d26-4876-966e-cc90e13e0f0c",
-                    operatorTxt.text.toString()
-                )
-            }
 
+                if (userTxt.text.toString().isEmpty()) {
+                    userTxt.requestFocus()
+                    userTxt.error = "Ingrese Usuario"
+                } else if (passTxt.text.toString().length < 6) {
+                    passTxt.requestFocus()
+                    passTxt.error = "Contraseña incorrecta"
+                } else if (operatorTxt.text.toString().isEmpty()) {
+                    operatorTxt.requestFocus()
+                    operatorTxt.error = "Ingrese Clave de operador"
+                } else {
+                    viewModelLogin.login(
+                        "login",
+                        userTxt.text.toString(),
+                        passTxt.text.toString(),
+                        "80f8cf43-0d26-4876-966e-cc90e13e0f0c",
+                        operatorTxt.text.toString()
+                    )
+                }
+            }
         }
     }
 
@@ -81,8 +90,14 @@ class XTLoginFragment : XTFragmentBase() {
         USER_APP.savePreferencesToString(userTxt.text.toString())
         PWD_APP.savePreferencesToString(passTxt.text.toString())
         OPERATOR_APP.savePreferencesToString(operatorTxt.text.toString())
+        IDPDV.savePreferencesToString(data?.idPv.toString())
+        NOMBRE_PDV.savePreferencesToString(data?.nombrePv.toString())
         navigateToLoginSucces()
-        Toast.makeText(safeActivity, "Bienvenido ${OPERATOR_APP.getPreferenceToString().toString()}", Toast.LENGTH_SHORT).show()
+        Toast.makeText(
+            safeActivity,
+            "Bienvenido ${OPERATOR_APP.getPreferenceToString().toString()}",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     fun navigateToLoginSucces() {

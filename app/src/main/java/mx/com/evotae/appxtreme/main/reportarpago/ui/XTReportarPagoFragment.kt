@@ -100,42 +100,22 @@ class XTReportarPagoFragment : XTFragmentBase() {
                         "",
                         "80f8cf43-0d26-4876-966e-cc90e13e0f0c"
                 )
-//                if ((etBanco.text.toString().isNotEmpty()) && (etDeposito.text.toString()
-//                        .isNotEmpty())
-//                    && (etRef.text.toString().isNotEmpty()) && (etFecha.text.toString()
-//                        .isNotEmpty())
-//                    && (etMonto.text.toString().isNotEmpty()) && (etRecarga.text.toString()
-//                        .isNotEmpty())
-//                    && (etServicios.text.toString().isNotEmpty())
-//                ) {
-//                    viewModelPayBank.payBank(
-//                        "pagos_reportarPago",
-//                        USER_APP.getPreferenceToString().toString(),
-//                        PWD_APP.getPreferenceToString().toString(),
-//                        OPERATOR_APP.getPreferenceToString().toString(),
-//                        "BANCOMER",
-//                        "TRANSFERENCIA SPEI",
-//                        "",
-//                        "433373",
-//                        "2021/12/05",
-//                        "00",
-//                        "59",
-//                        "0",
-//                        "0",
-//                        "0",
-//                        "",
-//                        "80f8cf43-0d26-4876-966e-cc90e13e0f0c"
-//                    )
-//                } else {
-//                    etBanco.requestFocus()
-//                    etDeposito.requestFocus()
-//                    etRef.requestFocus()
-//                    etFecha.requestFocus()
-//                    etMonto.requestFocus()
-//                    etRecarga.requestFocus()
-//                    etServicios.requestFocus()
-//                    Toast.makeText(safeActivity, "Complete los campos", Toast.LENGTH_SHORT).show()
-//                }
+                if (etBanco.text.isEmpty()){
+                    etBanco.requestFocus()
+                    etBanco.error = "Favor de completar el campo"
+                }else if (etDeposito.text.isEmpty()){
+                    etDeposito.requestFocus()
+                    etDeposito.error = "Favor de completar el campo"
+                }else if (etRef.text.isEmpty()){
+                    etRef.requestFocus()
+                    etRef.error = "Favor de completar el campo"
+                }else  if (etFecha.text.isEmpty()){
+                    etFecha.requestFocus()
+                    etFecha.error = "Favor de completar el campo"
+                }else
+                {
+                    Toast.makeText(safeActivity, "Se Validaron los campos correctos", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }

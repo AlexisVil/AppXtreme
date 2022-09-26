@@ -12,7 +12,7 @@ class XTValidationDefault<T> : XTValidationCode<Response<T>> {
         try {
             val gson = Gson()
             val type = object : TypeToken<XTResponseError>() {}.type
-            val errorResponse: XTResponseError = gson.fromJson(response.body().toString(), type)
+            val errorResponse: XTResponseError = gson.fromJson(response.body().toString(), type)// Castea Json en objeto de Java
             throw XTExceptionGeneral(errorResponse)
         } catch (e: Exception) {
             println("Mensaje Validation Default" + e.message.toString())

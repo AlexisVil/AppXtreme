@@ -106,8 +106,8 @@
                 android:paddingRight="26dp"
                 android:textColor="@color/colorTextWhite"
                 android:textColorHint="@color/colorTextWhite" />
-
-            <CheckBox
+<!--
+<CheckBox
                 android:id="@+id/keepSignin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -116,12 +116,14 @@
                 android:text="@string/checkbox"
                 android:textColor="@color/colorTextBlack"
                 android:textSize="18dp" />
+-->
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="48dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="35dp"
                 android:layout_marginRight="48dp"
                 android:gravity="center"
                 android:orientation="horizontal"
@@ -135,6 +137,7 @@
                     android:background="@drawable/btn_shadow"
                     android:text="@string/btnLogin"
                     android:textAllCaps="false"
+                    android:visibility="visible"
                     android:textColor="@color/letters_2"
                     android:textSize="16dp"
                     app:backgroundTint="#ffffff" />

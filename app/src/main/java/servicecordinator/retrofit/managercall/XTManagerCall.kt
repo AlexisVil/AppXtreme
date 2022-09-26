@@ -17,6 +17,8 @@ const val APP_NAME: String = "XtremeAPP"
 const val USER_APP: String = "USER_APP"
 const val PWD_APP : String = "PWD_APP"
 const val OPERATOR_APP: String = "OPERATOR_APP"
+const val IDPDV : String = "IDPV"
+const val NOMBRE_PDV: String = "NOMBRE_PDV"
 private const val MESSAGE_ERROR_GENERAL: String =
     "Por el momento no es posible realizar esta operación, intentelo más tarde."
 private const val MESSAGE_ERROR_GENERAL_NETWORK: String =

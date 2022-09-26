@@ -38,9 +38,6 @@ class ErrorDialog(private val message: String) : DialogFragment() {
             btnAccept.setOnClickListener {
                 dismiss()
             }
-            btnScreen.setOnClickListener {
-                takeScreenshotOfView()
-            }
         }
         val dialog = builder.create()
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -58,7 +55,7 @@ class ErrorDialog(private val message: String) : DialogFragment() {
             val fileDir = File(path)
             if (!fileDir.exists())
                 fileDir.mkdir()
-            val mPath = path + "ScreenShot_" + now + ".jpg"
+            val mPath = path + "/ScreenShot_" + now + ".jpg"
             val bitmap =  ss()
             val imageFile = File(mPath)
             val outputStream = FileOutputStream(imageFile)
