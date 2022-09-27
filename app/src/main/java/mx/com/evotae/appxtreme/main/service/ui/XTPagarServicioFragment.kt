@@ -1,9 +1,11 @@
 package mx.com.evotae.appxtreme.main.service.ui
 
 import android.app.Activity
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +18,7 @@ import com.google.zxing.integration.android.IntentResult
 import kotlinx.android.synthetic.main.fragment_x_t_pagar_servicio.*
 import kotlinx.android.synthetic.main.fragment_x_t_user.*
 import kotlinx.android.synthetic.main.item_button.*
+import mx.com.evotae.appxtreme.R
 import mx.com.evotae.appxtreme.databinding.FragmentXTPagarServicioBinding
 import mx.com.evotae.appxtreme.databinding.FragmentXTServiceBinding
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
@@ -85,7 +88,7 @@ class XTPagarServicioFragment : XTFragmentBase() {
 
         binding.apply {
             ivScan.setOnClickListener {
-                Toast.makeText(safeActivity, "Camara", Toast.LENGTH_SHORT).show()
+                Toast.makeText(safeActivity, "Cámara", Toast.LENGTH_SHORT).show()
                 initScanner()
             }
             btnServicio.setOnClickListener {
@@ -95,6 +98,7 @@ class XTPagarServicioFragment : XTFragmentBase() {
                         Toast.makeText(safeActivity, "Ingrese un monto", Toast.LENGTH_SHORT).show()
                     } else {
                         montoIngresado = etMontoServicio.text.toString()
+                        customProgressDialog()
                         viewModelPayService.payService(
                             "pagoServicios",
                             USER_APP.getPreferenceToString().toString(),
@@ -176,6 +180,17 @@ class XTPagarServicioFragment : XTFragmentBase() {
         } else {
             super.onActivityResult(requestCode, resultCode, data)
         }
+    }
+    private fun customProgressDialog() {
+        val customProgressDialog = Dialog(safeActivity)
+        customProgressDialog.setContentView(R.layout.custom_progress_dialog)
+        val handler = Handler()
+        val DURATION = 1500
+        handler.postDelayed(
+            { customProgressDialog.show() },
+            DURATION.toLong()
+        )
+        customProgressDialog.dismiss()
     }
 }
 

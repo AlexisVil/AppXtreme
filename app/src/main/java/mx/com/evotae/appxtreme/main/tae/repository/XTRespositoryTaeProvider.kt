@@ -77,6 +77,11 @@ class XTRepositoryTaeProvider {
                 "https://pbs.twimg.com/profile_banners/1040278766390530048/1536857373/1500x500"
             ),
             XTTaeModel(
+                "Valor Móvil",
+                36,
+                "https://valortelecom.mx/ukokreew/2022/03/cropped-logo-gris-02.png"
+            ),
+            XTTaeModel(
                 "Recarga SIM",
                 23,
                 "https://cdn-icons-png.flaticon.com/512/4298/4298126.png"

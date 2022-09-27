@@ -50,6 +50,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_XTTae_dest_to_XTVentaSimFragment"
+            app:destination="@id/XTVentaSimFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/reportarPagoFragment"
@@ -92,4 +99,16 @@
         android:id="@+id/ventasRecientes"
         android:name="mx.com.evotae.appxtreme.main.dialogs.ui.VentasRecientes"
         android:label="VentasRecientes" />
+    <fragment
+        android:id="@+id/XTVentaSimFragment"
+        android:name="mx.com.evotae.appxtreme.main.ventasim.ui.XTVentaSimFragment"
+        android:label="Recarga Sim"
+        tools:layout="@layout/fragment_x_t_venta_sim">
+        <action
+            android:id="@+id/action_XTVentaSimFragment_to_ticketDialog"
+            app:destination="@id/ticketDialog" />
+        <argument
+            android:name="XTTaeModel"
+            app:argType="mx.com.evotae.appxtreme.main.tae.model.XTTaeModel" />
+    </fragment>
 </navigation>

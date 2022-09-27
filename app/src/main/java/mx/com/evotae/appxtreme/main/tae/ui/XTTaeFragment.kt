@@ -57,6 +57,12 @@ class XTTaeFragment : XTFragmentBase() {
         openItem()
     }
 
+//    private fun navigateToSim() {
+//        val xtTae = XTTaeModel(selectedItem.name, selectedItem.idCarrier, selectedItem.photo) //Mandar datos a traves de SafeArgs
+//        val navigate = XTTaeFragmentDirections.actionXTTaeDestToXTVentaSimFragment(xtTae)
+//        findNavController().navigate(navigate)
+//    }
+
     //Listeners initialization
     fun initListeners(){
         viewModelTae.getBrands("obtenerMarcas", "5f59d36da33080b4a60511d8292029a32c2b248351cded1aa41cd1303e7e4803")
@@ -73,14 +79,18 @@ class XTTaeFragment : XTFragmentBase() {
     }
 
     private fun handlebrand(): (ArrayList<XTResponseBrand>?) -> Unit = { data ->
-
         Toast.makeText(safeActivity, "Recarga Electrónica", Toast.LENGTH_SHORT).show()
     }
 
-
     fun openItem(){
         val xtTae = XTTaeModel(selectedItem.name, selectedItem.idCarrier, selectedItem.photo) //Mandar datos a traves de SafeArgs
+        val navigateToSim = XTTaeFragmentDirections.actionXTTaeDestToXTVentaSimFragment(xtTae)
         val navigate = XTTaeFragmentDirections.actionXTTaeDestToXTRecargaFragment(xtTae)
-        findNavController().navigate(navigate)
+        if (selectedItem.idCarrier.toString().contains("23")){
+            println("Seleccionaste SIMCARD desde TAE")
+            findNavController().navigate(navigateToSim)
+        }else{
+            findNavController().navigate(navigate)
+        }
     }
 }

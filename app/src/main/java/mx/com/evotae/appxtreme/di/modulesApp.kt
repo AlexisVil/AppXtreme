@@ -13,5 +13,6 @@ val modulesApp: List<Module> =
         moduleTransactions,
         moduleBankDeposit,
         moduleGetBanks,
-        modulePayBank
+        modulePayBank,
+        moduleSimSell
     )
