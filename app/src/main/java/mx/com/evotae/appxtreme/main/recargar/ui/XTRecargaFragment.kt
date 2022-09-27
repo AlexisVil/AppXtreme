@@ -151,7 +151,7 @@ class XTRecargaFragment : XTFragmentBase() {
 
     private fun renderSpinner() {
         val adapter =
-            ArrayAdapter(safeActivity, android.R.layout.simple_spinner_item, productos)
+            ArrayAdapter(safeActivity, R.layout.style_spinner, productos)
         spinnerProducto.adapter = adapter
         println("SPINNER -> $productos")
         spinnerProducto.onItemSelectedListener = object :
