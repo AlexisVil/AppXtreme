@@ -142,6 +142,7 @@ class XTVentaSimFragment : XTFragmentBase() {
             productos.add(it.descripcion)
         }
         renderSpinner()
+
     }
 
     private fun renderSpinner() {
@@ -159,6 +160,7 @@ class XTVentaSimFragment : XTFragmentBase() {
             ) {
                 val currentProduct = productos[position].toString()
                 idCurrentProduct = mapOfProducts[currentProduct].toString()
+                println(idCurrentProduct)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {

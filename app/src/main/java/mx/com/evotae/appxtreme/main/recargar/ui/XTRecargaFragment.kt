@@ -98,7 +98,7 @@ class XTRecargaFragment : XTFragmentBase() {
                             OPERATOR_APP.getPreferenceToString().toString(),
                             "80f8cf43-0d26-4876-966e-cc90e13e0f0c",
                             "",
-                            "40000",
+                            idCurrentProduct,
                             numeroCelular
                         )
                         etNumber.setText("")
@@ -147,6 +147,7 @@ class XTRecargaFragment : XTFragmentBase() {
             productos.add(it.descripcion)
         }
         renderSpinner()
+
     }
 
     private fun renderSpinner() {
@@ -164,6 +165,7 @@ class XTRecargaFragment : XTFragmentBase() {
             ) {
                 val currentProduct = productos[position].toString()
                 idCurrentProduct = mapOfProducts[currentProduct].toString()
+                println(idCurrentProduct)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {

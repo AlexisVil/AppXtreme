@@ -2,13 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="mx.com.evotae.appxtreme">
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
-
 
     <application
         android:requestLegacyExternalStorage="true"
@@ -27,23 +25,24 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+            </intent-filter>
+            <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
-
                 <data
                     android:host="www.tae.xtremecard.com.mx"
                     android:scheme="https" />
             </intent-filter>
-
         </activity>
+
         <activity
             android:name=".main.appactivity.XtremeActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
 
                 <data
                     android:host="www.tae.xtremecard.com.mx"
@@ -54,5 +53,4 @@
             android:screenOrientation="portrait"
             tools:replace="screenOrientation"/>
     </application>
-
 </manifest>
