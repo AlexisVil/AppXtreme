@@ -1,6 +1,9 @@
 package mx.com.evotae.appxtreme.main.tae.datasource
 
+import mx.com.evotae.appxtreme.main.tae.viewmodel.XTViewModelTae
+
 class XTDataCarrier {
+
     companion object {
         val carriersMap = mutableMapOf<String, String>(
             "1" to "TELCEL",

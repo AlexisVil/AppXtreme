@@ -1,11 +1,9 @@
 package servicecordinator.apis
 
-import kotlinx.coroutines.Deferred
-import retrofit2.Response
+import retrofit2.Call
 import retrofit2.http.POST
 import retrofit2.http.Query
 import servicecordinator.model.response.XTResponsePayBank
-import servicecordinator.retrofit.model.dataclass.XTResponseGeneral
 import servicecordinator.router.Routers
 
 interface XTPayBankApi {
@@ -27,5 +25,5 @@ interface XTPayBankApi {
         @Query("servicios") servicios: String?,
         @Query("comentarioView") comentarioView: String?,
         @Query("regid") regid: String?
-    ): Deferred<Response<XTResponseGeneral<XTResponsePayBank>>>
+    ): Call<XTResponsePayBank>
 }

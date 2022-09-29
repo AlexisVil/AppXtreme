@@ -77,7 +77,7 @@ class XTUserFragment : XTFragmentBase() {
                 //crearDialogo()
                 viewModelCheckBalance.checkBalance(
                     "consultaSaldo",
-                    "2cb4fffb7223c1518c0fff47f1011dd2b1f2f26431f445f0db06ec99c56ae72e"
+                    FIRMA_APP.getPreferenceToString().toString()
                 )
             }
             btnVentas.setOnClickListener {

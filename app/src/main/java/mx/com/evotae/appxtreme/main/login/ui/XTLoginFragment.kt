@@ -92,6 +92,7 @@ class XTLoginFragment : XTFragmentBase() {
         OPERATOR_APP.savePreferencesToString(operatorTxt.text.toString())
         IDPDV.savePreferencesToString(data?.idPv.toString())
         NOMBRE_PDV.savePreferencesToString(data?.nombrePv.toString())
+        FIRMA_APP.savePreferencesToString(data?.firma.toString())
         navigateToLoginSucces()
         Toast.makeText(
             safeActivity,

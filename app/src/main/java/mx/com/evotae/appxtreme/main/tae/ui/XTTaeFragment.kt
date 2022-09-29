@@ -11,6 +11,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import mx.com.evotae.appxtreme.databinding.FragmentXTTaeBinding
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
+import mx.com.evotae.appxtreme.framework.util.extensions.getPreferenceToString
+import mx.com.evotae.appxtreme.main.recargar.viewmodel.XTViewModelProductList
 import mx.com.evotae.appxtreme.main.tae.adapter.XTTaeAdapter
 import mx.com.evotae.appxtreme.main.tae.datasource.XTDataCarrier
 import mx.com.evotae.appxtreme.main.tae.repository.XTRepositoryTaeProvider
@@ -18,11 +20,13 @@ import mx.com.evotae.appxtreme.main.tae.model.XTTaeModel
 import mx.com.evotae.appxtreme.main.tae.viewmodel.XTViewModelTae
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import servicecordinator.model.response.XTResponseBrand
+import servicecordinator.retrofit.managercall.FIRMA_APP
 
 class XTTaeFragment : XTFragmentBase() {
     lateinit var binding: FragmentXTTaeBinding
     private lateinit var safeActivity: Activity
     private lateinit var selectedItem: XTTaeModel
+    private val viewModelProductList: XTViewModelProductList by sharedViewModel()
     private val viewModelTae: XTViewModelTae by sharedViewModel() //Encapsula el viewModel
     var idSelected: String =""
 
@@ -44,7 +48,6 @@ class XTTaeFragment : XTFragmentBase() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         //Observers
         initObservers()
         //Listeners
@@ -57,15 +60,9 @@ class XTTaeFragment : XTFragmentBase() {
         openItem()
     }
 
-//    private fun navigateToSim() {
-//        val xtTae = XTTaeModel(selectedItem.name, selectedItem.idCarrier, selectedItem.photo) //Mandar datos a traves de SafeArgs
-//        val navigate = XTTaeFragmentDirections.actionXTTaeDestToXTVentaSimFragment(xtTae)
-//        findNavController().navigate(navigate)
-//    }
-
     //Listeners initialization
     fun initListeners(){
-        viewModelTae.getBrands("obtenerMarcas", "5f59d36da33080b4a60511d8292029a32c2b248351cded1aa41cd1303e7e4803")
+        viewModelTae.getBrands("obtenerMarcas", FIRMA_APP.getPreferenceToString().toString())
         binding.recyclerTae.layoutManager = GridLayoutManager(safeActivity, 2)
         binding.recyclerTae.adapter = XTTaeAdapter(XTRepositoryTaeProvider.taeList) {onItemSelected(it)}
     }
@@ -80,6 +77,7 @@ class XTTaeFragment : XTFragmentBase() {
 
     private fun handlebrand(): (ArrayList<XTResponseBrand>?) -> Unit = { data ->
         Toast.makeText(safeActivity, "Recarga Electrónica", Toast.LENGTH_SHORT).show()
+
     }
 
     fun openItem(){

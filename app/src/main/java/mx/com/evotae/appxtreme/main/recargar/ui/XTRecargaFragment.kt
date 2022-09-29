@@ -25,6 +25,7 @@ import mx.com.evotae.appxtreme.main.tae.datasource.XTDataCarrier
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import servicecordinator.model.response.XTResponseProductList
 import servicecordinator.model.response.XTResponseSellRecharge
+import servicecordinator.retrofit.managercall.FIRMA_APP
 import servicecordinator.retrofit.managercall.OPERATOR_APP
 import servicecordinator.retrofit.managercall.PWD_APP
 import servicecordinator.retrofit.managercall.USER_APP
@@ -75,7 +76,7 @@ class XTRecargaFragment : XTFragmentBase() {
         viewModelProductList.getProductList(
             "listaProductos",
             nombreProducto,
-            "2cb4fffb7223c1518c0fff47f1011dd2b1f2f26431f445f0db06ec99c56ae72e"
+            FIRMA_APP.getPreferenceToString().toString()
         )
 
         binding.apply {

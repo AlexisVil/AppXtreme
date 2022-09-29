@@ -19,6 +19,7 @@ const val PWD_APP : String = "PWD_APP"
 const val OPERATOR_APP: String = "OPERATOR_APP"
 const val IDPDV : String = "IDPV"
 const val NOMBRE_PDV: String = "NOMBRE_PDV"
+const val FIRMA_APP: String = "FIRMA_APP"
 private const val MESSAGE_ERROR_GENERAL: String =
     "Por el momento no es posible realizar esta operación, intentelo más tarde."
 private const val MESSAGE_ERROR_GENERAL_NETWORK: String =

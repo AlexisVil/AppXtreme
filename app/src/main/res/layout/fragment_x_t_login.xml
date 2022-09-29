@@ -129,18 +129,27 @@
                 android:orientation="horizontal"
                 android:weightSum="2">
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/signin"
-                    android:layout_width="0dp"
-                    android:layout_height="52dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/btn_shadow"
-                    android:text="@string/btnLogin"
-                    android:textAllCaps="false"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginVertical="16dp"
+                    android:gravity="center"
+                    android:paddingVertical="16dp"
                     android:visibility="visible"
+                    android:text="@string/btnLogin"
                     android:textColor="@color/letters_2"
+                    android:textAllCaps="false"
                     android:textSize="16dp"
-                    app:backgroundTint="#ffffff" />
+                    app:cornerRadius="20dp"
+                    app:backgroundTint="#ffffff"
+                    app:layout_constraintTop_toBottomOf="@id/operatorTxt"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
