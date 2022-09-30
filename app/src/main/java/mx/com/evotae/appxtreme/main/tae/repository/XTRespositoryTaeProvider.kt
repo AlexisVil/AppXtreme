@@ -32,6 +32,11 @@ class XTRepositoryTaeProvider {
                 "https://http2.mlstatic.com/D_NQ_NP_795969-MLM32821376088_112019-O.jpg"
             ),
             XTTaeModel(
+                "Bait",
+                43,
+                "https://selectra.mx/sites/selectra.mx/files/images/logos/bait-350x183.png"
+            ),
+            XTTaeModel(
                 "Virgin Mobile",
                 39,
                 "https://brandslogos.com/wp-content/uploads/images/large/virgin-logo.png"
@@ -55,11 +60,6 @@ class XTRepositoryTaeProvider {
                 "Space movil",
                 44,
                 "https://pbs.twimg.com/profile_images/1324014137559588864/ZCpX6K1s_400x400.jpg"
-            ),
-            XTTaeModel(
-                "Bait",
-                43,
-                "https://selectra.mx/sites/selectra.mx/files/images/logos/bait-350x183.png"
             ),
             XTTaeModel(
                 "Diri",
