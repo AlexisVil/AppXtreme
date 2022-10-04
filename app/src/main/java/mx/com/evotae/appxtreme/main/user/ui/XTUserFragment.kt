@@ -59,6 +59,10 @@ class XTUserFragment : XTFragmentBase() {
     }
 
     fun initListeners() {
+        viewModelCheckBalance.checkBalance(
+            "consultaSaldo",
+            FIRMA_APP.getPreferenceToString().toString()
+        )
         binding.apply {
             tvOperator.text = NOMBRE_PDV.getPreferenceToString().toString()
             tvIdPDV.text = IDPDV.getPreferenceToString().toString()
@@ -72,13 +76,6 @@ class XTUserFragment : XTFragmentBase() {
             btnPago.setOnClickListener {
                 val navigate = XTUserFragmentDirections.actionXTUserDestToReportarPagoFragment()
                 findNavController().navigate(navigate)
-            }
-            btnSaldo.setOnClickListener {
-                //crearDialogo()
-                viewModelCheckBalance.checkBalance(
-                    "consultaSaldo",
-                    FIRMA_APP.getPreferenceToString().toString()
-                )
             }
             btnVentas.setOnClickListener {
                 viewModelTransactions.transactions(
@@ -100,8 +97,10 @@ class XTUserFragment : XTFragmentBase() {
             it?.get(1)?.tipoBolsa.toString(),
             it?.get(1)?.saldoBolsa.toString()
         )
-        var mensaje = saldos.get(0) + ": " + saldos.get(1) +" \n" + saldos.get(2) + ": " + saldos.get(3)
-        crearDialogo(mensaje)
+        //var mensaje = saldos.get(0) + ": " + saldos.get(1) +" \n" + saldos.get(2) + ": " + saldos.get(3)
+        binding.tvSaldoRecarga.text = "$" + saldos.get(1)
+        binding.tvSaldoServicios.text = "$" + saldos.get(3)
+        //crearDialogo(mensaje)
     }
 
     private fun initObservers() {
@@ -127,17 +126,5 @@ class XTUserFragment : XTFragmentBase() {
 //            transactionsList.add(objeto)
 //        }
 //        println("LISTA ULTIMOS MOV -> $transactionsList")
-    }
-
-    fun crearDialogo(saldo: String) {
-        val ventanaDialogo: AlertDialog = AlertDialog.Builder(safeActivity)
-            .setTitle("Saldo Disponible")
-            .setMessage(saldo)
-            .setIcon(R.drawable.ic_check_balance)
-            .setPositiveButton("Aceptar") { _, _ ->
-                Toast.makeText(safeActivity, "Saldo Consultado", Toast.LENGTH_SHORT).show()
-            }
-            .create()
-        ventanaDialogo.show()
     }
 }

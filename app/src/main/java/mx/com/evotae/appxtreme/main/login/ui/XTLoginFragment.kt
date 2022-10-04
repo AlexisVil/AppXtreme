@@ -61,7 +61,7 @@ class XTLoginFragment : XTFragmentBase() {
                 if (userTxt.text.toString().isEmpty()) {
                     userTxt.requestFocus()
                     userTxt.error = "Ingrese Usuario"
-                } else if (passTxt.text.toString().length < 6) {
+                } else if (passTxt.text.toString().isEmpty()) {
                     passTxt.requestFocus()
                     passTxt.error = "Contraseña incorrecta"
                 } else if (operatorTxt.text.toString().isEmpty()) {

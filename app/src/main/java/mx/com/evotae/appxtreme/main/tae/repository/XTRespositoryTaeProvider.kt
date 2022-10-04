@@ -5,7 +5,7 @@ import mx.com.evotae.appxtreme.main.tae.model.XTTaeModel
 class XTRepositoryTaeProvider {
     companion object {
 
-        val taeList = listOf<XTTaeModel>(
+        val taeListSim = listOf<XTTaeModel>(
             XTTaeModel(
                 "Telcel",
                 1,

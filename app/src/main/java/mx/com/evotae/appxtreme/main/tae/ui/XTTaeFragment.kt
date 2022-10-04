@@ -24,14 +24,12 @@ import servicecordinator.model.response.XTResponseBrand
 import servicecordinator.retrofit.managercall.FIRMA_APP
 
 class XTTaeFragment : XTFragmentBase() {
-    var isSimCard: Boolean = true
+    var isSimCard: Boolean = false
     lateinit var binding: FragmentXTTaeBinding
     private lateinit var safeActivity: Activity
     private lateinit var selectedItem: XTTaeModel
-    private val viewModelProductList: XTViewModelProductList by sharedViewModel()
     private val viewModelTae: XTViewModelTae by sharedViewModel() //Encapsula el viewModel
-    var idSelected: String =""
-
+    var idSelected: String = ""
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -57,50 +55,59 @@ class XTTaeFragment : XTFragmentBase() {
         initListeners()
     }
 
-    fun onItemSelected(taeModel: XTTaeModel){
+    fun onItemSelected(taeModel: XTTaeModel) {
         idSelected = taeModel.idCarrier.toString()
         selectedItem = taeModel
         openItem()
     }
 
     //Listeners initialization
-    fun initListeners(){
+    fun initListeners() {
         viewModelTae.getBrands("obtenerMarcas", FIRMA_APP.getPreferenceToString().toString())
-        binding.recyclerTae.layoutManager = GridLayoutManager(safeActivity, 2)
-        //binding.recyclerTae.adapter = XTTaeAdapter(XTRepositoryTaeProvider.taeList) {onItemSelected(it)}
-        println("Booleano SIM = $isSimCard")
+        if (isSimCard){
+            binding.recyclerTae.layoutManager = GridLayoutManager(safeActivity, 2)
+            binding.recyclerTae.adapter = XTTaeAdapter(XTRepositoryTaeProvider.taeListSim) {onItemSelected(it)}
+            println("SIMCARD desde Listener if = $isSimCard")
+        }else{
+            binding.recyclerTae.layoutManager = GridLayoutManager(safeActivity, 2)
+            binding.recyclerTae.adapter = XTTaeAdapter(XTTaeBrandsProvider.taeList) {onItemSelected(it)}
+            println("SIMCARD desde Listener else = $isSimCard")
+        }
+
     }
 
     //ViewModels
     //observers
-    fun initObservers(){
-        viewModelTae.launchLoader.observe(viewLifecycleOwner,handleLoader())
-        viewModelTae.launchError.observe(viewLifecycleOwner,handleError())
-        viewModelTae.getBrands.observe(viewLifecycleOwner,handlebrand())
+    fun initObservers() {
+        viewModelTae.launchLoader.observe(viewLifecycleOwner, handleLoader())
+        viewModelTae.launchError.observe(viewLifecycleOwner, handleError())
+        viewModelTae.getBrands.observe(viewLifecycleOwner, handlebrand())
     }
 
     private fun handlebrand(): (ArrayList<XTResponseBrand>?) -> Unit = { objetosArray ->
         objetosArray?.forEach { dataMarca ->
-            if (dataMarca.idCarrier.equals("23")){
+            if (dataMarca.carrier.equals("SIMCARD")){
                 isSimCard = true
-                println("Booleano desde handle: $isSimCard")
-                binding.recyclerTae.adapter = XTTaeAdapter(XTTaeBrandsProvider.taeList) {onItemSelected(it)}
-            }
-            else{
-                binding.recyclerTae.adapter = XTTaeAdapter(XTRepositoryTaeProvider.taeList) {onItemSelected(it)}
+                println("Estado de simcard debe ser false aqui =  $isSimCard")
+                println("HAY SIMCARD")
             }
         }
         Toast.makeText(safeActivity, "Recarga Electrónica", Toast.LENGTH_SHORT).show()
     }
 
-    fun openItem(){
-        val xtTae = XTTaeModel(selectedItem.name, selectedItem.idCarrier, selectedItem.photo) //Mandar datos a traves de SafeArgs
+    fun openItem() {
+        val xtTae = XTTaeModel(
+            selectedItem.name,
+            selectedItem.idCarrier,
+            selectedItem.photo
+        ) //Mandar datos a traves de SafeArgs
         val navigateToSim = XTTaeFragmentDirections.actionXTTaeDestToXTVentaSimFragment(xtTae)
         val navigate = XTTaeFragmentDirections.actionXTTaeDestToXTRecargaFragment(xtTae)
-        if (selectedItem.idCarrier.toString() === "23"){
-            println("Seleccionaste SIMCARD desde TAE")
+        if (selectedItem.idCarrier.toString().contains("23")) {
+            println("Seleccionaste SIMCARD desde TAE y el id es: ${selectedItem.idCarrier}")
             findNavController().navigate(navigateToSim)
-        }else{
+        } else {
+            println("No seleccionaste SIMCARD, seleccionaste: ${selectedItem.name} & ${selectedItem.idCarrier}")
             findNavController().navigate(navigate)
         }
     }
