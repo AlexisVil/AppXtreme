@@ -34,6 +34,156 @@ class XTRepositoryServicesProvider {
                 "Netflix",
                 180,
                 "https://brandemia.org/sites/default/files/sites/default/files/icono_netflix_nuevo.jpg"
+            ),
+            XTServicesModel(
+                "TESTRECARGAFEE",
+                13,
+                ""
+            ),
+            XTServicesModel(
+                "Axtel",
+                105,
+                ""
+            ),
+            XTServicesModel(
+                "Dish",
+                106,
+                ""
+            ),
+            XTServicesModel(
+                "Factura AT&T",
+                107,
+                ""
+            ),
+            XTServicesModel(
+                "TELNOR",
+                108,
+                ""
+            ),
+            XTServicesModel(
+                "Megacable",
+                109,
+                ""
+            ),
+            XTServicesModel(
+                "Telecable",
+                110,
+                ""
+            ),
+            XTServicesModel(
+                "Start TV",
+                111,
+                ""
+            ),
+            XTServicesModel(
+                "Maxcom",
+                112,
+                ""
+            ),
+            XTServicesModel(
+                "Gigacable",
+                113,
+                ""
+            ),
+            XTServicesModel(
+                "Cablemas",
+                115,
+                ""
+            ),
+            XTServicesModel(
+                "CABLEVISION MONTERREY",
+                116,
+                ""
+            ),
+            XTServicesModel(
+                "CABLEVISION SALTILLO",
+                117,
+                ""
+            ),
+            XTServicesModel(
+                "Total Play",
+                118,
+                ""
+            ),
+            XTServicesModel(
+                "Factura Movistar",
+                119,
+                ""
+            ),
+            XTServicesModel(
+                "Factura Nextel",
+                120,
+                ""
+            ),
+            XTServicesModel(
+                "Infonavit",
+                121,
+                ""
+            ),
+            XTServicesModel(
+                "NATURGY GAS NATURAL",
+                123,
+                ""
+            ),
+            XTServicesModel(
+                "ADOSAPACO OAXACA",
+                124,
+                ""
+            ),
+            XTServicesModel(
+                "AGUAKAN QUINTANA ROO",
+                125,
+                ""
+            ),
+            XTServicesModel(
+                "JMAS CHIHUHUA",
+                126,
+                ""
+            ),
+            XTServicesModel(
+                "AMD DURANGO",
+                127,
+                ""
+            ),
+            XTServicesModel(
+                "SADM MONTERREY",
+                128,
+                ""
+            ),
+            XTServicesModel(
+                "CMAPAS SALAMANCA",
+                129,
+                ""
+            ),
+            XTServicesModel(
+                "INTERAPAS SAN LUIS POTOSI",
+                130,
+                ""
+            ),
+            XTServicesModel(
+                "JUMAPA CELAYA",
+                131,
+                ""
+            ),
+            XTServicesModel(
+                "SIAPA GUADALAJARA",
+                135,
+                ""
+            ),
+            XTServicesModel(
+                "GOBIERNO CHIHUAHUA",
+                136,
+                ""
+            ),
+            XTServicesModel(
+                "GOBIERNO ESTADO DE MEXICO",
+                137,
+                ""
+            ),
+            XTServicesModel(
+                "GOBIERNO HIDALGO",
+                138,
+                ""
             )
         )
     }

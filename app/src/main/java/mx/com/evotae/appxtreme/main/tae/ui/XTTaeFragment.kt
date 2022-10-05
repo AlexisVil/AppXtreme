@@ -30,6 +30,7 @@ class XTTaeFragment : XTFragmentBase() {
     private lateinit var selectedItem: XTTaeModel
     private val viewModelTae: XTViewModelTae by sharedViewModel() //Encapsula el viewModel
     var idSelected: String = ""
+    var dynamicListCarriers = arrayListOf<XTTaeModel>()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -63,17 +64,10 @@ class XTTaeFragment : XTFragmentBase() {
 
     //Listeners initialization
     fun initListeners() {
-        viewModelTae.getBrands("obtenerMarcas", FIRMA_APP.getPreferenceToString().toString())
-        if (isSimCard){
-            binding.recyclerTae.layoutManager = GridLayoutManager(safeActivity, 2)
-            binding.recyclerTae.adapter = XTTaeAdapter(XTRepositoryTaeProvider.taeListSim) {onItemSelected(it)}
-            println("SIMCARD desde Listener if = $isSimCard")
-        }else{
-            binding.recyclerTae.layoutManager = GridLayoutManager(safeActivity, 2)
-            binding.recyclerTae.adapter = XTTaeAdapter(XTTaeBrandsProvider.taeList) {onItemSelected(it)}
-            println("SIMCARD desde Listener else = $isSimCard")
-        }
 
+        viewModelTae.getBrands("obtenerMarcas", FIRMA_APP.getPreferenceToString().toString())
+        binding.recyclerTae.layoutManager = GridLayoutManager(safeActivity, 2)
+        binding.recyclerTae.adapter = XTTaeAdapter(XTRepositoryTaeProvider.taeListSim) { onItemSelected(it) }
     }
 
     //ViewModels
@@ -84,12 +78,17 @@ class XTTaeFragment : XTFragmentBase() {
         viewModelTae.getBrands.observe(viewLifecycleOwner, handlebrand())
     }
 
-    private fun handlebrand(): (ArrayList<XTResponseBrand>?) -> Unit = { objetosArray ->
-        objetosArray?.forEach { dataMarca ->
-            if (dataMarca.carrier.equals("SIMCARD")){
-                isSimCard = true
-                println("Estado de simcard debe ser false aqui =  $isSimCard")
-                println("HAY SIMCARD")
+    private fun handlebrand(): (ArrayList<XTResponseBrand>?) -> Unit = { objetoArray ->
+
+        objetoArray?.forEach { dataObject ->
+            if (dataObject.categoria.equals("TOPUP") && dataObject.carrier.equals("ATT/UNEFON")){
+                //XTTaeBrandsProvider.taeList.removeAt(XTTaeBrandsProvider.taeList.indexOfFirst { it.name == taes.name })
+                var indexLista = XTTaeBrandsProvider.taeList.indexOfFirst {
+                    it.idCarrier == dataObject.idCarrier.toInt()
+                }
+                XTTaeBrandsProvider.taeList.removeAt(indexLista)
+                println("Indice de ATT/UNEFON en Provider es: $indexLista")
+                println(XTTaeBrandsProvider.taeList)
             }
         }
         Toast.makeText(safeActivity, "Recarga Electrónica", Toast.LENGTH_SHORT).show()

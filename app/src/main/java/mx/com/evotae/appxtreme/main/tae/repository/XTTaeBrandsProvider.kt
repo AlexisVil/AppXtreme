@@ -10,7 +10,7 @@ import servicecordinator.model.response.XTResponseBrand
 class XTTaeBrandsProvider : XTFragmentBase() {
     companion object {
 
-        val taeList = listOf<XTTaeModel>(
+        val taeList = mutableListOf<XTTaeModel>(
             XTTaeModel(
                 "Telcel",
                 1,
@@ -85,6 +85,66 @@ class XTTaeBrandsProvider : XTFragmentBase() {
                 "Valor Móvil",
                 36,
                 "https://valortelecom.mx/ukokreew/2022/03/cropped-logo-gris-02.png"
+            ),
+            XTTaeModel(
+                "Recarga SIM",
+                23,
+                "https://cdn-icons-png.flaticon.com/512/4298/4298126.png"
+            ),
+            XTTaeModel(
+                "Test Recarga",
+                0,
+                ""
+            ),
+            XTTaeModel(
+                "WiMoMovil",
+                37,
+                ""
+            ),
+            XTTaeModel(
+                "MazTiempo",
+                40,
+                ""
+            ),
+            XTTaeModel(
+                "NetWey",
+                35,
+                ""
+            ),
+            XTTaeModel(
+                "Gugacom",
+                34,
+                ""
+            ),
+            XTTaeModel(
+                "FreedomPop",
+                33,
+                ""
+            ),
+            XTTaeModel(
+                "FlashMobile",
+                32,
+                ""
+            ),
+            XTTaeModel(
+                "ComparTfon",
+                31,
+                ""
+            ),
+            XTTaeModel(
+                "WEEX",
+                24,
+                ""
+            ),
+            XTTaeModel(
+                "CIERTO",
+                22,
+                ""
+            ),
+            XTTaeModel(
+                "MASRECARGA",
+                20,
+                ""
             )
         )
     }
