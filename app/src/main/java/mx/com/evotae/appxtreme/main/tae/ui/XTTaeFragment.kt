@@ -12,10 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import mx.com.evotae.appxtreme.databinding.FragmentXTTaeBinding
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
 import mx.com.evotae.appxtreme.framework.util.extensions.getPreferenceToString
-import mx.com.evotae.appxtreme.main.recargar.viewmodel.XTViewModelProductList
 import mx.com.evotae.appxtreme.main.tae.adapter.XTTaeAdapter
-import mx.com.evotae.appxtreme.main.tae.datasource.XTDataCarrier
-import mx.com.evotae.appxtreme.main.tae.repository.XTRepositoryTaeProvider
 import mx.com.evotae.appxtreme.main.tae.model.XTTaeModel
 import mx.com.evotae.appxtreme.main.tae.repository.XTTaeBrandsProvider
 import mx.com.evotae.appxtreme.main.tae.viewmodel.XTViewModelTae
@@ -31,6 +28,7 @@ class XTTaeFragment : XTFragmentBase() {
     private val viewModelTae: XTViewModelTae by sharedViewModel() //Encapsula el viewModel
     var idSelected: String = ""
     var dynamicListCarriers = arrayListOf<XTTaeModel>()
+    lateinit var elemento : XTTaeModel
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -64,10 +62,7 @@ class XTTaeFragment : XTFragmentBase() {
 
     //Listeners initialization
     fun initListeners() {
-
         viewModelTae.getBrands("obtenerMarcas", FIRMA_APP.getPreferenceToString().toString())
-        binding.recyclerTae.layoutManager = GridLayoutManager(safeActivity, 2)
-        binding.recyclerTae.adapter = XTTaeAdapter(XTRepositoryTaeProvider.taeListSim) { onItemSelected(it) }
     }
 
     //ViewModels
@@ -79,19 +74,20 @@ class XTTaeFragment : XTFragmentBase() {
     }
 
     private fun handlebrand(): (ArrayList<XTResponseBrand>?) -> Unit = { objetoArray ->
-
+        dynamicListCarriers.clear()
         objetoArray?.forEach { dataObject ->
-            if (dataObject.categoria.equals("TOPUP") && dataObject.carrier.equals("ATT/UNEFON")){
-                //XTTaeBrandsProvider.taeList.removeAt(XTTaeBrandsProvider.taeList.indexOfFirst { it.name == taes.name })
+            if (dataObject.categoria.equals("TOPUP")){
                 var indexLista = XTTaeBrandsProvider.taeList.indexOfFirst {
                     it.idCarrier == dataObject.idCarrier.toInt()
                 }
-                XTTaeBrandsProvider.taeList.removeAt(indexLista)
-                println("Indice de ATT/UNEFON en Provider es: $indexLista")
-                println(XTTaeBrandsProvider.taeList)
+                elemento = XTTaeBrandsProvider.taeList.get(indexLista)
+                //println("elemento: $elemento Indice: $indexLista")
+                dynamicListCarriers.add(elemento)
             }
         }
-        Toast.makeText(safeActivity, "Recarga Electrónica", Toast.LENGTH_SHORT).show()
+        renderizarLista(dynamicListCarriers)
+        println("Filter Carriers : $dynamicListCarriers")
+        Toast.makeText(safeActivity, "Obteniendo catálogo de recarga electrónica", Toast.LENGTH_SHORT).show()
     }
 
     fun openItem() {
@@ -109,5 +105,9 @@ class XTTaeFragment : XTFragmentBase() {
             println("No seleccionaste SIMCARD, seleccionaste: ${selectedItem.name} & ${selectedItem.idCarrier}")
             findNavController().navigate(navigate)
         }
+    }
+    fun renderizarLista(marcas: List<XTTaeModel>){
+        binding.recyclerTae.layoutManager = GridLayoutManager(safeActivity, 2)
+        binding.recyclerTae.adapter = XTTaeAdapter(marcas) { onItemSelected(it) }
     }
 }

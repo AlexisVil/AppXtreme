@@ -90,7 +90,6 @@ class XTRecargaFragment : XTFragmentBase() {
                         Toast.makeText(safeActivity, "No coincide número", Toast.LENGTH_SHORT)
                             .show()
                     } else {
-                        //println("Recarga exitosa")
                         customProgressDialog()
                         viewModelSellRecharge.sellRecharge(
                             "ventaRecarga",

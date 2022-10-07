@@ -14,19 +14,19 @@ class XTViewModelTae(private val cuBrands: XTUsesCasesBrand) : XTViewModelBase()
     val getBrands: LiveData<ArrayList<XTResponseBrand>>
         get() = getBrandsMLD
 
-    fun getBrands(idOperacion: String, firma: String){
+    fun getBrands(idOperacion: String, firma: String) {
         viewModelScope.launch {
             val resultGetBrands = cuBrands.getBrands(idOperacion, firma)
-            if(resultGetBrands.sucess){
+            if (resultGetBrands.sucess) {
                 resultGetBrands?.data?.result?.forEach {
                     "CARRIER -> ${it.carrier}".log()
-                    "ID CARRIER -> ${it.idCarrier}".log()
+//                    "ID CARRIER -> ${it.idCarrier}".log()
                 }
 
                 resultGetBrands.data?.result?.let {
                     getBrandsMLD.postValue(it)
                 }
-            }else {
+            } else {
                 resultGetBrands.exception.let {
                     showError(it?.message.toString())
                 }

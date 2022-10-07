@@ -50,6 +50,7 @@
     <string name="btn_pago">Reportar Pago</string>
     <string name="btn_ventas">Ventas recientes</string>
     <string name="btnLogout">Cerrar Sesión</string>
+    <string name="avaliable">Saldo Actual</string>
 
     <!--SearchView-->
     <string name="search">Buscar</string>

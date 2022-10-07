@@ -87,4 +87,5 @@ dependencies {
     implementation 'com.google.zxing:core:3.3.0'
     //Coil SVG
     implementation("io.coil-kt:coil-svg:1.2.0")
+
 }

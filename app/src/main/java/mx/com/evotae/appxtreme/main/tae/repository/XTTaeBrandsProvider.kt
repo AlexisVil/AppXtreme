@@ -94,57 +94,62 @@ class XTTaeBrandsProvider : XTFragmentBase() {
             XTTaeModel(
                 "Test Recarga",
                 0,
-                ""
+                "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/testing-logo-design-template-ce84480d61b3db9a8e1522a99875832f_screen.jpg?ts=1615794516"
             ),
             XTTaeModel(
                 "WiMoMovil",
                 37,
-                ""
+                "https://wimotelecom.com/wp-content/uploads/2020/09/logo_wimo_fondo_blue.png"
             ),
             XTTaeModel(
                 "MazTiempo",
                 40,
-                ""
+                "https://i.blogs.es/1e3a67/650_1000_maz-tiempo/450_1000.png"
             ),
             XTTaeModel(
                 "NetWey",
                 35,
-                ""
+                "https://secure.netwey.com.mx/site/img/Logotipo-Netwey-Black.svg"
             ),
             XTTaeModel(
                 "Gugacom",
                 34,
-                ""
+                "https://www.gugacom.com/wp-content/uploads/2020/01/gugacom_fina_300x100.png"
             ),
             XTTaeModel(
                 "FreedomPop",
                 33,
-                ""
+                "https://upload.wikimedia.org/wikipedia/commons/c/c8/Freedompop_logo.png"
             ),
             XTTaeModel(
                 "FlashMobile",
                 32,
-                ""
+                "https://play-lh.googleusercontent.com/R0lyJSbdzfDmKC5-FxMTe_HoVCboZvdbUiL1xk8v1c9nTnZBizqK2gm_7HgF6XO4Geep"
             ),
             XTTaeModel(
                 "ComparTfon",
                 31,
-                ""
+                "https://www.tuexpertomovil.com/wp-content/uploads/2020/11/opiniones-compartfon-2020-1200x800.jpg"
             ),
             XTTaeModel(
                 "WEEX",
                 24,
-                ""
+                "https://logovtor.com/wp-content/uploads/2020/10/weex-mx-logo-vector.png"
             ),
             XTTaeModel(
                 "CIERTO",
                 22,
-                ""
+                "https://i.blogs.es/b1d452/cierto-logo/1366_2000.jpg"
             ),
             XTTaeModel(
                 "MASRECARGA",
                 20,
-                ""
+                "http://megatae.com/images/-recarga.JPG"
+            ),
+            XTTaeModel(
+                "MiMovil",
+                26,
+                "https://cdn-pcu.s3-us-west-2.amazonaws.com/images/main-logo.png"
             )
         )
     }

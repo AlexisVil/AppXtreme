@@ -1,18 +1,24 @@
 package mx.com.evotae.appxtreme.main.user.ui
 
+import android.animation.ValueAnimator
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.DecelerateInterpolator
+import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_reportar_pago.*
 import kotlinx.android.synthetic.main.item_button.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 import mx.com.evotae.appxtreme.R
 import mx.com.evotae.appxtreme.databinding.FragmentXTUserBinding
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
@@ -36,6 +42,8 @@ class XTUserFragment : XTFragmentBase() {
     private val viewModelCheckBalance: XTViewModelCheckBalance by sharedViewModel()
     private val viewModelTransactions: XTViewModelTransactions by sharedViewModel()
     var transactionsList = mutableListOf<String>()
+    var recarga: Double = 0.0
+    var servicio: Double = 0.0
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -86,21 +94,30 @@ class XTUserFragment : XTFragmentBase() {
                 )
                 //VentasRecientes(transactionsList).show(parentFragmentManager, "Dialog")
             }
-
         }
     }
 
     fun handleCheckBalance(): (ArrayList<XTResponseCheckBalance>?) -> Unit = {
-        val saldos = arrayOf(
-            it?.get(0)?.tipoBolsa.toString(),
-            it?.get(0)?.saldoBolsa.toString(),
-            it?.get(1)?.tipoBolsa.toString(),
-            it?.get(1)?.saldoBolsa.toString()
-        )
-        //var mensaje = saldos.get(0) + ": " + saldos.get(1) +" \n" + saldos.get(2) + ": " + saldos.get(3)
-        binding.tvSaldoRecarga.text = "$" + saldos.get(1)
-        binding.tvSaldoServicios.text = "$" + saldos.get(3)
-        //crearDialogo(mensaje)
+        it?.forEach { objeto ->
+            when (objeto.tipoBolsa) {
+                "Recargas" -> recarga = objeto.saldoBolsa
+                "Servicios" -> servicio = objeto.saldoBolsa
+            }
+        }
+        animateText(0F, recarga.toFloat(), binding.tvSaldoRecarga)
+        animateText(0F, servicio.toFloat(), binding.tvSaldoServicios)
+    }
+
+    fun animateText(initValue: Float, finalValue: Float, tv: TextView) {
+        val valueAnimator = ValueAnimator.ofFloat(initValue,finalValue)
+        valueAnimator.duration = resources.getInteger(android.R.integer.config_longAnimTime).toLong()
+        valueAnimator.interpolator = DecelerateInterpolator()
+        valueAnimator.addUpdateListener {
+            val animatedValue = it.animatedValue as Float
+            val rounded = String.format("%.2f", animatedValue).toFloat()
+            tv.text = "$" + rounded
+        }
+        valueAnimator.start()
     }
 
     private fun initObservers() {
@@ -110,11 +127,11 @@ class XTUserFragment : XTFragmentBase() {
         viewModelCheckBalance.checkBalance.observe(viewLifecycleOwner, handleCheckBalance())
         //Observadores Ultimos movimientos Last Transactions
         viewModelTransactions.launchLoader.observe(viewLifecycleOwner, handleLoader())
-        viewModelTransactions.launchError.observe(viewLifecycleOwner,handleError())
+        viewModelTransactions.launchError.observe(viewLifecycleOwner, handleError())
         viewModelTransactions.transactions.observe(viewLifecycleOwner, handleTransactions())
     }
 
-    private fun handleTransactions(): (ArrayList<XTResponseTransactions>?) -> Unit= { dataArray ->
+    private fun handleTransactions(): (ArrayList<XTResponseTransactions>?) -> Unit = { dataArray ->
         dataArray?.forEach {
             var element = "${it.fecha}\n ${it.numero} \n ${it.descripcion}"
             println(element)
