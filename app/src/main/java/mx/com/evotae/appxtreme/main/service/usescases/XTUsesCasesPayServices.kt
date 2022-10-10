@@ -1,7 +1,6 @@
 package mx.com.evotae.appxtreme.main.service.usescases
 
-import mx.com.evotae.appxtreme.main.recargar.repository.XTRepositorySellRecharge
-import mx.com.evotae.appxtreme.main.recargar.usescases.XTUsesCasesSellRecharge
+
 import mx.com.evotae.appxtreme.main.service.repository.XTRepositoryPayService
 import servicecordinator.model.response.XTResponsePayService
 import servicecordinator.retrofit.model.dataclass.XTResponseData

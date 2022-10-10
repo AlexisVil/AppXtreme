@@ -5,6 +5,7 @@ import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,17 +19,24 @@ import mx.com.evotae.appxtreme.R
 import mx.com.evotae.appxtreme.databinding.FragmentXTRecargaBinding
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
 import mx.com.evotae.appxtreme.framework.util.extensions.getPreferenceToString
+import mx.com.evotae.appxtreme.main.dialogs.ui.ErrorDialog
+import mx.com.evotae.appxtreme.main.dialogs.ui.ReportarDialog
 import mx.com.evotae.appxtreme.main.dialogs.ui.TicketDialog
 import mx.com.evotae.appxtreme.main.recargar.viewmodel.XTViewModelProductList
-import mx.com.evotae.appxtreme.main.recargar.viewmodel.XTViewModelSellRecharge
 import mx.com.evotae.appxtreme.main.tae.datasource.XTDataCarrier
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import retrofit2.*
+import retrofit2.converter.gson.GsonConverterFactory
+import servicecordinator.apis.XTSellRechargeApi
 import servicecordinator.model.response.XTResponseProductList
 import servicecordinator.model.response.XTResponseSellRecharge
+import servicecordinator.model.response.XTResponseVentaRecarga
 import servicecordinator.retrofit.managercall.FIRMA_APP
 import servicecordinator.retrofit.managercall.OPERATOR_APP
 import servicecordinator.retrofit.managercall.PWD_APP
 import servicecordinator.retrofit.managercall.USER_APP
+import servicecordinator.retrofit.model.dataclass.XTRespuestaGenerica
+import servicecordinator.router.Routers
 import java.time.Duration
 
 class XTRecargaFragment : XTFragmentBase() {
@@ -36,7 +44,7 @@ class XTRecargaFragment : XTFragmentBase() {
     lateinit var binding: FragmentXTRecargaBinding
     private lateinit var safeActivity: Activity
     private val viewModelProductList: XTViewModelProductList by sharedViewModel()
-    private val viewModelSellRecharge: XTViewModelSellRecharge by sharedViewModel()
+
     private val args: XTRecargaFragmentArgs by navArgs()
     var productos = arrayListOf<String>()
     private var mapOfProducts = mutableMapOf<String, String>()
@@ -48,6 +56,7 @@ class XTRecargaFragment : XTFragmentBase() {
     lateinit var nAuto: String
     lateinit var nombreProducto: String
     lateinit var selectedId: String
+    lateinit var retrofit: Retrofit
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -90,8 +99,13 @@ class XTRecargaFragment : XTFragmentBase() {
                         Toast.makeText(safeActivity, "No coincide número", Toast.LENGTH_SHORT)
                             .show()
                     } else {
+                        //Instancia Retrofit para PayBank
+                        retrofit = Retrofit.Builder()
+                            .baseUrl(Routers.HOST)
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build()
                         customProgressDialog()
-                        viewModelSellRecharge.sellRecharge(
+                        venderRecgarga(
                             "ventaRecarga",
                             USER_APP.getPreferenceToString().toString(),
                             PWD_APP.getPreferenceToString().toString(),
@@ -101,6 +115,18 @@ class XTRecargaFragment : XTFragmentBase() {
                             idCurrentProduct,
                             numeroCelular
                         )
+                        /**
+                        viewModelSellRecharge.sellRecharge(
+                        "ventaRecarga",
+                        USER_APP.getPreferenceToString().toString(),
+                        PWD_APP.getPreferenceToString().toString(),
+                        OPERATOR_APP.getPreferenceToString().toString(),
+                        "80f8cf43-0d26-4876-966e-cc90e13e0f0c",
+                        "",
+                        idCurrentProduct,
+                        numeroCelular
+                        )
+                         **/
                         etNumber.setText("")
                         etConfirmar.setText("")
                     }
@@ -123,9 +149,9 @@ class XTRecargaFragment : XTFragmentBase() {
         viewModelProductList.launchError.observe(viewLifecycleOwner, handleError())
         viewModelProductList.getProductList.observe(viewLifecycleOwner, handleProductList())
         //Observadores para Venta de Recarga
-        viewModelSellRecharge.launchLoader.observe(viewLifecycleOwner, handleLoader())
-        viewModelSellRecharge.sellRecharge.observe(viewLifecycleOwner, handleSellRecharge())
-        viewModelSellRecharge.launchError.observe(viewLifecycleOwner, handleErrorRecharge())
+//        viewModelSellRecharge.launchLoader.observe(viewLifecycleOwner, handleLoader())
+//        viewModelSellRecharge.sellRecharge.observe(viewLifecycleOwner, handleSellRecharge())
+//        viewModelSellRecharge.launchError.observe(viewLifecycleOwner, handleErrorRecharge())
     }
 
     private fun handleSellRecharge(): (XTResponseSellRecharge?) -> Unit = { data ->
@@ -134,7 +160,7 @@ class XTRecargaFragment : XTFragmentBase() {
         nDate = data?.fecha.toString()
         nAuto = data?.autorizacionTelcel.toString()
         Toast.makeText(safeActivity, "Recarga exitosa", Toast.LENGTH_SHORT).show()
-        TicketDialog(nTicket, nMonto, nAuto,numeroCelular, nDate).show(
+        TicketDialog(nTicket, nMonto, nAuto, numeroCelular, nDate).show(
             parentFragmentManager,
             "Dialog"
         )
@@ -173,6 +199,7 @@ class XTRecargaFragment : XTFragmentBase() {
             }
         }
     }
+
     /**
      * Custom Dialog
      */
@@ -186,5 +213,51 @@ class XTRecargaFragment : XTFragmentBase() {
             DURATION.toLong()
         )
         customProgressDialog.dismiss()
+    }
+
+    private fun venderRecgarga(
+        idOperacion: String,
+        user: String,
+        pwd: String,
+        claveOperador: String,
+        regId: String,
+        versionCode: String,
+        id: String,
+        numeroCelular: String
+    ) {
+        val sellRechargeService: XTSellRechargeApi = retrofit.create(XTSellRechargeApi::class.java)
+        val responseCall: Call<XTRespuestaGenerica<XTResponseSellRecharge>> =
+            sellRechargeService.postSellRecharge(
+                idOperacion,
+                user,
+                pwd,
+                claveOperador,
+                regId,
+                versionCode,
+                id,
+                numeroCelular
+            )
+        Log.v("URL", responseCall.request().toString())
+        responseCall.enqueue(object : Callback<XTRespuestaGenerica<XTResponseSellRecharge>?> {
+            override fun onResponse(
+                call: Call<XTRespuestaGenerica<XTResponseSellRecharge>?>,
+                response: Response<XTRespuestaGenerica<XTResponseSellRecharge>?>
+            ) {
+                if (response.body()?.redirigir == true){
+                    println("Redirigir = true")
+                }else if ( response.body()?.operacionExitosa == true ){
+                    println("Operacion exitosa = true")
+                }else {
+                    println("Operacion Exitosa = false")
+                }
+            }
+
+            override fun onFailure(
+                call: Call<XTRespuestaGenerica<XTResponseSellRecharge>?>,
+                t: Throwable
+            ) {
+                Log.e("Error", "onFailure ${t.message}")
+            }
+        })
     }
 }

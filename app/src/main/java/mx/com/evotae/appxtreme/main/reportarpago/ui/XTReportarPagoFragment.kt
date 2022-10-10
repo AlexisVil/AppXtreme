@@ -93,24 +93,7 @@ class XTReportarPagoFragment : XTFragmentBase() {
                     .baseUrl(Routers.HOST)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
-//                viewModelPayBank.payBank(
-//                    "pagos_reportarPago",
-//                        USER_APP.getPreferenceToString().toString(),
-//                        PWD_APP.getPreferenceToString().toString(),
-//                        OPERATOR_APP.getPreferenceToString().toString(),
-//                        etBanco.text.toString(),
-//                        etDeposito.text.toString(),
-//                        "",
-//                        etRef.text.toString(),
-//                        etFecha.text.toString(),
-//                        "00",
-//                        "59",
-//                        "0",
-//                        "0",
-//                        "0",
-//                        "",
-//                        "80f8cf43-0d26-4876-966e-cc90e13e0f0c"
-//                )
+
                 if (etBanco.text.isEmpty()) {
                     etBanco.requestFocus()
                     etBanco.error = "Favor de completar el campo"

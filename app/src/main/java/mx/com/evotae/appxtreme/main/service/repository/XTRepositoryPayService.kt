@@ -1,10 +1,8 @@
 package mx.com.evotae.appxtreme.main.service.repository
 
-import mx.com.evotae.appxtreme.main.recargar.datasource.XTDataSourceSellRecharge
-import mx.com.evotae.appxtreme.main.recargar.repository.XTRepositorySellRecharge
+
 import mx.com.evotae.appxtreme.main.service.datasource.XTDataSourcePayService
 import servicecordinator.model.response.XTResponsePayService
-import servicecordinator.model.response.XTResponseSellRecharge
 import servicecordinator.retrofit.model.dataclass.XTResponseData
 import servicecordinator.retrofit.model.dataclass.XTResponseGeneral
 

@@ -8,7 +8,6 @@ val modulesApp: List<Module> =
         moduleTae,
         moduleProductList,
         moduleCheckBalance,
-        moduleSellRecharge,
         modulePayService,
         moduleTransactions,
         moduleBankDeposit,
