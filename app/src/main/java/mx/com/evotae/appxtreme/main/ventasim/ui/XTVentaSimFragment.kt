@@ -89,8 +89,9 @@ class XTVentaSimFragment : XTFragmentBase() {
                 initScanner()
             }
             btnRecargaSim.setOnClickListener { 
-                customProgressDialog()
+
                 if (!(etRef.text.toString().length < 4) || etRef.text.isNotEmpty()) {
+                    customProgressDialog()
                     numeroSim = etRef.text.toString()
                     viewModelSimSell.simSell(
                         "recargasSimCard",
@@ -103,6 +104,8 @@ class XTVentaSimFragment : XTFragmentBase() {
                         numeroSim,
                         ""
                     )
+                } else {
+                    etRef.error = "Ingrese Referencia"
                 }
             }
             //Renderiza imágen en el fragment

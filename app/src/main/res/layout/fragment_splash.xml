@@ -1,49 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tool="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/animation_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="20dp"
         android:gravity="center"
         android:orientation="vertical"
-        tool:ignore="UselessParent"
-        android:paddingTop="30dp"
-        >
+        android:paddingTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <!--Animation Files-->
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/lottie_carga"
-            android:layout_width="240dp"
-            android:layout_height="240dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="-15dp"
-            android:layout_marginTop="200dp"
-            app:lottie_autoPlay="true"
-            app:lottie_fileName="color-logo.json" />
+        <LinearLayout
+            android:id="@+id/linearLottie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center">
+            <!--Animation Files-->
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottie_carga"
+                android:layout_width="240dp"
+                android:layout_height="240dp"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="color-logo.json" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:gravity="center"
-            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLottie"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginEnd="20dp"
             android:layout_weight="1"
-            >
+            android:gravity="center"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/copyright"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
+                android:fontFamily="sans-serif-condensed"
                 android:text="@string/copyright_1"
                 android:textColor="@color/letters_1"
-                android:textSize="18sp"
-                android:fontFamily="sans-serif-condensed"
-                />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/copyright_1"
@@ -52,29 +68,23 @@
 
                 android:layout_marginTop="2dp"
 
-                android:gravity="center"
                 android:fontFamily="sans-serif-condensed"
+                android:gravity="center"
                 android:text="@string/copyright_2"
                 android:textColor="@color/letters_1"
-                android:textSize="18sp"
-                />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/copyright_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-
                 android:layout_marginTop="2dp"
                 android:fontFamily="sans-serif-condensed"
                 android:gravity="center"
                 android:text="@string/copyright_3"
                 android:textColor="@color/letters_2"
-                android:textSize="18sp"
-                />
+                android:textSize="18sp" />
         </LinearLayout>
+    </RelativeLayout>
 
-
-    </LinearLayout>
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="50dp"
-    android:paddingBottom="10dp"
-    tools:context=".main.service.ui.XTPagarServicioFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="5dp"
+    android:paddingBottom="10dp">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="30dp"
-        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
         >
 
         <ImageView
@@ -22,24 +21,22 @@
             android:layout_height="170dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="130dp"
-            android:layout_marginTop="80dp"
-            android:layout_marginEnd="130dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="30dp"
             android:src="@drawable/ic_launcher_background" />
-<!--Numero de referencia-->
+        <!--Numero de referencia-->
         <TextView
             android:id="@+id/tvTitleNRef"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/ivCarrierServices"
-            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="50dp"
+            android:layout_toEndOf="@+id/ivCarrierServices"
             android:text="@string/referencia"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <!--Text input Numero Ref -->
 
@@ -49,9 +46,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvTitleNRef"
-            android:layout_alignParentStart="true"
+            android:layout_toEndOf="@+id/ivCarrierServices"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="50dp"
             android:hint="Capture el número de referencia"
@@ -72,13 +69,11 @@
             android:id="@+id/ivScan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/tiRef"
             android:layout_alignEnd="@+id/tiRef"
             android:layout_alignTop="@+id/tiRef"
             android:layout_alignBottom="@+id/tiRef"
-            android:layout_marginStart="300dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="5dp"
             android:src="@drawable/ic_camera" />
 
         <!--Monto a pagar-->
@@ -87,13 +82,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tiRef"
-            android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="50dp"
+            android:layout_toEndOf="@+id/ivCarrierServices"
             android:text="@string/montoS"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tiMonto"
@@ -101,9 +96,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvTitleMonto"
-            android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="50dp"
+            android:layout_toEndOf="@+id/ivCarrierServices"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="50dp"
             android:hint="Ingrese una cantidad"
@@ -126,12 +121,10 @@
             android:id="@+id/btnServicio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tiMonto"
+            android:layout_below="@+id/ivCarrierServices"
             android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="50dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="10dp"
             android:gravity="center"
             android:paddingVertical="16dp"
             android:text="@string/btnPagar"
@@ -139,4 +132,5 @@
             android:visibility="visible"
             app:cornerRadius="16dp" />
     </RelativeLayout>
+
 </FrameLayout>

@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.ventasim.ui.XTVentaSimFragment">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="30dp"
+    android:paddingBottom="20dp">
     <RelativeLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="30dp"
+        android:orientation="vertical">
         <!--Imagen Carrier-->
         <LinearLayout
             android:id="@+id/linearImage"
@@ -22,17 +20,14 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="40dp"
             android:gravity="center">
-
 
             <ImageView
                 android:id="@+id/ivCarrierServices"
                 android:layout_width="170dp"
                 android:layout_height="170dp"
                 android:src="@drawable/ic_launcher_background" />
-
-
         </LinearLayout>
 
         <!--ICCID-->
@@ -44,7 +39,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="70dp"
             android:layout_marginEnd="50dp"
             android:text="@string/referencia"
             android:textSize="16sp" />
@@ -57,9 +52,9 @@
             android:layout_below="@+id/tvIRef"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="40dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
             android:hint="Ingrese ICCID/Número teléfono"
             app:boxBackgroundColor="@color/placeholder_2"
             app:boxCornerRadiusBottomEnd="20dp"
@@ -81,9 +76,7 @@
             android:layout_alignTop="@+id/tiRef"
             android:layout_alignEnd="@+id/tiRef"
             android:layout_alignBottom="@+id/tiRef"
-            android:layout_marginEnd="10dp"
-            android:paddingTop="7dp"
-            android:paddingRight="7dp"
+            android:layout_margin="5dp"
             android:src="@drawable/ic_camera" />
 
         <!--Spinner Productos-->
@@ -106,7 +99,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvSP"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="40dp" />
         <!--Boton Pagar Sim-->
         <LinearLayout
@@ -115,7 +108,7 @@
             android:layout_below="@+id/spinnerProducto"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="70dp"
             android:gravity="center">
 
             <com.google.android.material.button.MaterialButton
@@ -132,4 +125,5 @@
 
 
     </RelativeLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

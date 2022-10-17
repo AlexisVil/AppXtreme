@@ -11,6 +11,7 @@ import coil.request.CachePolicy
 import coil.request.ImageRequest
 import coil.util.CoilUtils
 import com.bumptech.glide.Glide
+import com.google.firebase.database.DatabaseReference
 import mx.com.evotae.appxtreme.R
 import mx.com.evotae.appxtreme.databinding.ItemButtonBinding
 import mx.com.evotae.appxtreme.main.tae.model.XTTaeModel
@@ -21,6 +22,7 @@ class XTTaeAdapter(
 ) : RecyclerView.Adapter<XTTaeAdapter.XTTaeViewHolder>() {
     class XTTaeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = ItemButtonBinding.bind(view)
+
         fun render(taeModel: XTTaeModel, onClickListener: (XTTaeModel) -> Unit) {
             binding.tvName.text = taeModel.name
             binding.tvId.text = taeModel.idCarrier.toString()

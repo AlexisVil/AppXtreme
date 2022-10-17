@@ -1,58 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="40dp"
-    android:paddingBottom="10dp"
-    tools:context=".main.service.ui.XTPagarServicioFragment">
+    android:paddingTop="5dp"
+    android:paddingBottom="10dp">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
-        android:orientation="horizontal"
-        >
-
-        <ImageView
-            android:id="@+id/ivCarrierServices"
-            android:layout_width="170dp"
-            android:layout_height="170dp"
+        android:layout_marginBottom="30dp"
+        android:orientation="vertical">
+        <!--Imagen Carrier-->
+        <LinearLayout
+            android:id="@+id/linearImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/ic_launcher_background" />
-        <!--Numero de referencia-->
+            android:layout_marginTop="50dp">
+
+            <ImageView
+                android:id="@+id/ivCarrierServices"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:src="@drawable/ic_launcher_background" />
+        </LinearLayout>
+
+        <!--ICCID-->
         <TextView
-            android:id="@+id/tvTitleNRef"
+            android:id="@+id/tvIRef"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="40dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_toEndOf="@+id/ivCarrierServices"
+            android:layout_toEndOf="@+id/linearImage"
             android:text="@string/referencia"
             android:textSize="18sp" />
-
-        <!--Text input Numero Ref -->
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tiRef"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvTitleNRef"
-            android:layout_toEndOf="@+id/ivCarrierServices"
+            android:layout_below="@+id/tvIRef"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="40dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="50dp"
-            android:hint="Capture el número de referencia"
+            android:layout_toEndOf="@+id/linearImage"
+            android:hint="Ingrese ICCID/Número teléfono"
             app:boxBackgroundColor="@color/placeholder_2"
             app:boxCornerRadiusBottomEnd="20dp"
             app:boxCornerRadiusTopStart="20dp"
@@ -71,17 +74,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/tiRef"
-            android:layout_alignEnd="@+id/tiRef"
             android:layout_alignTop="@+id/tiRef"
             android:layout_alignBottom="@+id/tiRef"
-            android:layout_marginStart="460dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="350dp"
+            android:layout_marginEnd="5dp"
+            android:paddingTop="7dp"
+            android:paddingRight="7dp"
             android:src="@drawable/ic_camera" />
 
-        <!--Monto a pagar-->
+        <!--Spinner Productos-->
         <TextView
-            android:id="@+id/tvTitleMonto"
+            android:id="@+id/tvSP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tiRef"
@@ -89,53 +92,42 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="50dp"
-            android:layout_toEndOf="@+id/ivCarrierServices"
-            android:text="@string/montoS"
+            android:layout_toEndOf="@+id/linearImage"
+            android:text="@string/producto"
             android:textSize="18sp" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tiMonto"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <Spinner
+            android:id="@+id/spinnerProducto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvTitleMonto"
+            android:layout_below="@+id/tvSP"
             android:layout_alignParentEnd="true"
-            android:layout_toEndOf="@+id/ivCarrierServices"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="50dp"
-            android:hint="Ingrese una cantidad"
-            app:boxBackgroundColor="@color/placeholder_2"
-            app:boxCornerRadiusBottomEnd="20dp"
-            app:boxCornerRadiusTopStart="20dp"
-            app:endIconMode="clear_text"
-            app:endIconTint="@color/xtreme_3"
-            app:prefixText="$">
-
-            <EditText
-                android:id="@+id/etMontoServicio"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!--Botón Pago-->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnServicio"
+            android:layout_toEndOf="@+id/linearImage" />
+        <!--Boton Pagar Sim-->
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tiMonto"
+            android:layout_below="@+id/linearImage"
             android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="150dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="150dp"
-            android:gravity="center"
-            android:paddingVertical="16dp"
-            android:text="@string/btnPagar"
-            android:textColor="@android:color/white"
-            android:visibility="visible"
-            app:cornerRadius="16dp" />
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="10dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRecargaSim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingVertical="16dp"
+                android:text="@string/btn_recarga"
+                android:textColor="@android:color/white"
+                android:visibility="visible"
+                app:cornerRadius="16dp" />
+        </LinearLayout>
+
+
     </RelativeLayout>
 
 </FrameLayout>

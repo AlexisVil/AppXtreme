@@ -7,207 +7,254 @@
     android:paddingTop="20dp"
     android:paddingBottom="20dp"
     tools:context=".main.user.ui.XTUserFragment">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="30dp"
+    <!--GuideLines-->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideMidVertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintGuide_percent="0.5" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivAccount"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="45dp"
-            android:layout_marginTop="55dp"
-            android:src="@drawable/ic_user_account" />
-        <!--PDV-->
-        <TextView
-            android:id="@+id/tvTitlePdv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/ivAccount"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="40dp"
-            android:text="@string/fragmentTitleUser"
-            android:textSize="32dp"
-            android:textStyle="bold" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideMidHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
 
-        <TextView
-            android:id="@+id/tvOperator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/ivAccount"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="50dp"
-            android:layout_toEndOf="@+id/tvTitlePdv"
-            android:textSize="32sp"
-            tools:text="PDV" />
-        <!--ID PDV-->
-        <TextView
-            android:id="@+id/tvTitleIdPDV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvTitlePdv"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/title_idpdv"
-            android:textSize="28sp"
-            android:textStyle="bold" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05" />
 
-        <TextView
-            android:id="@+id/tvIdPDV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvOperator"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="50dp"
-            android:layout_toEndOf="@+id/tvTitleIdPDV"
-            android:textSize="28sp"
-            tools:text="ID" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95" />
 
-        <!--Saldo Actual-->
-        <TextView
-            android:id="@+id/tvTitleSaldo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvTitleIdPDV"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="100dp"
-            android:text="@string/avaliable"
-            android:textSize="18sp" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.08" />
 
-        <!--Recargas-->
-        <TextView
-            android:id="@+id/tvTitleSaldoRecarga"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvTitleSaldo"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="70dp"
-            android:text="Recargas:"
-            android:textSize="18sp" />
-        <!--Servicios-->
-        <TextView
-            android:id="@+id/tvTitleSaldoServicios"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvTitleSaldo"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="100dp"
-            android:layout_toEndOf="@+id/tvTitleSaldoRecarga"
-            android:text="Servicios:"
-            android:textSize="18sp" />
-        <!--API Recarga-->
-        <TextView
-            android:id="@+id/tvSaldoRecarga"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:layout_below="@+id/tvTitleSaldoRecarga"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="80dp"
-            android:textSize="32sp"
-            android:textStyle="bold"
-            tools:text="0.00" />
-        <!--API Recarga-->
-        <TextView
-            android:id="@+id/tvSaldoServicios"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvTitleSaldoServicios"
-            android:layout_marginStart="90dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/tvSaldoRecarga"
-            android:textColor="@color/black"
-            android:textSize="32sp"
-            android:textStyle="bold"
-            tools:text="0.00" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.92" />
 
-        <!--Btn Reportar Pago-->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnPago"
-            style="@style/Widget.Material3.Button.TonalButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvSaldoServicios"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_gravity="center"
-            android:layout_marginStart="180dp"
-            android:layout_marginTop="35dp"
-            android:layout_marginEnd="50dp"
-            android:gravity="center"
-            android:paddingVertical="16dp"
-            android:text="@string/btn_pago"
-            android:textAllCaps="false"
-            android:textColor="#5E6168"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:visibility="visible"
-            app:backgroundTint="@color/xtreme_2"
-            app:cornerRadius="20dp" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.28" />
 
-        <!--Btn Ventas Recientes-->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnVentas"
-            style="@style/Widget.Material3.Button.OutlinedButton.Icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btnPago"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="60dp"
-            android:gravity="center"
-            android:text="@string/btn_ventas"
-            android:textAllCaps="false"
-            android:textSize="14sp"
-            app:icon="@drawable/ic_sells"
-            app:strokeColor="@color/xtreme_3"
-            app:strokeWidth="3dp" />
-        <!--Btn Cerrar Sesión-->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnLogout"
-            style="@style/Widget.Material3.Button.OutlinedButton.Icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btnPago"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="35dp"
-            android:layout_marginBottom="60dp"
-            android:layout_toEndOf="@+id/btnVentas"
-            android:gravity="center"
-            android:text="@string/btnLogout"
-            android:textAllCaps="false"
-            android:textSize="14sp"
-            app:icon="@drawable/ic_logout"
-            app:strokeColor="@color/xtreme_3"
-            app:strokeWidth="3dp" />
-    </RelativeLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.76" />
+    <!--Views-->
+    <!--Image User-->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivAccount"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:src="@drawable/ic_user_account"
+        app:layout_constraintEnd_toEndOf="@id/guideMidVertical"
+        app:layout_constraintStart_toStartOf="@id/guideStart"
+        app:layout_constraintTop_toTopOf="@id/guideTop" />
+    <!--PDV-->
+    <TextView
+        android:id="@+id/tvTitlePdv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fragmentTitleUser"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideMidHorizontal"
+        app:layout_constraintEnd_toStartOf="@id/tvOperator"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@id/guideStart"
+        app:layout_constraintTop_toBottomOf="@id/guideImage"
+        app:layout_constraintVertical_bias="0.1" />
+
+    <TextView
+        android:id="@+id/tvOperator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideMidHorizontal"
+        app:layout_constraintEnd_toStartOf="@id/guideEnd"
+        app:layout_constraintStart_toEndOf="@id/tvTitlePdv"
+        app:layout_constraintTop_toBottomOf="@id/guideImage"
+        app:layout_constraintVertical_bias="0.1"
+        tools:text="PDV" />
+
+    <!--ID PDV-->
+    <TextView
+        android:id="@+id/tvTitleIdPDV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_idpdv"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/guideMidHorizontal"
+        app:layout_constraintEnd_toStartOf="@id/tvIdPDV"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@id/guideStart"
+        app:layout_constraintTop_toBottomOf="@id/tvTitlePdv"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <TextView
+        android:id="@+id/tvIdPDV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="@id/guideMidHorizontal"
+        app:layout_constraintEnd_toStartOf="@id/guideEnd"
+        app:layout_constraintStart_toEndOf="@id/tvTitleIdPDV"
+        app:layout_constraintTop_toBottomOf="@id/tvOperator"
+        app:layout_constraintVertical_bias="0.3"
+        tools:text="ID" />
+
+    <!--Saldo Actual-->
+    <TextView
+        android:id="@+id/tvTitleSaldo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/avaliable"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@id/guideMidVertical"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/guideStart"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleIdPDV" />
+    <!--Recargas-->
+    <TextView
+        android:id="@+id/tvTitleSaldoRecarga"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Recargas:"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@id/tvTitleSaldoServicios"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toEndOf="@id/guideStart"
+        app:layout_constraintTop_toBottomOf="@id/guideMidHorizontal" />
+
+    <!--Servicios-->
+    <TextView
+        android:id="@+id/tvTitleSaldoServicios"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Servicios:"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@id/guideEnd"
+        app:layout_constraintStart_toEndOf="@id/tvTitleSaldoRecarga"
+        app:layout_constraintTop_toBottomOf="@id/guideMidHorizontal"
+        />
+
+    <!--API Recarga-->
+    <TextView
+        android:id="@+id/tvSaldoRecarga"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        tools:text="0.00"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleSaldoRecarga"
+        app:layout_constraintStart_toEndOf="@id/guideStart"
+        app:layout_constraintEnd_toStartOf="@id/tvSaldoServicios"
+        />
+    <!--API Recarga-->
+    <TextView
+        android:id="@+id/tvSaldoServicios"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleSaldoServicios"
+        app:layout_constraintStart_toEndOf="@id/tvSaldoRecarga"
+        app:layout_constraintEnd_toStartOf="@id/guideEnd"
+        android:textColor="@color/black"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        tools:text="0.00" />
+
+
+    <!--Btn Reportar Pago-->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnPago"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingVertical="16dp"
+        android:text="@string/btn_pago"
+        android:textAllCaps="false"
+        android:textColor="#5E6168"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:backgroundTint="@color/xtreme_2"
+        app:cornerRadius="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/tvSaldoServicios"
+        app:layout_constraintStart_toEndOf="@id/guideMidVertical"
+        app:layout_constraintEnd_toStartOf="@id/guideEnd"
+        />
+
+    <!--Btn Ventas Recientes-->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnVentas"
+        style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/btn_ventas"
+        android:textAllCaps="false"
+        android:textSize="14sp"
+        app:icon="@drawable/ic_sells"
+        app:strokeColor="@color/xtreme_3"
+        app:strokeWidth="3dp"
+        app:layout_constraintTop_toTopOf="@id/guideButtons"
+        app:layout_constraintBottom_toBottomOf="@id/guideBottom"
+        app:layout_constraintStart_toStartOf="@id/guideStart"
+        app:layout_constraintEnd_toStartOf="@id/btnLogout"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintVertical_bias="0.3"
+        />
+    <!--Btn Cerrar Sesión-->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLogout"
+        style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/btnLogout"
+        android:textAllCaps="false"
+        android:textSize="14sp"
+        app:icon="@drawable/ic_logout"
+        app:strokeColor="@color/xtreme_3"
+        app:strokeWidth="3dp"
+        app:layout_constraintTop_toTopOf="@id/guideButtons"
+        app:layout_constraintBottom_toBottomOf="@id/guideBottom"
+        app:layout_constraintEnd_toEndOf="@id/guideEnd"
+        app:layout_constraintStart_toEndOf="@id/btnVentas"
+        app:layout_constraintVertical_bias="0.3"
+        />
+    </androidx.constraintlayout.widget.ConstraintLayout>

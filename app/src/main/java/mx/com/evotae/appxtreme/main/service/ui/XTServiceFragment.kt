@@ -90,6 +90,7 @@ class XTServiceFragment : XTFragmentBase() {
     }
     fun renderizarLista(marcas: List<XTServicesModel>){
         binding.recyclerServices.layoutManager = GridLayoutManager(safeActivity, 2)
+        binding.recyclerServices.setHasFixedSize(true)
         binding.recyclerServices.adapter = XTServiceAdapter(marcas) {onItemSelected(it)}
     }
 

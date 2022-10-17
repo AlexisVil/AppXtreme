@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import mx.com.evotae.appxtreme.databinding.FragmentXTTaeBinding
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
 import mx.com.evotae.appxtreme.framework.util.extensions.getPreferenceToString
@@ -108,6 +110,7 @@ class XTTaeFragment : XTFragmentBase() {
     }
     fun renderizarLista(marcas: List<XTTaeModel>){
         binding.recyclerTae.layoutManager = GridLayoutManager(safeActivity, 2)
+        binding.recyclerTae.setHasFixedSize(true)
         binding.recyclerTae.adapter = XTTaeAdapter(marcas) { onItemSelected(it) }
     }
 }

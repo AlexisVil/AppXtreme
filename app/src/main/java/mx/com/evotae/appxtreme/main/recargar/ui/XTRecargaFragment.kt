@@ -247,8 +247,10 @@ class XTRecargaFragment : XTFragmentBase() {
                     println("Redirigir = true")
                 }else if ( response.body()?.operacionExitosa == true ){
                     println("Operacion exitosa = true")
+                    Toast.makeText(safeActivity, "true", Toast.LENGTH_SHORT).show()
                 }else {
                     println("Operacion Exitosa = false")
+                    Toast.makeText(safeActivity, "false", Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -256,6 +258,7 @@ class XTRecargaFragment : XTFragmentBase() {
                 call: Call<XTRespuestaGenerica<XTResponseSellRecharge>?>,
                 t: Throwable
             ) {
+                Toast.makeText(safeActivity, "Failure ${t.message}", Toast.LENGTH_SHORT).show()
                 Log.e("Error", "onFailure ${t.message}")
             }
         })

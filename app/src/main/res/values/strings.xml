@@ -21,6 +21,7 @@
     <string name="contraseña">Contraseña</string>
     <string name="checkbox">Mantener sesión iniciada</string>
     <string name="btnLogin">Iniciar sesión</string>
+    <string name="login">Login</string>
 
     <!--Inicio-->
     <string name="inicio_btn">Cerrar Sesión</string>

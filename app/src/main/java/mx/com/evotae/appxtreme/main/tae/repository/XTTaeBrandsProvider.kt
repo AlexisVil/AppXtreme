@@ -1,20 +1,26 @@
 package mx.com.evotae.appxtreme.main.tae.repository
 
 import android.widget.Toast
+import com.google.firebase.database.*
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
 import mx.com.evotae.appxtreme.main.tae.model.XTTaeModel
 import mx.com.evotae.appxtreme.main.tae.viewmodel.XTViewModelTae
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import servicecordinator.model.response.XTResponseBrand
 
-class XTTaeBrandsProvider : XTFragmentBase() {
+class XTTaeBrandsProvider {
+    val storageReference: StorageReference = FirebaseStorage.getInstance().reference.child("Carriers/BAIT.png")
+    val imp = storageReference.downloadUrl.toString()
     companion object {
-
         val taeList = mutableListOf<XTTaeModel>(
             XTTaeModel(
                 "Telcel",
                 1,
-                "https://media.pasionmovil.com/2012/04/telcel-logo-e1334884696429.jpg"
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2Ftelcel-logo-e1334884696429.jpg?alt=media&token=5aa892ff-f6b3-4646-bd32-25fdfacb8f0c"
             ),
             XTTaeModel(
                 "Paquetes Telcel",
@@ -29,7 +35,7 @@ class XTTaeBrandsProvider : XTFragmentBase() {
             XTTaeModel(
                 "Movistar",
                 16,
-                "https://i.pinimg.com/originals/1f/17/91/1f1791c876624f00b92cc6d19e817fc6.png"
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2Fmovistar.png?alt=media&token=8ec703e4-5fca-4119-9462-abddc5673806"
             ),
             XTTaeModel(
                 "Att/Unefon",
@@ -39,7 +45,7 @@ class XTTaeBrandsProvider : XTFragmentBase() {
             XTTaeModel(
                 "Bait",
                 43,
-                "https://selectra.mx/sites/selectra.mx/files/images/logos/bait-350x183.png"
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FBAIT.png?alt=media&token=ce4f872e-8d09-40c3-957c-349fa2866459"
             ),
             XTTaeModel(
                 "Virgin Mobile",
@@ -144,7 +150,7 @@ class XTTaeBrandsProvider : XTFragmentBase() {
             XTTaeModel(
                 "MASRECARGA",
                 20,
-                "http://megatae.com/images/-recarga.JPG"
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FMASRECARGA.jpg?alt=media&token=5de263dc-b948-4b1f-99e1-a7710b8c1820"
             ),
             XTTaeModel(
                 "MiMovil",
@@ -153,4 +159,5 @@ class XTTaeBrandsProvider : XTFragmentBase() {
             )
         )
     }
+
 }
