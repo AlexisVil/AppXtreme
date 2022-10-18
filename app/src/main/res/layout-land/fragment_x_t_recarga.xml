@@ -1,143 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="40dp"
-    android:paddingBottom="10dp"
     tools:context=".main.recargar.ui.XTRecargaFragment">
+    <!--Guias-->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideMidVertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideMidHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.06" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.88" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <!--Views-->
+    <!--Imagen Carrier-->
+    <ImageView
+        android:id="@+id/ivCarrier"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_launcher_background"
+        app:layout_constraintTop_toBottomOf="@id/guideTop"
+        app:layout_constraintBottom_toTopOf="@id/btnRecargar"
+        app:layout_constraintStart_toEndOf="@id/guideStart"
+        app:layout_constraintEnd_toStartOf="@id/guideMidVertical"
+        />
+    <!--Spinner Producto-->
+    <TextView
+        android:id="@+id/tvSeleccionar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/producto"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/guideMidVertical"
+        app:layout_constraintTop_toBottomOf="@id/guideTop"
+        app:layout_constraintEnd_toStartOf="@id/guideEnd"
+        app:layout_constraintBottom_toTopOf="@id/spinnerProducto"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintVertical_bias="0.1"/>
+
+    <Spinner
+        android:id="@+id/spinnerProducto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvSeleccionar"
+        app:layout_constraintBottom_toTopOf="@id/tvIngresarN"
+        app:layout_constraintStart_toEndOf="@id/guideMidVertical"
+        app:layout_constraintEnd_toStartOf="@id/guideEnd"
+        />
+    <!--Ingresar Numero-->
+    <TextView
+        android:id="@+id/tvIngresarN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/input_numero"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/spinnerProducto"
+        app:layout_constraintBottom_toTopOf="@id/tiNumeroP"
+        app:layout_constraintStart_toEndOf="@id/guideMidVertical"
+        app:layout_constraintEnd_toStartOf="@id/guideEnd"
+        android:layout_marginTop="10dp"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiNumeroP"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Ingresar número telefónico"
+        app:boxBackgroundColor="@color/placeholder_2"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/xtreme_3"
+        app:layout_constraintTop_toBottomOf="@id/tvIngresarN"
+        app:layout_constraintStart_toEndOf="@id/guideMidVertical"
+        app:layout_constraintEnd_toStartOf="@id/guideEnd"
+        app:layout_constraintBottom_toTopOf="@id/tvIngresarC">
+        <EditText
+            android:id="@+id/etNumber"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--Confirmar Numero-->
+    <TextView
+        android:id="@+id/tvIngresarC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/input_confirmar"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/tiNumeroP"
+        app:layout_constraintStart_toEndOf="@id/guideMidVertical"
+        app:layout_constraintEnd_toStartOf="@id/guideEnd"
+        app:layout_constraintBottom_toTopOf="@id/tiNumeroD"
+        android:layout_marginTop="10dp"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiNumeroD"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Ingresar número telefónico"
+        app:boxBackgroundColor="@color/placeholder_2"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/xtreme_3"
+        app:layout_constraintTop_toBottomOf="@id/tvIngresarC"
+        app:layout_constraintStart_toEndOf="@id/guideMidVertical"
+        app:layout_constraintEnd_toStartOf="@id/guideEnd"
+        app:layout_constraintBottom_toTopOf="@id/guideBottom"
         >
-        <!--Imagen Carrier-->
-        <ImageView
-            android:id="@+id/ivCarrier"
-            android:layout_width="170dp"
-            android:layout_height="170dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/ic_launcher_background" />
-        <!--Spinner Producto-->
-        <TextView
-            android:id="@+id/tvSeleccionar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="50dp"
-            android:layout_toEndOf="@+id/ivCarrier"
-            android:text="@string/producto"
-            android:textSize="18sp" />
-        <Spinner
-            android:id="@+id/spinnerProducto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="50dp"
-            android:layout_toEndOf="@+id/ivCarrier"
-            android:layout_below="@+id/tvSeleccionar"
-            />
-        <!--Ingresar Numero-->
-        <TextView
-            android:id="@+id/tvIngresarN"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/spinnerProducto"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="50dp"
-            android:layout_toEndOf="@+id/ivCarrier"
-            android:text="@string/input_numero"
-            android:textSize="18sp" />
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tiNumeroP"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvIngresarN"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="50dp"
-            android:layout_toEndOf="@+id/ivCarrier"
-            android:hint="Ingresar número telefónico"
-            app:boxBackgroundColor="@color/placeholder_2"
-            app:boxCornerRadiusBottomEnd="20dp"
-            app:boxCornerRadiusTopStart="20dp"
-            app:endIconMode="clear_text"
-            app:endIconTint="@color/xtreme_3"
-            >
-            <EditText
-                android:id="@+id/etNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
-        </com.google.android.material.textfield.TextInputLayout>
 
-        <!--Confirmar Numero-->
-        <TextView
-            android:id="@+id/tvIngresarC"
+        <EditText
+            android:id="@+id/etConfirmar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tiNumeroP"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="50dp"
-            android:layout_toEndOf="@+id/ivCarrier"
-            android:text="@string/input_confirmar" />
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tiNumeroD"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvIngresarC"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="50dp"
-            android:layout_toEndOf="@+id/ivCarrier"
-            android:hint="Ingresar número telefónico"
-            app:boxBackgroundColor="@color/placeholder_2"
-            app:boxCornerRadiusBottomEnd="20dp"
-            app:boxCornerRadiusTopStart="20dp"
-            app:endIconMode="clear_text"
-            app:endIconTint="@color/xtreme_3"
-            >
+            android:layout_height="match_parent"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/etConfirmar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!--Boton Recarga-->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnRecargar"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tiNumeroD"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="150dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="150dp"
-            android:gravity="center"
-            android:paddingVertical="16dp"
-            android:text="@string/btn_recarga"
-            android:textColor="@android:color/white"
-            android:visibility="visible"
-            app:cornerRadius="16dp" />
-    </RelativeLayout>
-</FrameLayout>
+    <!--Boton Recarga-->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnRecargar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingVertical="16dp"
+        android:text="@string/btn_recarga"
+        android:textColor="@android:color/white"
+        android:visibility="visible"
+        app:cornerRadius="16dp"
+        app:layout_constraintTop_toBottomOf="@id/ivCarrier"
+        app:layout_constraintBottom_toTopOf="@id/guideBottom"
+        app:layout_constraintStart_toStartOf="@id/guideStart"
+        app:layout_constraintEnd_toStartOf="@id/guideMidVertical"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

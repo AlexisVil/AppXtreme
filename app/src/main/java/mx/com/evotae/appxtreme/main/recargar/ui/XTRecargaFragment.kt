@@ -101,7 +101,7 @@ class XTRecargaFragment : XTFragmentBase() {
                     } else {
                         //Instancia Retrofit para PayBank
                         retrofit = Retrofit.Builder()
-                            .baseUrl(Routers.HOST)
+                            .baseUrl(Routers.HOSTEVO)
                             .addConverterFactory(GsonConverterFactory.create())
                             .build()
                         customProgressDialog()
@@ -247,10 +247,10 @@ class XTRecargaFragment : XTFragmentBase() {
                     println("Redirigir = true")
                 }else if ( response.body()?.operacionExitosa == true ){
                     println("Operacion exitosa = true")
-                    Toast.makeText(safeActivity, "true", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(safeActivity, "true ${response.body()?.objeto?.autorizacionTelcel}", Toast.LENGTH_SHORT).show()
                 }else {
                     println("Operacion Exitosa = false")
-                    Toast.makeText(safeActivity, "false", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(safeActivity, "Operacion False ${response.body()?.mensaje}", Toast.LENGTH_SHORT).show()
                 }
             }
 

@@ -6,130 +6,157 @@
     android:layout_height="match_parent"
     tools:context=".main.ventasim.ui.XTVentaSimFragment">
 
-    <RelativeLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
+    <!--GuideLines-->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideMidVertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-        <!--Imagen Carrier-->
-        <LinearLayout
-            android:id="@+id/linearImage"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideMidHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.08" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.92" />
+    <!--Views-->
+
+    <!--Imagen Carrier-->
+    <ImageView
+        android:id="@+id/ivCarrierServices"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_launcher_background"
+        app:layout_constraintTop_toTopOf="@id/guideTop"
+        app:layout_constraintStart_toStartOf="@id/guideStart"
+        app:layout_constraintEnd_toStartOf="@id/guideEnd"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.15"
+        app:layout_constraintBottom_toTopOf="@id/tvIRef"
+        app:layout_constraintVertical_chainStyle="packed"
+        />
+    <!--ICCID-->
+    <TextView
+        android:id="@+id/tvIRef"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/referencia"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/tiRef"
+        app:layout_constraintEnd_toStartOf="@id/guideEnd"
+        app:layout_constraintStart_toStartOf="@id/guideStart"
+        app:layout_constraintTop_toBottomOf="@id/ivCarrierServices"
+        app:layout_constraintHorizontal_bias="0.1"
+        android:layout_marginTop="25dp"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiRef"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Ingrese ICCID/Número teléfono"
+        app:boxBackgroundColor="@color/placeholder_2"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/xtreme_3"
+        app:layout_constraintTop_toBottomOf="@id/tvIRef"
+        app:layout_constraintStart_toStartOf="@id/guideStart"
+        app:layout_constraintEnd_toStartOf="@id/guideEnd"
+        app:layout_constraintBottom_toTopOf="@id/tvSP"
+        android:layout_marginTop="10dp"
+        >
+        <EditText
+            android:id="@+id/etRef"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="50dp"
-            android:gravity="center">
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
 
+    <ImageView
+        android:id="@+id/ivScan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_camera"
+        app:layout_constraintTop_toTopOf="@id/tiRef"
+        app:layout_constraintBottom_toBottomOf="@id/tiRef"
+        app:layout_constraintStart_toStartOf="@id/tiRef"
+        app:layout_constraintEnd_toEndOf="@id/tiRef"
+        app:layout_constraintHorizontal_bias="0.95"
+        />
 
-            <ImageView
-                android:id="@+id/ivCarrierServices"
-                android:layout_width="170dp"
-                android:layout_height="170dp"
-                android:src="@drawable/ic_launcher_background" />
+    <!--Spinner Productos-->
+    <TextView
+        android:id="@+id/tvSP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="@string/producto"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/spinnerProducto"
+        app:layout_constraintEnd_toEndOf="@id/guideEnd"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="@id/guideStart"
+        app:layout_constraintTop_toBottomOf="@id/tiRef" />
 
-
-        </LinearLayout>
-
-        <!--ICCID-->
-        <TextView
-            android:id="@+id/tvIRef"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/linearImage"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="50dp"
-            android:text="@string/referencia"
-            android:textSize="16sp" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tiRef"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvIRef"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="40dp"
-            android:hint="Ingrese ICCID/Número teléfono"
-            app:boxBackgroundColor="@color/placeholder_2"
-            app:boxCornerRadiusBottomEnd="20dp"
-            app:boxCornerRadiusTopStart="20dp"
-            app:endIconMode="clear_text"
-            app:endIconTint="@color/xtreme_3">
-
-            <EditText
-                android:id="@+id/etRef"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <ImageView
-            android:id="@+id/ivScan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/tiRef"
-            android:layout_alignEnd="@+id/tiRef"
-            android:layout_alignBottom="@+id/tiRef"
-            android:layout_marginEnd="10dp"
-            android:paddingTop="7dp"
-            android:paddingRight="7dp"
-            android:src="@drawable/ic_camera" />
-
-        <!--Spinner Productos-->
-        <TextView
-            android:id="@+id/tvSP"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tiRef"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="50dp"
-            android:text="@string/producto"
-            android:textSize="16sp" />
-
-        <Spinner
-            android:id="@+id/spinnerProducto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvSP"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="40dp" />
-        <!--Boton Pagar Sim-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/spinnerProducto"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="60dp"
-            android:gravity="center">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnRecargaSim"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingVertical="16dp"
-                android:text="@string/btn_recarga"
-                android:textColor="@android:color/white"
-                android:visibility="visible"
-                app:cornerRadius="16dp" />
-        </LinearLayout>
-
-
-    </RelativeLayout>
+    <Spinner
+        android:id="@+id/spinnerProducto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/btnRecargaSim"
+        app:layout_constraintEnd_toEndOf="@id/guideEnd"
+        app:layout_constraintStart_toStartOf="@id/guideStart"
+        app:layout_constraintTop_toBottomOf="@id/tvSP"
+        android:layout_marginTop="10dp"
+        />
+    <!--Boton Pagar Sim-->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnRecargaSim"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingVertical="16dp"
+        android:text="@string/btn_recarga"
+        android:textColor="@android:color/white"
+        android:visibility="visible"
+        app:cornerRadius="16dp"
+        app:layout_constraintTop_toBottomOf="@id/spinnerProducto"
+        app:layout_constraintStart_toStartOf="@id/guideStart"
+        app:layout_constraintEnd_toEndOf="@id/guideEnd"
+        app:layout_constraintBottom_toBottomOf="@id/guideBottom"
+        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="35dp"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

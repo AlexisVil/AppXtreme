@@ -13,7 +13,7 @@ import servicecordinator.router.Routers
 import java.lang.reflect.GenericDeclaration
 
 interface XTSellRechargeApi {
-    @POST(Routers.ENDPOINT)
+    @POST(Routers.ENDEVO)
     fun postSellRecharge(
         @Query("idOperacion") idOperacion: String?,
         @Query("user") user: String?,

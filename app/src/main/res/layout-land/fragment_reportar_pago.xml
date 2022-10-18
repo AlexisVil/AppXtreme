@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.reportarpago.ui.XTReportarPagoFragment"
+    >
+    <!--Guias-->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideMidVertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideMidHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.08" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.92" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+    <!--Views-->
+    <!--Bancos-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiBanco"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Banco"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxStrokeColor="@color/xtreme_3"
+        app:boxStrokeWidth="2dp"
+        app:helperText="Banco"
+        app:helperTextEnabled="true"
+        app:helperTextTextAppearance="@style/Widget.MaterialComponents.Button.TextButton"
+        app:helperTextTextColor="@color/letters_2"
+        app:hintTextColor="@color/design_default_color_on_primary"
+        app:layout_constraintBottom_toTopOf="@id/tiRef"
+        app:layout_constraintEnd_toStartOf="@id/tiDeposito"
+        app:layout_constraintStart_toEndOf="@id/guideStart"
+        app:layout_constraintTop_toTopOf="@id/guideTop"
+        android:layout_marginEnd="20dp">
+
+        <EditText
+            android:id="@+id/etBanco"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="false" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--Tipo transferencia-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiDeposito"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Tipo déposito"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxStrokeColor="@color/xtreme_3"
+        app:boxStrokeWidth="2dp"
+        app:helperText="Tipo de Déposito"
+        app:helperTextEnabled="true"
+        app:helperTextTextAppearance="@style/Widget.MaterialComponents.Button.TextButton"
+        app:helperTextTextColor="@color/letters_2"
+        app:hintTextColor="@color/design_default_color_on_primary"
+        app:layout_constraintBottom_toTopOf="@id/tiFecha"
+        app:layout_constraintEnd_toStartOf="@id/guideEnd"
+        app:layout_constraintStart_toEndOf="@id/tiBanco"
+        app:layout_constraintTop_toTopOf="@id/guideTop"
+        android:layout_marginStart="20dp"
+        >
+
+        <EditText
+            android:id="@+id/etDeposito"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="false" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <!--Referencia-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiRef"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Ingrese referencia"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxStrokeColor="@color/xtreme_3"
+        app:boxStrokeWidth="2dp"
+        app:helperText="Referencia"
+        app:helperTextEnabled="true"
+        app:helperTextTextAppearance="@style/Widget.MaterialComponents.Button.TextButton"
+        app:helperTextTextColor="@color/letters_2"
+        app:hintTextColor="@color/design_default_color_on_primary"
+        app:layout_constraintBottom_toTopOf="@id/guideMidHorizontal"
+        app:layout_constraintEnd_toStartOf="@id/tiFecha"
+        app:layout_constraintStart_toEndOf="@id/guideStart"
+        app:layout_constraintTop_toBottomOf="@id/tiBanco"
+        android:layout_marginEnd="20dp"
+        >
+
+        <EditText
+            android:id="@+id/etRef"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--Fecha-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiFecha"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Seleccione Fecha"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxStrokeColor="@color/xtreme_3"
+        app:boxStrokeWidth="2dp"
+        app:helperText="Fecha"
+        app:helperTextEnabled="true"
+        app:helperTextTextAppearance="@style/Widget.MaterialComponents.Button.TextButton"
+        app:helperTextTextColor="@color/letters_2"
+        app:hintTextColor="@color/design_default_color_on_primary"
+        app:layout_constraintBottom_toTopOf="@id/guideMidHorizontal"
+        app:layout_constraintEnd_toStartOf="@id/guideEnd"
+        app:layout_constraintStart_toEndOf="@id/tiRef"
+        app:layout_constraintTop_toBottomOf="@id/tiDeposito"
+        android:layout_marginStart="20dp">
+
+        <EditText
+            android:id="@+id/etFecha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="false" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--Monto-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiMonto"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Ingrese una cantidad"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxStrokeColor="@color/xtreme_3"
+        app:boxStrokeWidth="2dp"
+        app:helperText="Monto"
+        app:helperTextEnabled="true"
+        app:helperTextTextAppearance="@style/Widget.MaterialComponents.Button.TextButton"
+        app:helperTextTextColor="@color/letters_2"
+        app:hintTextColor="@color/design_default_color_on_primary"
+        app:layout_constraintBottom_toTopOf="@id/guideBottom"
+        app:layout_constraintEnd_toStartOf="@id/tiRecarga"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="@id/guideStart"
+        app:layout_constraintTop_toBottomOf="@id/guideMidHorizontal"
+        app:layout_constraintVertical_bias="0.2"
+        app:prefixText="$">
+
+        <EditText
+            android:id="@+id/etMonto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--Recarga-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiRecarga"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="$"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+        app:boxStrokeColor="@color/xtreme_3"
+        app:boxStrokeWidth="2dp"
+        app:helperText="Recarga"
+        app:helperTextEnabled="true"
+        app:helperTextTextAppearance="@style/Widget.MaterialComponents.Button.TextButton"
+        app:helperTextTextColor="@color/letters_2"
+        app:hintTextColor="@color/design_default_color_on_primary"
+        app:layout_constraintBottom_toTopOf="@id/guideBottom"
+        app:layout_constraintEnd_toStartOf="@id/tiServicios"
+        app:layout_constraintStart_toEndOf="@id/tiMonto"
+        app:layout_constraintTop_toBottomOf="@id/guideMidHorizontal"
+        app:layout_constraintVertical_bias="0.2"
+        app:prefixText="$">
+
+        <EditText
+            android:id="@+id/etRecarga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--Servicios-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiServicios"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="$"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+        app:boxStrokeColor="@color/xtreme_3"
+        app:boxStrokeWidth="2dp"
+        app:helperText="Servicios"
+        app:helperTextEnabled="true"
+        app:helperTextTextAppearance="@style/Widget.MaterialComponents.Button.TextButton"
+        app:helperTextTextColor="@color/letters_2"
+        app:hintTextColor="@color/design_default_color_on_primary"
+        app:layout_constraintBottom_toTopOf="@id/guideBottom"
+        app:layout_constraintEnd_toStartOf="@id/btnReportar"
+        app:layout_constraintStart_toEndOf="@id/tiRecarga"
+        app:layout_constraintTop_toBottomOf="@id/guideMidHorizontal"
+        app:layout_constraintVertical_bias="0.2"
+        app:prefixText="$">
+
+        <EditText
+            android:id="@+id/etServicios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--Btn Reportar Pago-->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnReportar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingVertical="16dp"
+        android:text="@string/btn_pago"
+        android:textColor="@android:color/white"
+        android:visibility="visible"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/guideBottom"
+        app:layout_constraintEnd_toStartOf="@id/guideEnd"
+        app:layout_constraintStart_toEndOf="@id/tiServicios"
+        app:layout_constraintTop_toBottomOf="@id/guideMidHorizontal"
+        app:layout_constraintVertical_bias="0.2"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

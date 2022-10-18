@@ -1,141 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="40dp"
-    android:paddingBottom="10dp"
     tools:context=".main.service.ui.XTPagarServicioFragment">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
+    <!--Guias-->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideMidVertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideMidHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        >
+        app:layout_constraintGuide_percent="0.5" />
 
-        <ImageView
-            android:id="@+id/ivCarrierServices"
-            android:layout_width="170dp"
-            android:layout_height="170dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/ic_launcher_background" />
-        <!--Numero de referencia-->
-        <TextView
-            android:id="@+id/tvTitleNRef"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.06" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.88" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+    <!--Views-->
+    <ImageView
+        android:id="@+id/ivCarrierServices"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_launcher_background"
+        app:layout_constraintBottom_toTopOf="@id/btnServicio"
+        app:layout_constraintEnd_toStartOf="@id/guideMidVertical"
+        app:layout_constraintStart_toStartOf="@id/guideStart"
+        app:layout_constraintTop_toTopOf="@id/guideTop"
+        app:layout_constraintVertical_chainStyle="spread" />
+    <!--Numero de referencia-->
+    <TextView
+        android:id="@+id/tvTitleNRef"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/referencia"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/tiRef"
+        app:layout_constraintEnd_toEndOf="@id/guideEnd"
+        app:layout_constraintStart_toStartOf="@id/guideMidVertical"
+        app:layout_constraintTop_toBottomOf="@id/guideTop"
+        app:layout_constraintVertical_bias="0.1"
+        android:layout_marginTop="25dp"/>
+
+    <!--Text input Numero Ref -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiRef"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Capture el número de referencia"
+        app:boxBackgroundColor="@color/placeholder_2"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/xtreme_3"
+        app:layout_constraintBottom_toTopOf="@id/tvTitleMonto"
+        app:layout_constraintEnd_toEndOf="@id/guideEnd"
+        app:layout_constraintStart_toStartOf="@id/guideMidVertical"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleNRef"
+        android:layout_marginTop="10dp">
+
+        <EditText
+            android:id="@+id/etRef"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_toEndOf="@+id/ivCarrierServices"
-            android:text="@string/referencia"
-            android:textSize="18sp" />
+            android:layout_height="match_parent"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-        <!--Text input Numero Ref -->
+    <ImageView
+        android:id="@+id/ivScan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_camera"
+        app:layout_constraintTop_toTopOf="@id/tiRef"
+        app:layout_constraintBottom_toBottomOf="@id/tiRef"
+        app:layout_constraintStart_toStartOf="@id/tiRef"
+        app:layout_constraintEnd_toEndOf="@id/tiRef"
+        app:layout_constraintHorizontal_bias="0.95"/>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tiRef"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <!--Monto a pagar-->
+    <TextView
+        android:id="@+id/tvTitleMonto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/montoS"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/tiMonto"
+        app:layout_constraintEnd_toEndOf="@id/guideEnd"
+        app:layout_constraintStart_toStartOf="@id/guideMidVertical"
+        app:layout_constraintTop_toBottomOf="@id/tiRef"
+        android:layout_marginTop="25dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiMonto"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Ingrese una cantidad"
+        app:boxBackgroundColor="@color/placeholder_2"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/xtreme_3"
+        app:layout_constraintBottom_toTopOf="@id/btnServicio"
+        app:layout_constraintEnd_toEndOf="@id/guideEnd"
+        app:layout_constraintStart_toStartOf="@id/guideMidVertical"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleMonto"
+        app:prefixText="$"
+        android:layout_marginTop="10dp">
+
+        <EditText
+            android:id="@+id/etMontoServicio"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvTitleNRef"
-            android:layout_toEndOf="@+id/ivCarrierServices"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="50dp"
-            android:hint="Capture el número de referencia"
-            app:boxBackgroundColor="@color/placeholder_2"
-            app:boxCornerRadiusBottomEnd="20dp"
-            app:boxCornerRadiusTopStart="20dp"
-            app:endIconMode="clear_text"
-            app:endIconTint="@color/xtreme_3">
+            android:layout_height="match_parent"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/etRef"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <ImageView
-            android:id="@+id/ivScan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/tiRef"
-            android:layout_alignEnd="@+id/tiRef"
-            android:layout_alignTop="@+id/tiRef"
-            android:layout_alignBottom="@+id/tiRef"
-            android:layout_marginStart="460dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/ic_camera" />
-
-        <!--Monto a pagar-->
-        <TextView
-            android:id="@+id/tvTitleMonto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tiRef"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="50dp"
-            android:layout_toEndOf="@+id/ivCarrierServices"
-            android:text="@string/montoS"
-            android:textSize="18sp" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tiMonto"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvTitleMonto"
-            android:layout_alignParentEnd="true"
-            android:layout_toEndOf="@+id/ivCarrierServices"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="50dp"
-            android:hint="Ingrese una cantidad"
-            app:boxBackgroundColor="@color/placeholder_2"
-            app:boxCornerRadiusBottomEnd="20dp"
-            app:boxCornerRadiusTopStart="20dp"
-            app:endIconMode="clear_text"
-            app:endIconTint="@color/xtreme_3"
-            app:prefixText="$">
-
-            <EditText
-                android:id="@+id/etMontoServicio"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!--Botón Pago-->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnServicio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tiMonto"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="150dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="150dp"
-            android:gravity="center"
-            android:paddingVertical="16dp"
-            android:text="@string/btnPagar"
-            android:textColor="@android:color/white"
-            android:visibility="visible"
-            app:cornerRadius="16dp" />
-    </RelativeLayout>
-
-</FrameLayout>
+    <!--Botón Pago-->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnServicio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingVertical="16dp"
+        android:text="@string/btnPagar"
+        android:textColor="@android:color/white"
+        android:visibility="visible"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toTopOf="@id/guideBottom"
+        app:layout_constraintEnd_toEndOf="@id/guideMidVertical"
+        app:layout_constraintStart_toStartOf="@id/guideStart"
+        app:layout_constraintTop_toBottomOf="@id/ivCarrierServices"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
