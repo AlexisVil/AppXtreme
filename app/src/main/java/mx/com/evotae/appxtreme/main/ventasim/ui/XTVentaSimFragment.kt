@@ -6,7 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,17 +22,21 @@ import mx.com.evotae.appxtreme.R
 import mx.com.evotae.appxtreme.databinding.FragmentXTVentaSimBinding
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
 import mx.com.evotae.appxtreme.framework.util.extensions.getPreferenceToString
+import mx.com.evotae.appxtreme.main.dialogs.ui.ErrorDialog
 import mx.com.evotae.appxtreme.main.dialogs.ui.TicketDialog
-import mx.com.evotae.appxtreme.main.recargar.ui.XTRecargaFragmentArgs
 import mx.com.evotae.appxtreme.main.recargar.viewmodel.XTViewModelProductList
 import mx.com.evotae.appxtreme.main.tae.datasource.XTDataCarrier
-import mx.com.evotae.appxtreme.main.ventasim.viewmodel.XTViewModelSimSell
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import retrofit2.*
+import retrofit2.converter.gson.GsonConverterFactory
+import servicecordinator.apis.XTSimSellApi
 import servicecordinator.model.response.XTResponseProductList
 import servicecordinator.model.response.XTResponseSimSell
 import servicecordinator.retrofit.managercall.OPERATOR_APP
 import servicecordinator.retrofit.managercall.PWD_APP
 import servicecordinator.retrofit.managercall.USER_APP
+import servicecordinator.retrofit.model.dataclass.XTRespuestaGenerica
+import servicecordinator.router.Routers
 
 class XTVentaSimFragment : XTFragmentBase() {
     lateinit var binding: FragmentXTVentaSimBinding
@@ -45,12 +49,12 @@ class XTVentaSimFragment : XTFragmentBase() {
     lateinit var selectedId: String
     private var barecode = ""
     private val viewModelProductList: XTViewModelProductList by sharedViewModel()
-    private val viewModelSimSell: XTViewModelSimSell by sharedViewModel()
     lateinit var nTicket: String
     lateinit var nMonto: String
     lateinit var nDate: String
     lateinit var nAuto: String
     lateinit var numeroSim: String
+    lateinit var retrofit: Retrofit
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -88,12 +92,19 @@ class XTVentaSimFragment : XTFragmentBase() {
                 Toast.makeText(safeActivity, "Cámara", Toast.LENGTH_SHORT).show()
                 initScanner()
             }
-            btnRecargaSim.setOnClickListener { 
-
+            btnRecargaSim.setOnClickListener {
+                val customProgressDialog = Dialog(safeActivity)
+                customProgressDialog.setContentView(R.layout.custom_progress_dialog)
+                customProgressDialog.setCancelable(true)
+                customProgressDialog.show()
                 if (!(etRef.text.toString().length < 4) || etRef.text.isNotEmpty()) {
-                    customProgressDialog()
                     numeroSim = etRef.text.toString()
-                    viewModelSimSell.simSell(
+                    //Instancia de retrofit Sim sell
+                    retrofit = Retrofit.Builder()
+                        .baseUrl(Routers.HOST)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build()
+                    ventaSim(
                         "recargasSimCard",
                         USER_APP.getPreferenceToString().toString(),
                         PWD_APP.getPreferenceToString().toString(),
@@ -104,6 +115,7 @@ class XTVentaSimFragment : XTFragmentBase() {
                         numeroSim,
                         ""
                     )
+                    etRef.setText("")
                 } else {
                     etRef.error = "Ingrese Referencia"
                 }
@@ -119,11 +131,9 @@ class XTVentaSimFragment : XTFragmentBase() {
         viewModelProductList.launchError.observe(viewLifecycleOwner, handleError())
         viewModelProductList.getProductList.observe(viewLifecycleOwner, handleProductList())
         //Observers SimSell
-        viewModelSimSell.launchLoader.observe(viewLifecycleOwner, handleLoader())
-        viewModelSimSell.launchError.observe(viewLifecycleOwner, handleErrorRecharge())
-        viewModelSimSell.simSell.observe(viewLifecycleOwner, handleSimSell())
-
-
+//        viewModelSimSell.launchLoader.observe(viewLifecycleOwner, handleLoader())
+//        viewModelSimSell.launchError.observe(viewLifecycleOwner, handleErrorRecharge())
+//        viewModelSimSell.simSell.observe(viewLifecycleOwner, handleSimSell())
     }
 
     private fun handleSimSell(): (XTResponseSimSell?) -> Unit = { data ->
@@ -198,15 +208,64 @@ class XTVentaSimFragment : XTFragmentBase() {
         }
     }
 
-    private fun customProgressDialog() {
-        val customProgressDialog = Dialog(safeActivity)
-        customProgressDialog.setContentView(R.layout.custom_progress_dialog)
-        val handler = Handler()
-        val DURATION = 1500
-        handler.postDelayed(
-            { customProgressDialog.show() },
-            DURATION.toLong()
-        )
-        customProgressDialog.dismiss()
+    private fun ventaSim(
+        idOperacion: String,
+        user: String,
+        pwd: String,
+        claveOperador: String,
+        regId: String,
+        versionCode: String,
+        id: String,
+        numeroCelular: String,
+        montovar: String
+    ) {
+        val simSellApiCall: XTSimSellApi = retrofit.create(XTSimSellApi::class.java)
+        val responseCall: Call<XTRespuestaGenerica<XTResponseSimSell>> =
+            simSellApiCall.postSimSell(
+                idOperacion,
+                user,
+                pwd,
+                claveOperador,
+                regId,
+                versionCode,
+                id,
+                numeroCelular,
+                montovar
+            )
+        Log.v("URL", responseCall.request().toString())
+        responseCall.enqueue(object : Callback<XTRespuestaGenerica<XTResponseSimSell>?> {
+            override fun onResponse(
+                call: Call<XTRespuestaGenerica<XTResponseSimSell>?>,
+                response: Response<XTRespuestaGenerica<XTResponseSimSell>?>
+            ) {
+                val data = response.body()?.objeto
+                if (response.body()?.redirigir == true) {
+                    println("Redirigir = true")
+                } else if (response.body()?.operacionExitosa == true) {
+                    nTicket = data?.ticket.toString()
+                    nMonto = data?.monto.toString()
+                    nDate = data?.fecha.toString()
+                    nAuto = data?.autorizacionTelcel.toString()
+                    Toast.makeText(safeActivity, "SIM RECARGADA", Toast.LENGTH_SHORT).show()
+                    TicketDialog(nTicket, nMonto, nAuto, numeroSim, nDate).show(
+                        parentFragmentManager,
+                        "Dialog"
+                    )
+                }else {
+                    ErrorDialog(response.body()?.mensaje.toString()).show(
+                        parentFragmentManager,
+                        "Error"
+                    )
+                }
+            }
+
+            override fun onFailure(
+                call: Call<XTRespuestaGenerica<XTResponseSimSell>?>,
+                t: Throwable
+            ) {
+                Toast.makeText(safeActivity, "Failure ${t.message}", Toast.LENGTH_SHORT).show()
+                Log.e("Error", "onFailure ${t.message}")
+            }
+        })
     }
 }

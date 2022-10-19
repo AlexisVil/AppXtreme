@@ -3,6 +3,7 @@ package mx.com.evotae.appxtreme.main.reportarpago.ui
 import android.app.Activity
 import android.app.AlertDialog
 import android.app.DatePickerDialog
+import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -88,6 +89,10 @@ class XTReportarPagoFragment : XTFragmentBase() {
                 transferenciaDialog(optionTransfer)
             }
             btnReportar.setOnClickListener {
+                val customProgressDialog = Dialog(safeActivity)
+                customProgressDialog.setContentView(R.layout.custom_progress_dialog)
+                customProgressDialog.setCancelable(true)
+                customProgressDialog.show()
                 //Instancia Retrofit para PayBank
                 retrofit = Retrofit.Builder()
                     .baseUrl(Routers.HOST)
@@ -130,6 +135,15 @@ class XTReportarPagoFragment : XTFragmentBase() {
                         "",
                         "80f8cf43-0d26-4876-966e-cc90e13e0f0c"
                     )
+                    if (customProgressDialog.isShowing)
+                        customProgressDialog.dismiss()
+                    etBanco.text.clear()
+                    etDeposito.text.clear()
+                    etFecha.text.clear()
+                    etRef.text.clear()
+                    etMonto.text.clear()
+                    etRecarga.text.clear()
+                    etServicios.text.clear()
                 }
             }
         }

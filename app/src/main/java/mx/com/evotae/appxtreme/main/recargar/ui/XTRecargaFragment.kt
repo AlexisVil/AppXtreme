@@ -59,6 +59,7 @@ class XTRecargaFragment : XTFragmentBase() {
     lateinit var selectedId: String
     lateinit var retrofit: Retrofit
 
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context != null) {
@@ -95,6 +96,7 @@ class XTRecargaFragment : XTFragmentBase() {
                 val customProgressDialog = Dialog(safeActivity)
                 customProgressDialog.setContentView(R.layout.custom_progress_dialog)
                 customProgressDialog.setCancelable(true)
+                customProgressDialog.show()
                 if (!(etNumber.text.toString().length < 10)) {
                     numeroCelular = etNumber.text.toString()
                     println("Numero a recargar: $numeroCelular")
@@ -103,9 +105,9 @@ class XTRecargaFragment : XTFragmentBase() {
                         Toast.makeText(safeActivity, "No coincide número", Toast.LENGTH_SHORT)
                             .show()
                     } else {
-                        //Instancia Retrofit para PayBank
+                        //Instancia Retrofit para Sell Recharge
                         retrofit = Retrofit.Builder()
-                            .baseUrl(Routers.HOSTEVO)
+                            .baseUrl(Routers.HOST)
                             .addConverterFactory(GsonConverterFactory.create())
                             .build()
                         customProgressDialog.show()
@@ -119,21 +121,10 @@ class XTRecargaFragment : XTFragmentBase() {
                             idCurrentProduct,
                             numeroCelular
                         )
-
-                        /**
-                        viewModelSellRecharge.sellRecharge(
-                        "ventaRecarga",
-                        USER_APP.getPreferenceToString().toString(),
-                        PWD_APP.getPreferenceToString().toString(),
-                        OPERATOR_APP.getPreferenceToString().toString(),
-                        "80f8cf43-0d26-4876-966e-cc90e13e0f0c",
-                        "",
-                        idCurrentProduct,
-                        numeroCelular
-                        )
-                         **/
                         etNumber.setText("")
                         etConfirmar.setText("")
+                        if (customProgressDialog.isShowing)
+                            customProgressDialog.dismiss()
                     }
                 } else {
                     //Nuimero debe tener 10 digitos
@@ -142,8 +133,7 @@ class XTRecargaFragment : XTFragmentBase() {
                     etNumber.requestFocus()
                     etConfirmar.requestFocus()
                 }
-                if (customProgressDialog.isShowing)
-                    customProgressDialog.dismiss()
+
             }
             //Renderiza imágen en el fragment
             Glide.with(safeActivity).load(args.xtTaeModel.photo).into(binding.ivCarrier)
@@ -247,11 +237,13 @@ class XTRecargaFragment : XTFragmentBase() {
                         parentFragmentManager,
                         "Dialog"
                     )
+
                 } else {
                     ErrorDialog(response.body()?.mensaje.toString()).show(
                         parentFragmentManager,
                         "Error"
                     )
+
                 }
             }
 

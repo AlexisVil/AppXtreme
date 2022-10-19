@@ -34,7 +34,8 @@ class XTDataCarrier {
             "44" to "SPACE",
             "45" to "PILLOFON",
             "0" to "TESTRECARGA",
-            "24" to "WEEX"
+            "24" to "WEEX",
+            "9" to "VIRGIN"
         )
     }
 }

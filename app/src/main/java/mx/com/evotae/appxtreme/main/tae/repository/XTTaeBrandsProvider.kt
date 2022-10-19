@@ -25,12 +25,12 @@ class XTTaeBrandsProvider {
             XTTaeModel(
                 "Paquetes Telcel",
                 2,
-                "https://telceltijuana.com/images/planTelcel.png"
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FSERVICIOSTELCEL.png?alt=media&token=c7474ae5-edca-4d21-8f10-498186e9ab63"
             ),
             XTTaeModel(
                 "Paquetes Movistar",
                 25,
-                "https://selectra.mx/sites/selectra.mx/files/styles/_default/public/images/planes-movistar-825x293_1.png"
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FSERVICIOSMOVISTAR.png?alt=media&token=ffd9aae4-03e5-415f-a985-fdfbb2e8ae44"
             ),
             XTTaeModel(
                 "Movistar",
@@ -40,7 +40,7 @@ class XTTaeBrandsProvider {
             XTTaeModel(
                 "Att/Unefon",
                 4,
-                "https://http2.mlstatic.com/D_NQ_NP_795969-MLM32821376088_112019-O.jpg"
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FATTUNEFON.jpg?alt=media&token=e6165c99-111a-4519-818e-08e4e7f45739"
             ),
             XTTaeModel(
                 "Bait",
@@ -50,102 +50,107 @@ class XTTaeBrandsProvider {
             XTTaeModel(
                 "Virgin Mobile",
                 39,
-                "https://brandslogos.com/wp-content/uploads/images/large/virgin-logo.png"
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FVIRGIN.png?alt=media&token=e482461a-4523-4560-b57d-7ef4f93f35ae"
             ),
             XTTaeModel(
                 "Pillofon",
                 45,
-                "https://d3jkoqalzfs5lw.cloudfront.net/imagenesPillo/Website/PilloFon_Logo_fav.png"
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FPILLOFON.png?alt=media&token=4277ee7e-1420-4649-9154-131d2324498a"
             ),
             XTTaeModel(
                 "Oui Movil",
                 38,
-                "https://play-lh.googleusercontent.com/40I0MAr1getFF-dLOzxekLi2_C3MC_u0HL2gmqNbXNWy32n9Bo3XIz2YYlAutfCT8aw"
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FOUI.png?alt=media&token=4c8bb055-2248-4978-8b92-eca41e4aba3c"
             ),
             XTTaeModel(
                 "JrMovil",
                 42,
-                "https://jrmovil.com/wp-content/uploads/2021/04/cropped-cropped-JR-movil-fondo-transparente-01.png"
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FJRMOVIL.png?alt=media&token=ece5bdee-10d0-4c8a-8c8f-f55846ab503d"
             ),
             XTTaeModel(
                 "Space movil",
                 44,
-                "https://pbs.twimg.com/profile_images/1324014137559588864/ZCpX6K1s_400x400.jpg"
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FSPACE.jpg?alt=media&token=66aa0c9f-2b32-4855-96c1-e73cef55f956"
             ),
             XTTaeModel(
                 "Diri",
                 30,
-                "https://d3jkoqalzfs5lw.cloudfront.net/imagesDiri/img/Diri_Logo_fav.png"
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FDIRI.png?alt=media&token=874c6788-ecb9-4e4c-9e93-cce56fd7f9f2"
             ),
             XTTaeModel(
                 "Maya movil",
                 29,
-                "https://mayamovil.com.mx/web/image/1510-0bfb27b7/MAYA%20BLANCO.png"
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FMAYA.png?alt=media&token=3ed51b11-e305-41b6-a00b-27b34285fbf4"
             ),
             XTTaeModel(
                 "Diveracy",
                 41,
-                "https://pbs.twimg.com/profile_banners/1040278766390530048/1536857373/1500x500"
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FDIVERACY.png?alt=media&token=c5b34c40-0861-43e7-8fe7-a5bb7fc14d36"
             ),
             XTTaeModel(
                 "Valor Móvil",
                 36,
-                "https://valortelecom.mx/ukokreew/2022/03/cropped-logo-gris-02.png"
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FVALOR.png?alt=media&token=1702d144-500d-4b56-b1d2-deed5e91aaa1"
             ),
             XTTaeModel(
                 "Recarga SIM",
                 23,
-                "https://cdn-icons-png.flaticon.com/512/4298/4298126.png"
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FSIMCARD.png?alt=media&token=fb45fe48-6dfb-4bca-bcea-52fb7ff93f46"
             ),
             XTTaeModel(
                 "Test Recarga",
                 0,
-                "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/testing-logo-design-template-ce84480d61b3db9a8e1522a99875832f_screen.jpg?ts=1615794516"
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FTEST.jpg?alt=media&token=29178f14-3328-4164-b92f-45f0cd802e34"
             ),
             XTTaeModel(
                 "WiMoMovil",
                 37,
-                "https://wimotelecom.com/wp-content/uploads/2020/09/logo_wimo_fondo_blue.png"
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FWIMO.png?alt=media&token=2dc5a572-c8a2-454f-8f6d-9d3d398ce552"
             ),
             XTTaeModel(
                 "MazTiempo",
                 40,
-                "https://i.blogs.es/1e3a67/650_1000_maz-tiempo/450_1000.png"
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FMAZTIEMPO.png?alt=media&token=c47fe493-4e2f-4753-8813-e9c3cdd92321"
             ),
             XTTaeModel(
                 "NetWey",
                 35,
-                "https://secure.netwey.com.mx/site/img/Logotipo-Netwey-Black.svg"
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FNETWEY.svg?alt=media&token=efdb3be4-e282-40e4-9304-785239c57596"
+            ),
+            XTTaeModel(
+                "VIRGIN",
+                9,
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FVIRGIN.png?alt=media&token=e482461a-4523-4560-b57d-7ef4f93f35ae"
             ),
             XTTaeModel(
                 "Gugacom",
                 34,
-                "https://www.gugacom.com/wp-content/uploads/2020/01/gugacom_fina_300x100.png"
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FGUGACOM.png?alt=media&token=e965781c-3580-43d6-8ba0-7560e3687262"
             ),
             XTTaeModel(
                 "FreedomPop",
                 33,
-                "https://upload.wikimedia.org/wikipedia/commons/c/c8/Freedompop_logo.png"
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FFreedompop.png?alt=media&token=0cad4cae-c14e-4189-bd7b-cbddffddb06a"
             ),
             XTTaeModel(
                 "FlashMobile",
                 32,
-                "https://play-lh.googleusercontent.com/R0lyJSbdzfDmKC5-FxMTe_HoVCboZvdbUiL1xk8v1c9nTnZBizqK2gm_7HgF6XO4Geep"
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FFLASHMOBILE.png?alt=media&token=c51d2d22-c804-40df-8a66-be6489101a10"
             ),
             XTTaeModel(
                 "ComparTfon",
                 31,
-                "https://www.tuexpertomovil.com/wp-content/uploads/2020/11/opiniones-compartfon-2020-1200x800.jpg"
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FCOMPARTEFON.jpg?alt=media&token=b4876f85-3411-4447-8e79-1a07126742b3"
             ),
             XTTaeModel(
                 "WEEX",
                 24,
-                "https://logovtor.com/wp-content/uploads/2020/10/weex-mx-logo-vector.png"
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FWEEX.png?alt=media&token=89d4c0cb-941a-4c37-a4df-4843eaf992a4"
             ),
             XTTaeModel(
                 "CIERTO",
                 22,
-                "https://i.blogs.es/b1d452/cierto-logo/1366_2000.jpg"
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FCIERTO.jpg?alt=media&token=e5419f69-0ce9-4988-9446-0c3be9014149"
             ),
             XTTaeModel(
                 "MASRECARGA",
@@ -155,7 +160,12 @@ class XTTaeBrandsProvider {
             XTTaeModel(
                 "MiMovil",
                 26,
-                "https://cdn-pcu.s3-us-west-2.amazonaws.com/images/main-logo.png"
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FMIMOVIL.png?alt=media&token=eeb1d7e7-ba7b-4adf-9176-0f9a437de508"
+            ),
+            XTTaeModel(
+                "MAZTIEMPO",
+                19,
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FMAZTIEMPO.png?alt=media&token=c47fe493-4e2f-4753-8813-e9c3cdd92321"
             )
         )
     }

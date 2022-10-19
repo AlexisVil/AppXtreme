@@ -29,6 +29,7 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/dg_recarga"
                 android:textStyle="bold"
+                android:textColor="#4CAF50"
                 android:textSize="28sp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

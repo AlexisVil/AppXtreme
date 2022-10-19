@@ -1,17 +1,19 @@
 package servicecordinator.apis
 
 import kotlinx.coroutines.Deferred
+import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.POST
 import retrofit2.http.Query
 import servicecordinator.model.response.XTResponsePayService
 import servicecordinator.retrofit.model.dataclass.XTResponseData
 import servicecordinator.retrofit.model.dataclass.XTResponseGeneral
+import servicecordinator.retrofit.model.dataclass.XTRespuestaGenerica
 import servicecordinator.router.Routers
 
 interface XTPayServiceApi {
-    @POST(Routers.ENDEVO)
-    fun payService(
+    @POST(Routers.ENDPOINT)
+    fun postPayService(
         @Query("idOperacion") idOperacion: String?,
         @Query("user") user: String?,
         @Query("pwd") pwd: String?,
@@ -21,5 +23,5 @@ interface XTPayServiceApi {
         @Query("id") id: String?,
         @Query("numeroCuenta") numeroCuenta: String?,
         @Query("montovar") montovar: String?
-    ): Deferred<Response<XTResponseGeneral<XTResponsePayService>>>
+    ): Call<XTRespuestaGenerica<XTResponsePayService>>
 }
