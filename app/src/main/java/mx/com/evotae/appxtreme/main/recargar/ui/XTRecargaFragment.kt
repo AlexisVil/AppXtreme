@@ -2,6 +2,7 @@ package mx.com.evotae.appxtreme.main.recargar.ui
 
 import android.app.Activity
 import android.app.Dialog
+import android.app.ProgressDialog
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
@@ -91,6 +92,9 @@ class XTRecargaFragment : XTFragmentBase() {
         binding.apply {
 
             btnRecargar.setOnClickListener {
+                val customProgressDialog = Dialog(safeActivity)
+                customProgressDialog.setContentView(R.layout.custom_progress_dialog)
+                customProgressDialog.setCancelable(true)
                 if (!(etNumber.text.toString().length < 10)) {
                     numeroCelular = etNumber.text.toString()
                     println("Numero a recargar: $numeroCelular")
@@ -104,7 +108,7 @@ class XTRecargaFragment : XTFragmentBase() {
                             .baseUrl(Routers.HOSTEVO)
                             .addConverterFactory(GsonConverterFactory.create())
                             .build()
-                        customProgressDialog()
+                        customProgressDialog.show()
                         venderRecgarga(
                             "ventaRecarga",
                             USER_APP.getPreferenceToString().toString(),
@@ -115,6 +119,7 @@ class XTRecargaFragment : XTFragmentBase() {
                             idCurrentProduct,
                             numeroCelular
                         )
+
                         /**
                         viewModelSellRecharge.sellRecharge(
                         "ventaRecarga",
@@ -137,6 +142,8 @@ class XTRecargaFragment : XTFragmentBase() {
                     etNumber.requestFocus()
                     etConfirmar.requestFocus()
                 }
+                if (customProgressDialog.isShowing)
+                    customProgressDialog.dismiss()
             }
             //Renderiza imágen en el fragment
             Glide.with(safeActivity).load(args.xtTaeModel.photo).into(binding.ivCarrier)
@@ -200,21 +207,6 @@ class XTRecargaFragment : XTFragmentBase() {
         }
     }
 
-    /**
-     * Custom Dialog
-     */
-    private fun customProgressDialog() {
-        val customProgressDialog = Dialog(safeActivity)
-        customProgressDialog.setContentView(R.layout.custom_progress_dialog)
-        val handler = Handler()
-        val DURATION = 1500
-        handler.postDelayed(
-            { customProgressDialog.show() },
-            DURATION.toLong()
-        )
-        customProgressDialog.dismiss()
-    }
-
     private fun venderRecgarga(
         idOperacion: String,
         user: String,
@@ -243,14 +235,23 @@ class XTRecargaFragment : XTFragmentBase() {
                 call: Call<XTRespuestaGenerica<XTResponseSellRecharge>?>,
                 response: Response<XTRespuestaGenerica<XTResponseSellRecharge>?>
             ) {
-                if (response.body()?.redirigir == true){
+                val data = response.body()?.objeto
+                if (response.body()?.redirigir == true) {
                     println("Redirigir = true")
-                }else if ( response.body()?.operacionExitosa == true ){
-                    println("Operacion exitosa = true")
-                    Toast.makeText(safeActivity, "true ${response.body()?.objeto?.autorizacionTelcel}", Toast.LENGTH_SHORT).show()
-                }else {
-                    println("Operacion Exitosa = false")
-                    Toast.makeText(safeActivity, "Operacion False ${response.body()?.mensaje}", Toast.LENGTH_SHORT).show()
+                } else if (response.body()?.operacionExitosa == true) {
+                    nTicket = data?.ticket.toString()
+                    nMonto = data?.monto.toString()
+                    nDate = data?.fecha.toString()
+                    nAuto = data?.autorizacionTelcel.toString()
+                    TicketDialog(nTicket, nMonto, nAuto, numeroCelular, nDate).show(
+                        parentFragmentManager,
+                        "Dialog"
+                    )
+                } else {
+                    ErrorDialog(response.body()?.mensaje.toString()).show(
+                        parentFragmentManager,
+                        "Error"
+                    )
                 }
             }
 

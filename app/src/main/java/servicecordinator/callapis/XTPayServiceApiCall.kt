@@ -14,7 +14,7 @@ import servicecordinator.router.Routers
 class XTPayServiceApiCall(private val context: Context) : XTManagerCall() {
     private val callApi = XTRetrofitApp
         .Build<XTPayServiceApi>()
-        .setHost(Routers.HOST)
+        .setHost(Routers.HOSTEVO)
         .setContext(context)
         .setClass(XTPayServiceApi::class.java)
         .builder().instance()

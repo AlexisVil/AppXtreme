@@ -10,7 +10,7 @@ import servicecordinator.retrofit.model.dataclass.XTResponseGeneral
 import servicecordinator.router.Routers
 
 interface XTPayServiceApi {
-    @POST(Routers.ENDPOINT)
+    @POST(Routers.ENDEVO)
     fun payService(
         @Query("idOperacion") idOperacion: String?,
         @Query("user") user: String?,
