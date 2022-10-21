@@ -5,7 +5,10 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.firebase.crashlytics.FirebaseCrashlytics
+import mx.com.evotae.appxtreme.framework.util.extensions.getPreferenceToString
 import mx.com.evotae.appxtreme.main.dialogs.ui.ErrorDialog
+import servicecordinator.retrofit.managercall.IDPDV
 
 open class XTFragmentBase : Fragment() {
 
@@ -19,6 +22,7 @@ open class XTFragmentBase : Fragment() {
 
     protected fun handleError(): (String) -> Unit = {
         Toast.makeText(safeActivity, "Error: ${it}", Toast.LENGTH_SHORT).show()
+        FirebaseCrashlytics.getInstance().setUserId(IDPDV.getPreferenceToString().toString())
     }
 
     protected fun handleErrorRecharge(): (String) -> Unit = {
