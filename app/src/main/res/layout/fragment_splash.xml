@@ -9,6 +9,8 @@
         android:id="@+id/animation_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:minHeight="48dp"
+        android:minWidth="48dp"
         android:layout_margin="20dp"
         android:gravity="center"
         android:orientation="vertical"
@@ -32,10 +34,10 @@
             <!--Animation Files-->
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/lottie_carga"
-                android:layout_width="240dp"
-                android:layout_height="240dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 app:lottie_autoPlay="true"
-                app:lottie_fileName="color-logo.json" />
+                app:lottie_fileName="Xtreme_blue.json" />
         </LinearLayout>
 
         <LinearLayout

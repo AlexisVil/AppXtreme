@@ -66,7 +66,9 @@
         app:hintTextColor="@color/design_default_color_on_primary"
         app:layout_constraintEnd_toEndOf="@id/guideEnd"
         app:layout_constraintStart_toStartOf="@id/guideStart"
-        app:layout_constraintTop_toTopOf="@id/guideTop">
+        app:layout_constraintTop_toTopOf="@id/guideTop"
+        android:minHeight="48dp"
+        android:minWidth="48dp">
 
         <EditText
             android:id="@+id/etBanco"
@@ -91,7 +93,9 @@
         app:hintTextColor="@color/design_default_color_on_primary"
         app:layout_constraintEnd_toEndOf="@id/guideEnd"
         app:layout_constraintStart_toStartOf="@id/guideStart"
-        app:layout_constraintTop_toBottomOf="@id/tiBanco">
+        app:layout_constraintTop_toBottomOf="@id/tiBanco"
+        android:minHeight="48dp"
+        android:minWidth="48dp">
 
         <EditText
             android:id="@+id/etDeposito"
@@ -112,17 +116,22 @@
         app:boxStrokeWidth="2dp"
         app:helperText="Referencia"
         app:helperTextEnabled="true"
+        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
+        android:inputType="textFilter"
         app:helperTextTextAppearance="@style/Widget.MaterialComponents.Button.TextButton"
         app:helperTextTextColor="@color/letters_2"
         app:hintTextColor="@color/design_default_color_on_primary"
         app:layout_constraintEnd_toEndOf="@id/guideEnd"
         app:layout_constraintStart_toStartOf="@id/guideStart"
-        app:layout_constraintTop_toBottomOf="@id/tiDeposito">
+        app:layout_constraintTop_toBottomOf="@id/tiDeposito"
+        android:minHeight="48dp"
+        android:minWidth="48dp">
 
         <EditText
             android:id="@+id/etRef"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            />
     </com.google.android.material.textfield.TextInputLayout>
     <!--Fecha-->
     <com.google.android.material.textfield.TextInputLayout
@@ -142,7 +151,9 @@
         app:hintTextColor="@color/design_default_color_on_primary"
         app:layout_constraintEnd_toEndOf="@id/guideMidVertical"
         app:layout_constraintStart_toStartOf="@id/guideStart"
-        app:layout_constraintTop_toBottomOf="@id/tiRef">
+        app:layout_constraintTop_toBottomOf="@id/tiRef"
+        android:minHeight="48dp"
+        android:minWidth="48dp">
 
         <EditText
             android:id="@+id/etFecha"
@@ -170,7 +181,9 @@
         app:layout_constraintEnd_toEndOf="@id/guideEnd"
         app:layout_constraintStart_toStartOf="@id/guideMidVertical"
         app:layout_constraintTop_toBottomOf="@id/tiRef"
-        app:prefixText="$">
+        app:prefixText="$"
+        android:minHeight="48dp"
+        android:minWidth="48dp">
 
         <EditText
             android:id="@+id/etMonto"
@@ -199,7 +212,9 @@
         app:layout_constraintEnd_toEndOf="@id/guideMidVertical"
         app:layout_constraintStart_toStartOf="@id/guideStart"
         app:layout_constraintTop_toBottomOf="@id/tiFecha"
-        app:prefixText="$">
+        app:prefixText="$"
+        android:minHeight="48dp"
+        android:minWidth="48dp">
 
         <EditText
             android:id="@+id/etRecarga"
@@ -227,7 +242,9 @@
         app:layout_constraintEnd_toEndOf="@id/guideEnd"
         app:layout_constraintStart_toStartOf="@id/guideMidVertical"
         app:layout_constraintTop_toBottomOf="@id/tiMonto"
-        app:prefixText="$">
+        app:prefixText="$"
+        android:minHeight="48dp"
+        android:minWidth="48dp">
 
         <EditText
             android:id="@+id/etServicios"
@@ -253,5 +270,7 @@
         app:layout_constraintEnd_toEndOf="@id/guideEnd"
         app:layout_constraintStart_toStartOf="@id/guideStart"
         app:layout_constraintTop_toBottomOf="@id/tiRecarga"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintVertical_bias="0.3"
+        android:minHeight="48dp"
+        android:minWidth="48dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

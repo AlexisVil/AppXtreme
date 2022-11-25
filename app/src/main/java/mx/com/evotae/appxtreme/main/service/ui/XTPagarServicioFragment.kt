@@ -92,10 +92,7 @@ class XTPagarServicioFragment : XTFragmentBase() {
                 initScanner()
             }
             btnServicio.setOnClickListener {
-                val customProgressDialog = Dialog(safeActivity)
-                customProgressDialog.setContentView(R.layout.custom_progress_dialog)
-                customProgressDialog.setCancelable(true)
-                customProgressDialog.show()
+
                 println(idCurrentProduct)
                 if (!(etRef.text.toString().length < 4)) {
                     numeroReferencia = etRef.text.toString()
@@ -107,6 +104,10 @@ class XTPagarServicioFragment : XTFragmentBase() {
                             .baseUrl(Routers.HOST)
                             .addConverterFactory(GsonConverterFactory.create())
                             .build()
+                        val customProgressDialog = Dialog(safeActivity)
+                        customProgressDialog.setContentView(R.layout.custom_progress_dialog)
+                        customProgressDialog.setCancelable(true)
+                        customProgressDialog.show()
                         montoIngresado = etMontoServicio.text.toString()
                         pagarServicio(
                             "pagoServicios",

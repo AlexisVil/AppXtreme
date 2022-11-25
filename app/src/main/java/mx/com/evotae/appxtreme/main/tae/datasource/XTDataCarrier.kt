@@ -35,7 +35,8 @@ class XTDataCarrier {
             "45" to "PILLOFON",
             "0" to "TESTRECARGA",
             "24" to "WEEX",
-            "9" to "VIRGIN"
+            "9" to "VIRGIN",
+            "48" to "BENELEIT"
         )
     }
 }

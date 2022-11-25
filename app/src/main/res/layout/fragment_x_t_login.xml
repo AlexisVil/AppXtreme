@@ -64,6 +64,8 @@
         android:id="@+id/loginTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:minWidth="48dp"
         android:layout_marginTop="30dp"
         android:gravity="center"
         android:text="@string/login"
@@ -78,13 +80,16 @@
         android:id="@+id/userTxt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:minWidth="48dp"
         android:drawableStart="@drawable/ic_login_user"
         android:layout_marginTop="44dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:drawablePadding="15dp"
         android:hint="@string/usuario"
-        android:inputType="textEmailAddress"
+        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 "
+        android:inputType="textFilter"
         android:textColor="@color/colorTextWhite"
         android:textColorHint="@color/colorTextWhite"
         app:layout_constraintEnd_toEndOf="@id/guideEnd"
@@ -95,10 +100,13 @@
         android:id="@+id/tiPass"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:minWidth="48dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="24dp"
         android:layout_marginRight="20dp"
         android:hint="@string/contraseña"
+        app:hintAnimationEnabled="true"
         android:textColorHint="@color/colorTextWhite"
         app:endIconMode="password_toggle"
         app:endIconTint="@color/white"
@@ -106,7 +114,6 @@
         app:layout_constraintStart_toStartOf="@id/guideStart"
         app:layout_constraintTop_toBottomOf="@id/userTxt"
         >
-
         <EditText
             android:id="@+id/passTxt"
             android:layout_width="match_parent"
@@ -119,23 +126,34 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <!--Operator-->
-    <EditText
-        android:id="@+id/operatorTxt"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiOperator"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:minWidth="48dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="24dp"
         android:layout_marginRight="20dp"
-        android:drawableStart="@drawable/ic_id"
-        android:drawablePadding="15dp"
         android:hint="@string/operador"
-        android:inputType="text"
-        android:textColor="@color/colorTextWhite"
+        app:hintAnimationEnabled="true"
         android:textColorHint="@color/colorTextWhite"
+        app:endIconMode="password_toggle"
+        app:endIconTint="@color/white"
         app:layout_constraintTop_toBottomOf="@id/tiPass"
         app:layout_constraintStart_toStartOf="@id/guideStart"
         app:layout_constraintEnd_toEndOf="@id/guideEnd"
-        />
+        >
+        <EditText
+            android:id="@+id/operatorTxt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:drawableStart="@drawable/ic_id"
+            android:drawablePadding="15dp"
+            android:inputType="textPassword"
+            android:textColor="@color/colorTextWhite" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <!--Boton Inicio-->
     <com.google.android.material.button.MaterialButton
@@ -144,6 +162,8 @@
         android:id="@+id/signin"
         android:layout_height="wrap_content"
         android:layout_width="0dp"
+        android:minHeight="48dp"
+        android:minWidth="48dp"
         android:padding="16dp"
         android:text="@string/btnLogin"
         android:layout_marginStart="50dp"
@@ -159,6 +179,6 @@
         app:layout_constraintBottom_toBottomOf="@id/guideBottom1"
         app:layout_constraintEnd_toEndOf="@id/guideEnd"
         app:layout_constraintStart_toStartOf="@id/guideStart"
-        app:layout_constraintTop_toBottomOf="@id/operatorTxt" />
+        app:layout_constraintTop_toBottomOf="@id/tiOperator" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -93,10 +93,7 @@ class XTVentaSimFragment : XTFragmentBase() {
                 initScanner()
             }
             btnRecargaSim.setOnClickListener {
-                val customProgressDialog = Dialog(safeActivity)
-                customProgressDialog.setContentView(R.layout.custom_progress_dialog)
-                customProgressDialog.setCancelable(true)
-                customProgressDialog.show()
+
                 if (!(etRef.text.toString().length < 4) || etRef.text.isNotEmpty()) {
                     numeroSim = etRef.text.toString()
                     //Instancia de retrofit Sim sell
@@ -104,6 +101,10 @@ class XTVentaSimFragment : XTFragmentBase() {
                         .baseUrl(Routers.HOST)
                         .addConverterFactory(GsonConverterFactory.create())
                         .build()
+                    val customProgressDialog = Dialog(safeActivity)
+                    customProgressDialog.setContentView(R.layout.custom_progress_dialog)
+                    customProgressDialog.setCancelable(true)
+                    customProgressDialog.show()
                     ventaSim(
                         "recargasSimCard",
                         USER_APP.getPreferenceToString().toString(),
@@ -115,6 +116,8 @@ class XTVentaSimFragment : XTFragmentBase() {
                         numeroSim,
                         ""
                     )
+                    if (customProgressDialog.isShowing)
+                        customProgressDialog.dismiss()
                     etRef.setText("")
                 } else {
                     etRef.error = "Ingrese Referencia"

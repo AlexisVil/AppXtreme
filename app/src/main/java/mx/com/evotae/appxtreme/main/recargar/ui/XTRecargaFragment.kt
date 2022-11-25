@@ -93,10 +93,7 @@ class XTRecargaFragment : XTFragmentBase() {
         binding.apply {
 
             btnRecargar.setOnClickListener {
-                val customProgressDialog = Dialog(safeActivity)
-                customProgressDialog.setContentView(R.layout.custom_progress_dialog)
-                customProgressDialog.setCancelable(true)
-                customProgressDialog.show()
+
                 if (!(etNumber.text.toString().length < 10)) {
                     numeroCelular = etNumber.text.toString()
                     println("Numero a recargar: $numeroCelular")
@@ -110,6 +107,9 @@ class XTRecargaFragment : XTFragmentBase() {
                             .baseUrl(Routers.HOST)
                             .addConverterFactory(GsonConverterFactory.create())
                             .build()
+                        val customProgressDialog = Dialog(safeActivity)
+                        customProgressDialog.setContentView(R.layout.custom_progress_dialog)
+                        customProgressDialog.setCancelable(true)
                         customProgressDialog.show()
                         venderRecgarga(
                             "ventaRecarga",

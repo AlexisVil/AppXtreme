@@ -115,7 +115,7 @@ class XTTaeBrandsProvider {
             XTTaeModel(
                 "NetWey",
                 35,
-                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FNETWEY.svg?alt=media&token=efdb3be4-e282-40e4-9304-785239c57596"
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2Fnetwey_2.jpg?alt=media&token=56c828f7-e76d-4db0-9952-97d01ecaba42"
             ),
             XTTaeModel(
                 "VIRGIN",
@@ -166,6 +166,11 @@ class XTTaeBrandsProvider {
                 "MAZTIEMPO",
                 19,
                 "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FMAZTIEMPO.png?alt=media&token=c47fe493-4e2f-4753-8813-e9c3cdd92321"
+            ),
+            XTTaeModel(
+                "Beneleit",
+                48,
+                "https://firebasestorage.googleapis.com/v0/b/xtrememultipagos-53d2e.appspot.com/o/Carriers%2FBneleit.png?alt=media&token=6c31fbb6-4cfe-4167-ba9e-4162d07c73b5"
             )
         )
     }

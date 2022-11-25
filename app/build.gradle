@@ -14,8 +14,8 @@ android {
         applicationId "mx.com.evotae.appxtreme"
         minSdk 21
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        versionCode 4
+        versionName "2.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -104,5 +104,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage-ktx:20.1.0'
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
     implementation 'com.google.firebase:firebase-analytics-ktx'
+    //splash API
+    implementation 'androidx.core:core-splashscreen:1.0.0'
 
 }

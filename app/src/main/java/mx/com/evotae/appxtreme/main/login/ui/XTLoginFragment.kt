@@ -1,6 +1,8 @@
 package mx.com.evotae.appxtreme.main.login.ui
 
 import android.app.Activity
+import android.app.Dialog
+import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -11,6 +13,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import kotlinx.android.synthetic.main.fragment_x_t_login.*
+import mx.com.evotae.appxtreme.R
 import mx.com.evotae.appxtreme.databinding.FragmentXTLoginBinding
 import mx.com.evotae.appxtreme.framework.base.XTFragmentBase
 import mx.com.evotae.appxtreme.framework.util.extensions.getPreferenceToString
@@ -28,6 +31,7 @@ class XTLoginFragment : XTFragmentBase() {
 
     lateinit var binding: FragmentXTLoginBinding
     private lateinit var safeActivity: Activity
+    lateinit var customDialog: Dialog
 
     private val viewModelLogin: XTViewModelLogin by sharedViewModel()
 
@@ -69,6 +73,10 @@ class XTLoginFragment : XTFragmentBase() {
                     operatorTxt.requestFocus()
                     operatorTxt.error = "Ingrese Clave de operador"
                 } else {
+                    customDialog = Dialog(safeActivity)
+                    customDialog.setContentView(R.layout.custom_progress_dialog)
+                    customDialog.setCancelable(false)
+                    customDialog.show()
                     viewModelLogin.login(
                         "login",
                         userTxt.text.toString(),
@@ -83,7 +91,7 @@ class XTLoginFragment : XTFragmentBase() {
 
     fun initObservers() {
         viewModelLogin.launchLoader.observe(viewLifecycleOwner, handleLoader())
-        viewModelLogin.launchError.observe(viewLifecycleOwner, handleError())
+        viewModelLogin.launchError.observe(viewLifecycleOwner, handleErrorLogin())
         viewModelLogin.login.observe(viewLifecycleOwner, handleLogin())
     }
 
@@ -95,6 +103,7 @@ class XTLoginFragment : XTFragmentBase() {
         NOMBRE_PDV.savePreferencesToString(data?.nombrePv.toString())
         FIRMA_APP.savePreferencesToString(data?.firma.toString())
         FirebaseCrashlytics.getInstance().setUserId(IDPDV.getPreferenceToString().toString())
+        customDialog.dismiss()
         navigateToLoginSucces()
         Toast.makeText(
             safeActivity,

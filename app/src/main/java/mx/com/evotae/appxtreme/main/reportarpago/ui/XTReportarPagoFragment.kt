@@ -89,10 +89,7 @@ class XTReportarPagoFragment : XTFragmentBase() {
                 transferenciaDialog(optionTransfer)
             }
             btnReportar.setOnClickListener {
-                val customProgressDialog = Dialog(safeActivity)
-                customProgressDialog.setContentView(R.layout.custom_progress_dialog)
-                customProgressDialog.setCancelable(true)
-                customProgressDialog.show()
+
                 //Instancia Retrofit para PayBank
                 retrofit = Retrofit.Builder()
                     .baseUrl(Routers.HOST)
@@ -117,6 +114,10 @@ class XTReportarPagoFragment : XTFragmentBase() {
                     etMonto.requestFocus()
                     etMonto.error = "El monto debe coincidar con saldos asignados"
                 } else {
+                    val customProgressDialog = Dialog(safeActivity)
+                    customProgressDialog.setContentView(R.layout.custom_progress_dialog)
+                    customProgressDialog.setCancelable(true)
+                    customProgressDialog.show()
                     reportarPago(
                         "pagos_reportarPago",
                         USER_APP.getPreferenceToString().toString(),
