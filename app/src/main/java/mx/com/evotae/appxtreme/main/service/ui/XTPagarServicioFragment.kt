@@ -4,12 +4,16 @@ import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.opengl.Visibility
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.google.zxing.integration.android.IntentIntegrator
@@ -24,6 +28,7 @@ import mx.com.evotae.appxtreme.main.dialogs.ui.ErrorDialog
 import mx.com.evotae.appxtreme.main.dialogs.ui.TicketDialog
 import mx.com.evotae.appxtreme.main.recargar.viewmodel.XTViewModelProductList
 import mx.com.evotae.appxtreme.main.service.datasource.XTServicesCarrier
+import okhttp3.internal.http.HTTP_GONE
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
@@ -78,6 +83,7 @@ class XTPagarServicioFragment : XTFragmentBase() {
     }
 
     private fun initListeners() {
+
         selectedId = args.xtServiceModel.id.toString()
         nombreProducto = XTServicesCarrier.carriersMap[selectedId].toString()
         viewModelProductList.getProductList(
@@ -87,12 +93,33 @@ class XTPagarServicioFragment : XTFragmentBase() {
         )
 
         binding.apply {
+
+            etRef.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    println("Estas em beforeTextChanged")
+
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    println("Estas en onTextChanged: $p0")
+                    if (!p0.isNullOrBlank()) {
+                        ivScan.visibility = View.INVISIBLE
+                    } else {
+                        ivScan.visibility = View.VISIBLE
+                    }
+
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+                    println("Estas en AfterTextChanged")
+
+                }
+            })
             ivScan.setOnClickListener {
                 Toast.makeText(safeActivity, "Cámara", Toast.LENGTH_SHORT).show()
                 initScanner()
             }
             btnServicio.setOnClickListener {
-
                 println(idCurrentProduct)
                 if (!(etRef.text.toString().length < 4)) {
                     numeroReferencia = etRef.text.toString()
@@ -104,10 +131,7 @@ class XTPagarServicioFragment : XTFragmentBase() {
                             .baseUrl(Routers.HOST)
                             .addConverterFactory(GsonConverterFactory.create())
                             .build()
-                        val customProgressDialog = Dialog(safeActivity)
-                        customProgressDialog.setContentView(R.layout.custom_progress_dialog)
-                        customProgressDialog.setCancelable(true)
-                        customProgressDialog.show()
+
                         montoIngresado = etMontoServicio.text.toString()
                         pagarServicio(
                             "pagoServicios",
@@ -122,8 +146,7 @@ class XTPagarServicioFragment : XTFragmentBase() {
                         )
                         etRef.setText("")
                         etMontoServicio.setText("")
-                        if (customProgressDialog.isShowing)
-                            customProgressDialog.dismiss()
+
                     }
                 } else {
                     Toast.makeText(
@@ -221,17 +244,22 @@ class XTPagarServicioFragment : XTFragmentBase() {
                 numeroCuenta,
                 montovar
             )
+        val progressDialog = Dialog(safeActivity)
+        progressDialog.setContentView(R.layout.custom_progress_dialog)
+        progressDialog.setCancelable(false)
+        progressDialog.show()
         Log.v("URL", responseCall.request().toString())
         responseCall.enqueue(object : Callback<XTRespuestaGenerica<XTResponsePayService>?> {
             override fun onResponse(
                 call: Call<XTRespuestaGenerica<XTResponsePayService>?>,
                 response: Response<XTRespuestaGenerica<XTResponsePayService>?>
             ) {
+                progressDialog.dismiss()
                 val data = response.body()?.objeto
                 if (response.body()?.redirigir == true) {
                     println("Redirigir = true")
                 } else if (response.body()?.operacionExitosa == true) {
-                    nTicket = data?.ticket.toString()
+                    nTicket = args.xtServiceModel.name
                     nMonto = data?.monto.toString()
                     nDate = data?.fecha.toString()
                     nAuto = data?.autorizacionTelcel.toString()
@@ -241,7 +269,7 @@ class XTPagarServicioFragment : XTFragmentBase() {
                         "Dialog"
                     )
                 } else {
-                    ErrorDialog(response.body()?.mensaje.toString()).show(
+                    ErrorDialog(response.body()?.mensaje.toString(),args.xtServiceModel.name).show(
                         parentFragmentManager,
                         "Error"
                     )
@@ -252,7 +280,11 @@ class XTPagarServicioFragment : XTFragmentBase() {
                 call: Call<XTRespuestaGenerica<XTResponsePayService>?>,
                 t: Throwable
             ) {
-                Toast.makeText(safeActivity, "Failure ${t.message}", Toast.LENGTH_SHORT).show()
+                progressDialog.dismiss()
+                ErrorDialog(t.message.toString(),args.xtServiceModel.name).show(
+                    parentFragmentManager,
+                    "Error"
+                )
                 Log.e("Error", "onFailure ${t.message}")
             }
         })

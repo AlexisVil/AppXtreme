@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
@@ -58,6 +59,7 @@ class XTRecargaFragment : XTFragmentBase() {
     lateinit var nombreProducto: String
     lateinit var selectedId: String
     lateinit var retrofit: Retrofit
+    var currentProduct= ""
 
 
     override fun onAttach(context: Context) {
@@ -107,10 +109,6 @@ class XTRecargaFragment : XTFragmentBase() {
                             .baseUrl(Routers.HOST)
                             .addConverterFactory(GsonConverterFactory.create())
                             .build()
-                        val customProgressDialog = Dialog(safeActivity)
-                        customProgressDialog.setContentView(R.layout.custom_progress_dialog)
-                        customProgressDialog.setCancelable(true)
-                        customProgressDialog.show()
                         venderRecgarga(
                             "ventaRecarga",
                             USER_APP.getPreferenceToString().toString(),
@@ -123,8 +121,6 @@ class XTRecargaFragment : XTFragmentBase() {
                         )
                         etNumber.setText("")
                         etConfirmar.setText("")
-                        if (customProgressDialog.isShowing)
-                            customProgressDialog.dismiss()
                     }
                 } else {
                     //Nuimero debe tener 10 digitos
@@ -186,7 +182,7 @@ class XTRecargaFragment : XTFragmentBase() {
                 position: Int,
                 id: Long
             ) {
-                val currentProduct = productos[position].toString()
+                currentProduct = productos[position].toString()
                 idCurrentProduct = mapOfProducts[currentProduct].toString()
                 println(idCurrentProduct)
             }
@@ -219,17 +215,24 @@ class XTRecargaFragment : XTFragmentBase() {
                 id,
                 numeroCelular
             )
+        val progressDialog = Dialog(safeActivity)
+        progressDialog.setContentView(R.layout.custom_progress_dialog)
+        progressDialog.setCancelable(false)
+        progressDialog.show()
         Log.v("URL", responseCall.request().toString())
+
         responseCall.enqueue(object : Callback<XTRespuestaGenerica<XTResponseSellRecharge>?> {
             override fun onResponse(
                 call: Call<XTRespuestaGenerica<XTResponseSellRecharge>?>,
                 response: Response<XTRespuestaGenerica<XTResponseSellRecharge>?>
             ) {
+                progressDialog.dismiss()
                 val data = response.body()?.objeto
                 if (response.body()?.redirigir == true) {
                     println("Redirigir = true")
                 } else if (response.body()?.operacionExitosa == true) {
-                    nTicket = data?.ticket.toString()
+                    //nTicket = data?.ticket.toString()
+                    nTicket = currentProduct
                     nMonto = data?.monto.toString()
                     nDate = data?.fecha.toString()
                     nAuto = data?.autorizacionTelcel.toString()
@@ -239,7 +242,7 @@ class XTRecargaFragment : XTFragmentBase() {
                     )
 
                 } else {
-                    ErrorDialog(response.body()?.mensaje.toString()).show(
+                    ErrorDialog(response.body()?.mensaje.toString(), currentProduct).show(
                         parentFragmentManager,
                         "Error"
                     )
@@ -251,7 +254,12 @@ class XTRecargaFragment : XTFragmentBase() {
                 call: Call<XTRespuestaGenerica<XTResponseSellRecharge>?>,
                 t: Throwable
             ) {
-                Toast.makeText(safeActivity, "Failure ${t.message}", Toast.LENGTH_SHORT).show()
+                progressDialog.dismiss()
+                ErrorDialog(t.message.toString(), currentProduct).show(
+                    parentFragmentManager,
+                    "Error"
+                )
+                //Toast.makeText(safeActivity, "Failure ${t.message}", Toast.LENGTH_SHORT).show()
                 Log.e("Error", "onFailure ${t.message}")
             }
         })

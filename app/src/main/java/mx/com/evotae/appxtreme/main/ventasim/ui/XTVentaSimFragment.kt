@@ -6,6 +6,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -55,6 +57,7 @@ class XTVentaSimFragment : XTFragmentBase() {
     lateinit var nAuto: String
     lateinit var numeroSim: String
     lateinit var retrofit: Retrofit
+    var currentProduct = ""
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -88,6 +91,27 @@ class XTVentaSimFragment : XTFragmentBase() {
             "2cb4fffb7223c1518c0fff47f1011dd2b1f2f26431f445f0db06ec99c56ae72e"
         )
         binding.apply {
+            etRef.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    println("Estas em beforeTextChanged")
+
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    println("Estas en onTextChanged: $p0")
+                    if (!p0.isNullOrBlank()) {
+                        ivScan.visibility = View.INVISIBLE
+                    } else {
+                        ivScan.visibility = View.VISIBLE
+                    }
+
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+                    println("Estas en AfterTextChanged")
+
+                }
+            })
             ivScan.setOnClickListener {
                 Toast.makeText(safeActivity, "Cámara", Toast.LENGTH_SHORT).show()
                 initScanner()
@@ -101,10 +125,7 @@ class XTVentaSimFragment : XTFragmentBase() {
                         .baseUrl(Routers.HOST)
                         .addConverterFactory(GsonConverterFactory.create())
                         .build()
-                    val customProgressDialog = Dialog(safeActivity)
-                    customProgressDialog.setContentView(R.layout.custom_progress_dialog)
-                    customProgressDialog.setCancelable(true)
-                    customProgressDialog.show()
+
                     ventaSim(
                         "recargasSimCard",
                         USER_APP.getPreferenceToString().toString(),
@@ -116,8 +137,6 @@ class XTVentaSimFragment : XTFragmentBase() {
                         numeroSim,
                         ""
                     )
-                    if (customProgressDialog.isShowing)
-                        customProgressDialog.dismiss()
                     etRef.setText("")
                 } else {
                     etRef.error = "Ingrese Referencia"
@@ -174,7 +193,7 @@ class XTVentaSimFragment : XTFragmentBase() {
                 position: Int,
                 id: Long
             ) {
-                val currentProduct = productos[position].toString()
+                currentProduct = productos[position].toString()
                 idCurrentProduct = mapOfProducts[currentProduct].toString()
                 println(idCurrentProduct)
             }
@@ -235,17 +254,22 @@ class XTVentaSimFragment : XTFragmentBase() {
                 numeroCelular,
                 montovar
             )
+        val progressDialog = Dialog(safeActivity)
+        progressDialog.setContentView(R.layout.custom_progress_dialog)
+        progressDialog.setCancelable(false)
+        progressDialog.show()
         Log.v("URL", responseCall.request().toString())
         responseCall.enqueue(object : Callback<XTRespuestaGenerica<XTResponseSimSell>?> {
             override fun onResponse(
                 call: Call<XTRespuestaGenerica<XTResponseSimSell>?>,
                 response: Response<XTRespuestaGenerica<XTResponseSimSell>?>
             ) {
+                progressDialog.dismiss()
                 val data = response.body()?.objeto
                 if (response.body()?.redirigir == true) {
                     println("Redirigir = true")
                 } else if (response.body()?.operacionExitosa == true) {
-                    nTicket = data?.ticket.toString()
+                    nTicket = currentProduct
                     nMonto = data?.monto.toString()
                     nDate = data?.fecha.toString()
                     nAuto = data?.autorizacionTelcel.toString()
@@ -254,8 +278,8 @@ class XTVentaSimFragment : XTFragmentBase() {
                         parentFragmentManager,
                         "Dialog"
                     )
-                }else {
-                    ErrorDialog(response.body()?.mensaje.toString()).show(
+                } else {
+                    ErrorDialog(response.body()?.mensaje.toString(),currentProduct).show(
                         parentFragmentManager,
                         "Error"
                     )
@@ -266,7 +290,11 @@ class XTVentaSimFragment : XTFragmentBase() {
                 call: Call<XTRespuestaGenerica<XTResponseSimSell>?>,
                 t: Throwable
             ) {
-                Toast.makeText(safeActivity, "Failure ${t.message}", Toast.LENGTH_SHORT).show()
+                progressDialog.dismiss()
+                ErrorDialog(t.message.toString(), currentProduct).show(
+                    parentFragmentManager,
+                    "Error"
+                )
                 Log.e("Error", "onFailure ${t.message}")
             }
         })

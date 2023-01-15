@@ -10,8 +10,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.fragment.findNavController
-import com.google.firebase.crashlytics.FirebaseCrashlytics
 import kotlinx.android.synthetic.main.fragment_x_t_login.*
 import mx.com.evotae.appxtreme.R
 import mx.com.evotae.appxtreme.databinding.FragmentXTLoginBinding
@@ -23,7 +21,7 @@ import mx.com.evotae.appxtreme.main.login.viewmodel.XTViewModelLogin
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import servicecordinator.model.response.XTResponseLogin
 import servicecordinator.retrofit.managercall.*
-import java.lang.RuntimeException
+
 
 
 class XTLoginFragment : XTFragmentBase() {
@@ -102,7 +100,7 @@ class XTLoginFragment : XTFragmentBase() {
         IDPDV.savePreferencesToString(data?.idPv.toString())
         NOMBRE_PDV.savePreferencesToString(data?.nombrePv.toString())
         FIRMA_APP.savePreferencesToString(data?.firma.toString())
-        FirebaseCrashlytics.getInstance().setUserId(IDPDV.getPreferenceToString().toString())
+
         customDialog.dismiss()
         navigateToLoginSucces()
         Toast.makeText(

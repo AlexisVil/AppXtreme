@@ -56,6 +56,7 @@ class XTTaeFragment : XTFragmentBase() {
         initListeners()
     }
 
+
     fun onItemSelected(taeModel: XTTaeModel) {
         idSelected = taeModel.idCarrier.toString()
         selectedItem = taeModel

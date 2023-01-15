@@ -288,7 +288,7 @@ class XTReportarPagoFragment : XTFragmentBase() {
                     println("Este es el mensaje del objeto exitoso ${response.body()?.objeto.toString()}")
                 } else {
                     println("Este es el mensaje de error de la respuesta ${response.body()?.mensaje.toString()}")
-                    ErrorDialog(response.body()?.mensaje.toString()).show(
+                    ErrorDialog(response.body()?.mensaje.toString(), "Reporte de pago Failure").show(
                         parentFragmentManager,
                         "Error"
                     )

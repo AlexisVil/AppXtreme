@@ -53,8 +53,8 @@
     <!--Imagen Carrier-->
     <ImageView
         android:id="@+id/ivCarrierServices"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
         android:minHeight="48dp"
         android:minWidth="48dp"
         android:src="@drawable/ic_launcher_background"
@@ -73,6 +73,7 @@
         android:layout_height="wrap_content"
         android:text="@string/referencia"
         android:textSize="16sp"
+        android:maxHeight="22dp"
         app:layout_constraintBottom_toTopOf="@id/tiRef"
         app:layout_constraintEnd_toStartOf="@id/guideEnd"
         app:layout_constraintStart_toStartOf="@id/guideStart"
@@ -99,6 +100,7 @@
         android:layout_marginTop="10dp"
         android:minHeight="48dp"
         android:minWidth="48dp"
+        android:maxHeight="22dp"
         >
         <EditText
             android:id="@+id/etRef"
@@ -125,6 +127,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
+        android:maxHeight="22dp"
         android:text="@string/producto"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@id/spinnerProducto"
@@ -151,6 +154,7 @@
         android:layout_height="wrap_content"
         android:minHeight="48dp"
         android:minWidth="48dp"
+        android:maxHeight="60dp"
         android:gravity="center"
         android:paddingVertical="16dp"
         android:text="@string/btn_recarga"

@@ -27,13 +27,15 @@ import java.io.IOException
 import java.util.*
 import java.util.jar.Manifest
 
-class ErrorDialog(private val message: String) : DialogFragment() {
+class ErrorDialog(private val message: String,
+                  private val ticket: String,) : DialogFragment() {
     private lateinit var binding: DialogErrorRecargaBinding
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         binding = DialogErrorRecargaBinding.inflate(LayoutInflater.from(context))
         val builder = AlertDialog.Builder(requireActivity())
         builder.setView(binding.root)
         binding.apply {
+            tvTicket.text = ticket
             tvMessage.text = message
             btnAccept.setOnClickListener {
                 dismiss()
