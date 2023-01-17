@@ -35,11 +35,7 @@ class XtremeActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        if (cuenta != 0){
-            super.onBackPressed()
-            exitProcess(0)
-        }else {
-            finish()
-        }
+        super.onBackPressed()
+        finish()
     }
 }

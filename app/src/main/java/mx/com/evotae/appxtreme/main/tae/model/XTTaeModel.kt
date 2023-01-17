@@ -8,5 +8,6 @@ import kotlinx.android.parcel.Parcelize
 data class XTTaeModel(
     var name: String,
     var idCarrier: Int,
-    var photo: String
+    var photo: String,
+    var order: String?
 ): Parcelable

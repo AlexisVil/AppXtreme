@@ -22,7 +22,10 @@
         tools:targetApi="n">
         <activity
             android:name=".main.appactivity.XTInitActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:noHistory = "true"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
@@ -37,7 +40,9 @@
         <activity
             android:name=".main.appactivity.XtremeActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:noHistory = "true"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

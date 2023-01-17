@@ -1,184 +1,189 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".main.service.ui.XTPagarServicioFragment">
-    <!--GuideLines-->
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideMidVertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideMidHorizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!--GuideLines-->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideMidVertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideTop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.05" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideMidHorizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideBottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.95" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.05" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.08" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideBottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.95" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideEnd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.92" />
-    <!--Views-->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.08" />
 
-    <ImageView
-        android:id="@+id/ivCarrierServices"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:minHeight="48dp"
-        android:minWidth="48dp"
-        android:src="@drawable/ic_launcher_background"
-        app:layout_constraintBottom_toTopOf="@id/tvTitleNRef"
-        app:layout_constraintEnd_toStartOf="@id/guideEnd"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@id/guideStart"
-        app:layout_constraintTop_toTopOf="@id/guideTop"
-        app:layout_constraintVertical_bias="0.15"
-        app:layout_constraintVertical_chainStyle="packed" />
-    <!--Numero de referencia-->
-    <TextView
-        android:id="@+id/tvTitleNRef"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/referencia"
-        android:textSize="18sp"
-        android:maxHeight="22dp"
-        app:layout_constraintBottom_toTopOf="@id/tiRef"
-        app:layout_constraintEnd_toEndOf="@id/guideEnd"
-        app:layout_constraintStart_toStartOf="@id/guideStart"
-        app:layout_constraintTop_toBottomOf="@id/ivCarrierServices"
-        app:layout_constraintHorizontal_bias="0.1"
-        android:layout_marginTop="25dp"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.92" />
+        <!--Views-->
 
-    <!--Text input Numero Ref -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tiRef"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Capture el número de referencia"
-        app:boxBackgroundColor="@color/placeholder_2"
-        app:boxCornerRadiusBottomEnd="20dp"
-        app:boxCornerRadiusTopStart="20dp"
-        app:endIconMode="clear_text"
-        app:endIconTint="@color/xtreme_3"
-        app:layout_constraintBottom_toTopOf="@id/tvTitleMonto"
-        app:layout_constraintEnd_toEndOf="@id/guideEnd"
-        app:layout_constraintStart_toStartOf="@id/guideStart"
-        app:layout_constraintTop_toBottomOf="@id/tvTitleNRef"
-        android:layout_marginTop="10dp"
-        android:minHeight="48dp"
-        android:minWidth="48dp">
+        <ImageView
+            android:id="@+id/ivCarrierServices"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintBottom_toTopOf="@id/tvTitleNRef"
+            app:layout_constraintEnd_toStartOf="@id/guideEnd"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/guideStart"
+            app:layout_constraintTop_toTopOf="@id/guideTop"
+            app:layout_constraintVertical_bias="0.15"
+            app:layout_constraintVertical_chainStyle="packed" />
+        <!--Numero de referencia-->
+        <TextView
+            android:id="@+id/tvTitleNRef"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:maxHeight="22dp"
+            android:text="@string/referencia"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/tiRef"
+            app:layout_constraintEnd_toEndOf="@id/guideEnd"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="@id/guideStart"
+            app:layout_constraintTop_toBottomOf="@id/ivCarrierServices" />
 
-        <EditText
-            android:id="@+id/etRef"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="number" />
-    </com.google.android.material.textfield.TextInputLayout>
+        <!--Text input Numero Ref -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiRef"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Capture el número de referencia"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            app:boxBackgroundColor="@color/placeholder_2"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/xtreme_3"
+            app:layout_constraintBottom_toTopOf="@id/tvTitleMonto"
+            app:layout_constraintEnd_toEndOf="@id/guideEnd"
+            app:layout_constraintStart_toStartOf="@id/guideStart"
+            app:layout_constraintTop_toBottomOf="@id/tvTitleNRef">
 
-    <ImageView
-        android:id="@+id/ivScan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_camera"
-        app:layout_constraintTop_toTopOf="@id/tiRef"
-        app:layout_constraintBottom_toBottomOf="@id/tiRef"
-        app:layout_constraintStart_toStartOf="@id/tiRef"
-        app:layout_constraintEnd_toEndOf="@id/tiRef"
-        app:layout_constraintHorizontal_bias="0.95"/>
+            <EditText
+                android:id="@+id/etRef"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <!--Monto a pagar-->
-    <TextView
-        android:id="@+id/tvTitleMonto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/montoS"
-        android:textSize="18sp"
-        android:maxHeight="22dp"
-        app:layout_constraintBottom_toTopOf="@id/tiMonto"
-        app:layout_constraintEnd_toEndOf="@id/guideEnd"
-        app:layout_constraintStart_toStartOf="@id/guideStart"
-        app:layout_constraintTop_toBottomOf="@id/tiRef"
-        app:layout_constraintHorizontal_bias="0.1"
-        android:layout_marginTop="25dp"/>
+        <ImageView
+            android:id="@+id/ivScan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_camera"
+            app:layout_constraintBottom_toBottomOf="@id/tiRef"
+            app:layout_constraintEnd_toEndOf="@id/tiRef"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintStart_toStartOf="@id/tiRef"
+            app:layout_constraintTop_toTopOf="@id/tiRef" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tiMonto"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Ingrese una cantidad"
-        app:boxBackgroundColor="@color/placeholder_2"
-        app:boxCornerRadiusBottomEnd="20dp"
-        app:boxCornerRadiusTopStart="20dp"
-        app:endIconMode="clear_text"
-        app:endIconTint="@color/xtreme_3"
-        app:layout_constraintBottom_toTopOf="@id/btnServicio"
-        app:layout_constraintEnd_toEndOf="@id/guideEnd"
-        app:layout_constraintStart_toStartOf="@id/guideStart"
-        app:layout_constraintTop_toBottomOf="@id/tvTitleMonto"
-        app:prefixText="$"
-        android:layout_marginTop="10dp"
-        android:minHeight="48dp"
-        android:minWidth="48dp">
+        <!--Monto a pagar-->
+        <TextView
+            android:id="@+id/tvTitleMonto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:maxHeight="22dp"
+            android:text="@string/montoS"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/tiMonto"
+            app:layout_constraintEnd_toEndOf="@id/guideEnd"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="@id/guideStart"
+            app:layout_constraintTop_toBottomOf="@id/tiRef" />
 
-        <EditText
-            android:id="@+id/etMontoServicio"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="number" />
-    </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiMonto"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Ingrese una cantidad"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            app:boxBackgroundColor="@color/placeholder_2"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/xtreme_3"
+            app:layout_constraintBottom_toTopOf="@id/btnServicio"
+            app:layout_constraintEnd_toEndOf="@id/guideEnd"
+            app:layout_constraintStart_toStartOf="@id/guideStart"
+            app:layout_constraintTop_toBottomOf="@id/tvTitleMonto"
+            app:prefixText="$">
 
-    <!--Botón Pago-->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnServicio"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        android:minWidth="48dp"
-        android:maxHeight="60dp"
-        android:gravity="center"
-        android:paddingVertical="16dp"
-        android:text="@string/btnPagar"
-        android:textColor="@android:color/white"
-        android:visibility="visible"
-        app:cornerRadius="16dp"
-        app:layout_constraintBottom_toTopOf="@id/guideBottom"
-        app:layout_constraintEnd_toEndOf="@id/guideEnd"
-        app:layout_constraintStart_toStartOf="@id/guideStart"
-        app:layout_constraintTop_toBottomOf="@id/tiMonto"
-        app:layout_constraintHorizontal_bias="0.5"
-        android:layout_marginTop="25dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginEnd="35dp"
-        />
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <EditText
+                android:id="@+id/etMontoServicio"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--Botón Pago-->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnServicio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="35dp"
+            android:gravity="center"
+            android:maxHeight="60dp"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:paddingVertical="16dp"
+            android:text="@string/btnPagar"
+            android:textColor="@android:color/white"
+            android:visibility="visible"
+            app:cornerRadius="16dp"
+            app:layout_constraintBottom_toTopOf="@id/guideBottom"
+            app:layout_constraintEnd_toEndOf="@id/guideEnd"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/guideStart"
+            app:layout_constraintTop_toBottomOf="@id/tiMonto" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+

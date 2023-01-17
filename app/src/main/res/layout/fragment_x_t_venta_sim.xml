@@ -1,173 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".main.ventasim.ui.XTVentaSimFragment">
 
-    <!--GuideLines-->
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideMidVertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideMidHorizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideTop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.05" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideBottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.95" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.08" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideEnd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.92" />
-    <!--Views-->
-
-    <!--Imagen Carrier-->
-    <ImageView
-        android:id="@+id/ivCarrierServices"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:minHeight="48dp"
-        android:minWidth="48dp"
-        android:src="@drawable/ic_launcher_background"
-        app:layout_constraintTop_toTopOf="@id/guideTop"
-        app:layout_constraintStart_toStartOf="@id/guideStart"
-        app:layout_constraintEnd_toStartOf="@id/guideEnd"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintVertical_bias="0.15"
-        app:layout_constraintBottom_toTopOf="@id/tvIRef"
-        app:layout_constraintVertical_chainStyle="packed"
-        />
-    <!--ICCID-->
-    <TextView
-        android:id="@+id/tvIRef"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/referencia"
-        android:textSize="16sp"
-        android:maxHeight="22dp"
-        app:layout_constraintBottom_toTopOf="@id/tiRef"
-        app:layout_constraintEnd_toStartOf="@id/guideEnd"
-        app:layout_constraintStart_toStartOf="@id/guideStart"
-        app:layout_constraintTop_toBottomOf="@id/ivCarrierServices"
-        app:layout_constraintHorizontal_bias="0.1"
-        android:layout_marginTop="25dp"
-        />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tiRef"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Ingrese ICCID/Número teléfono"
-        app:boxBackgroundColor="@color/placeholder_2"
-        app:boxCornerRadiusBottomEnd="20dp"
-        app:boxCornerRadiusTopStart="20dp"
-        app:endIconMode="clear_text"
-        app:endIconTint="@color/xtreme_3"
-        app:layout_constraintTop_toBottomOf="@id/tvIRef"
-        app:layout_constraintStart_toStartOf="@id/guideStart"
-        app:layout_constraintEnd_toStartOf="@id/guideEnd"
-        app:layout_constraintBottom_toTopOf="@id/tvSP"
-        android:layout_marginTop="10dp"
-        android:minHeight="48dp"
-        android:minWidth="48dp"
-        android:maxHeight="22dp"
-        >
-        <EditText
-            android:id="@+id/etRef"
-            android:layout_width="match_parent"
+        <!--GuideLines-->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideMidVertical"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
 
-    <ImageView
-        android:id="@+id/ivScan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_camera"
-        app:layout_constraintTop_toTopOf="@id/tiRef"
-        app:layout_constraintBottom_toBottomOf="@id/tiRef"
-        app:layout_constraintStart_toStartOf="@id/tiRef"
-        app:layout_constraintEnd_toEndOf="@id/tiRef"
-        app:layout_constraintHorizontal_bias="0.95"
-        />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideMidHorizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
 
-    <!--Spinner Productos-->
-    <TextView
-        android:id="@+id/tvSP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:maxHeight="22dp"
-        android:text="@string/producto"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@id/spinnerProducto"
-        app:layout_constraintEnd_toEndOf="@id/guideEnd"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="@id/guideStart"
-        app:layout_constraintTop_toBottomOf="@id/tiRef" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.05" />
 
-    <Spinner
-        android:id="@+id/spinnerProducto"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/btnRecargaSim"
-        app:layout_constraintEnd_toEndOf="@id/guideEnd"
-        app:layout_constraintStart_toStartOf="@id/guideStart"
-        app:layout_constraintTop_toBottomOf="@id/tvSP"
-        android:layout_marginTop="10dp"
-        android:minWidth="48dp"
-        />
-    <!--Boton Pagar Sim-->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnRecargaSim"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        android:minWidth="48dp"
-        android:maxHeight="60dp"
-        android:gravity="center"
-        android:paddingVertical="16dp"
-        android:text="@string/btn_recarga"
-        android:textColor="@android:color/white"
-        android:visibility="visible"
-        app:cornerRadius="16dp"
-        app:layout_constraintTop_toBottomOf="@id/spinnerProducto"
-        app:layout_constraintStart_toStartOf="@id/guideStart"
-        app:layout_constraintEnd_toEndOf="@id/guideEnd"
-        app:layout_constraintBottom_toBottomOf="@id/guideBottom"
-        app:layout_constraintHorizontal_bias="0.5"
-        android:layout_marginTop="25dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginEnd="35dp"
-        />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideBottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.08" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.92" />
+        <!--Views-->
+
+        <!--Imagen Carrier-->
+        <ImageView
+            android:id="@+id/ivCarrierServices"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintBottom_toTopOf="@id/tvIRef"
+            app:layout_constraintEnd_toStartOf="@id/guideEnd"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/guideStart"
+            app:layout_constraintTop_toTopOf="@id/guideTop"
+            app:layout_constraintVertical_bias="0.15"
+            app:layout_constraintVertical_chainStyle="packed" />
+        <!--ICCID-->
+        <TextView
+            android:id="@+id/tvIRef"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:maxHeight="22dp"
+            android:text="@string/referencia"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/tiRef"
+            app:layout_constraintEnd_toStartOf="@id/guideEnd"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="@id/guideStart"
+            app:layout_constraintTop_toBottomOf="@id/ivCarrierServices" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiRef"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Ingrese ICCID/Número teléfono"
+            android:maxHeight="22dp"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            app:boxBackgroundColor="@color/placeholder_2"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/xtreme_3"
+            app:layout_constraintBottom_toTopOf="@id/tvSP"
+            app:layout_constraintEnd_toStartOf="@id/guideEnd"
+            app:layout_constraintStart_toStartOf="@id/guideStart"
+            app:layout_constraintTop_toBottomOf="@id/tvIRef">
+
+            <EditText
+                android:id="@+id/etRef"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/ivScan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_camera"
+            app:layout_constraintBottom_toBottomOf="@id/tiRef"
+            app:layout_constraintEnd_toEndOf="@id/tiRef"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintStart_toStartOf="@id/tiRef"
+            app:layout_constraintTop_toTopOf="@id/tiRef" />
+
+        <!--Spinner Productos-->
+        <TextView
+            android:id="@+id/tvSP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:maxHeight="22dp"
+            android:text="@string/producto"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/spinnerProducto"
+            app:layout_constraintEnd_toEndOf="@id/guideEnd"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="@id/guideStart"
+            app:layout_constraintTop_toBottomOf="@id/tiRef" />
+
+        <Spinner
+            android:id="@+id/spinnerProducto"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:minWidth="48dp"
+            app:layout_constraintBottom_toTopOf="@id/btnRecargaSim"
+            app:layout_constraintEnd_toEndOf="@id/guideEnd"
+            app:layout_constraintStart_toStartOf="@id/guideStart"
+            app:layout_constraintTop_toBottomOf="@id/tvSP" />
+        <!--Boton Pagar Sim-->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRecargaSim"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="35dp"
+            android:gravity="center"
+            android:maxHeight="60dp"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:paddingVertical="16dp"
+            android:text="@string/btn_recarga"
+            android:textColor="@android:color/white"
+            android:visibility="visible"
+            app:cornerRadius="16dp"
+            app:layout_constraintBottom_toBottomOf="@id/guideBottom"
+            app:layout_constraintEnd_toEndOf="@id/guideEnd"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/guideStart"
+            app:layout_constraintTop_toBottomOf="@id/spinnerProducto" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

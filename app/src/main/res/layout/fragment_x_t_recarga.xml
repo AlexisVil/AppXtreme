@@ -1,115 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".main.recargar.ui.XTRecargaFragment">
 
-    <!--GuideLines-->
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideMidVertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideMidHorizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        <!--GuideLines-->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideMidVertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideTop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.05" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideMidHorizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideBottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.95" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.05" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.08" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideBottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.95" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideEnd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.92" />
-    <!--Views-->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.08" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.92" />
+        <!--Views-->
 
         <!--Imagen Carrier-->
         <ImageView
             android:id="@+id/ivCarrier"
             android:layout_width="140dp"
             android:layout_height="140dp"
-            android:minHeight="48dp"
             android:minWidth="48dp"
+            android:minHeight="48dp"
             android:src="@drawable/ic_launcher_background"
-            app:layout_constraintTop_toTopOf="@id/guideTop"
-            app:layout_constraintStart_toStartOf="@id/guideStart"
+            app:layout_constraintBottom_toTopOf="@id/tvSeleccionar"
             app:layout_constraintEnd_toStartOf="@id/guideEnd"
             app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/guideStart"
+            app:layout_constraintTop_toTopOf="@id/guideTop"
             app:layout_constraintVertical_bias="0.15"
-            app:layout_constraintBottom_toTopOf="@id/tvSeleccionar"
-            app:layout_constraintVertical_chainStyle="packed"/>
+            app:layout_constraintVertical_chainStyle="packed" />
         <!--Spinner Producto-->
-    <TextView
-        android:id="@+id/tvSeleccionar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="@string/producto"
-        android:textSize="18sp"
-        android:maxHeight="22dp"
-        app:layout_constraintBottom_toTopOf="@id/spinnerProducto"
-        app:layout_constraintEnd_toStartOf="@id/guideEnd"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="@id/guideStart"
-        app:layout_constraintTop_toBottomOf="@id/ivCarrier" />
+        <TextView
+            android:id="@+id/tvSeleccionar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:maxHeight="22dp"
+            android:text="@string/producto"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/spinnerProducto"
+            app:layout_constraintEnd_toStartOf="@id/guideEnd"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="@id/guideStart"
+            app:layout_constraintTop_toBottomOf="@id/ivCarrier" />
+
         <Spinner
             android:id="@+id/spinnerProducto"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:minWidth="48dp"
-            app:layout_constraintTop_toBottomOf="@id/tvSeleccionar"
-            app:layout_constraintStart_toStartOf="@id/guideStart"
-            app:layout_constraintEnd_toStartOf="@id/guideEnd"
-            app:layout_constraintBottom_toTopOf="@id/tvIngresarN"
             android:layout_marginTop="10dp"
-            />
+            android:minWidth="48dp"
+            app:layout_constraintBottom_toTopOf="@id/tvIngresarN"
+            app:layout_constraintEnd_toStartOf="@id/guideEnd"
+            app:layout_constraintStart_toStartOf="@id/guideStart"
+            app:layout_constraintTop_toBottomOf="@id/tvSeleccionar" />
         <!--Ingresar Numero-->
-    <TextView
-        android:id="@+id/tvIngresarN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="@string/input_numero"
-        android:textSize="18sp"
-        android:maxHeight="22dp"
-        app:layout_constraintBottom_toTopOf="@id/tiNumeroP"
-        app:layout_constraintEnd_toEndOf="@id/guideEnd"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="@id/guideStart"
-        app:layout_constraintTop_toBottomOf="@id/spinnerProducto" />
+        <TextView
+            android:id="@+id/tvIngresarN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:maxHeight="22dp"
+            android:text="@string/input_numero"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/tiNumeroP"
+            app:layout_constraintEnd_toEndOf="@id/guideEnd"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="@id/guideStart"
+            app:layout_constraintTop_toBottomOf="@id/spinnerProducto" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tiNumeroP"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:hint="Ingresar número telefónico"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
             app:boxBackgroundColor="@color/placeholder_2"
             app:boxCornerRadiusBottomEnd="20dp"
             app:boxCornerRadiusTopStart="20dp"
@@ -118,11 +126,8 @@
             app:layout_constraintBottom_toTopOf="@id/tvIngresarC"
             app:layout_constraintEnd_toEndOf="@id/guideEnd"
             app:layout_constraintStart_toStartOf="@id/guideStart"
-            app:layout_constraintTop_toBottomOf="@id/tvIngresarN"
-            android:layout_marginTop="10dp"
-            android:minHeight="48dp"
-            android:minWidth="48dp"
-            >
+            app:layout_constraintTop_toBottomOf="@id/tvIngresarN">
+
             <EditText
                 android:id="@+id/etNumber"
                 android:layout_width="match_parent"
@@ -131,25 +136,29 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--Confirmar Numero-->
-    <TextView
-        android:id="@+id/tvIngresarC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/input_confirmar"
-        android:textSize="18sp"
-        android:maxHeight="22dp"
-        app:layout_constraintBottom_toTopOf="@id/tiNumeroD"
-        app:layout_constraintEnd_toEndOf="@id/guideEnd"
-        app:layout_constraintStart_toStartOf="@id/guideStart"
-        app:layout_constraintTop_toBottomOf="@id/tiNumeroP"
-        app:layout_constraintHorizontal_bias="0.1"/>
+        <TextView
+            android:id="@+id/tvIngresarC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:maxHeight="22dp"
+            android:text="@string/input_confirmar"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/tiNumeroD"
+            app:layout_constraintEnd_toEndOf="@id/guideEnd"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="@id/guideStart"
+            app:layout_constraintTop_toBottomOf="@id/tiNumeroP" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tiNumeroD"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:hint="Ingresar número telefónico"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
             app:boxBackgroundColor="@color/placeholder_2"
             app:boxCornerRadiusBottomEnd="20dp"
             app:boxCornerRadiusTopStart="20dp"
@@ -158,38 +167,37 @@
             app:layout_constraintBottom_toTopOf="@id/btnRecargar"
             app:layout_constraintEnd_toEndOf="@id/guideEnd"
             app:layout_constraintStart_toStartOf="@id/guideStart"
-            app:layout_constraintTop_toBottomOf="@id/tvIngresarC"
-            android:layout_marginTop="10dp"
-            android:minHeight="48dp"
-            android:minWidth="48dp"
-            >
+            app:layout_constraintTop_toBottomOf="@id/tvIngresarC">
+
             <EditText
                 android:id="@+id/etConfirmar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="number"
-                />
+                android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--Boton Recarga-->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnRecargar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        android:minWidth="48dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="35dp"
-        android:gravity="center"
-        android:paddingVertical="16dp"
-        android:text="@string/btn_recarga"
-        android:textColor="@android:color/white"
-        android:visibility="visible"
-        app:cornerRadius="16dp"
-        app:layout_constraintBottom_toBottomOf="@id/guideBottom"
-        app:layout_constraintEnd_toEndOf="@id/guideEnd"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@id/guideStart"
-        app:layout_constraintTop_toBottomOf="@id/tiNumeroD" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRecargar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="35dp"
+            android:gravity="center"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:paddingVertical="16dp"
+            android:text="@string/btn_recarga"
+            android:textColor="@android:color/white"
+            android:visibility="visible"
+            app:cornerRadius="16dp"
+            app:layout_constraintBottom_toBottomOf="@id/guideBottom"
+            app:layout_constraintEnd_toEndOf="@id/guideEnd"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/guideStart"
+            app:layout_constraintTop_toBottomOf="@id/tiNumeroD" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+
+

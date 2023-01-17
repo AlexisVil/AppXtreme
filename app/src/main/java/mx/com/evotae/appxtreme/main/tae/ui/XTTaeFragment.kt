@@ -30,7 +30,7 @@ class XTTaeFragment : XTFragmentBase() {
     private val viewModelTae: XTViewModelTae by sharedViewModel() //Encapsula el viewModel
     var idSelected: String = ""
     var dynamicListCarriers = arrayListOf<XTTaeModel>()
-    lateinit var elemento : XTTaeModel
+    lateinit var elemento: XTTaeModel
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -79,25 +79,34 @@ class XTTaeFragment : XTFragmentBase() {
     private fun handlebrand(): (ArrayList<XTResponseBrand>?) -> Unit = { objetoArray ->
         dynamicListCarriers.clear()
         objetoArray?.forEach { dataObject ->
-            if (dataObject.categoria.equals("TOPUP")){
+            if (dataObject.categoria.equals("TOPUP")) {
                 var indexLista = XTTaeBrandsProvider.taeList.indexOfFirst {
                     it.idCarrier == dataObject.idCarrier.toInt()
                 }
-                elemento = XTTaeBrandsProvider.taeList.get(indexLista)
+                elemento = XTTaeBrandsProvider.taeList[indexLista]
                 //println("elemento: $elemento Indice: $indexLista")
                 dynamicListCarriers.add(elemento)
+
             }
         }
-        renderizarLista(dynamicListCarriers)
+        var sortedList = dynamicListCarriers.sortedWith(compareBy { it.order })
+        println("Sorted array $sortedList")
+        renderizarLista(sortedList)
+//        renderizarLista(dynamicListCarriers)
         println("Filter Carriers : $dynamicListCarriers")
-        Toast.makeText(safeActivity, "Obteniendo catálogo de recarga electrónica", Toast.LENGTH_SHORT).show()
+        Toast.makeText(
+            safeActivity,
+            "Obteniendo catálogo de recarga electrónica",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     fun openItem() {
         val xtTae = XTTaeModel(
             selectedItem.name,
             selectedItem.idCarrier,
-            selectedItem.photo
+            selectedItem.photo,
+            selectedItem.order
         ) //Mandar datos a traves de SafeArgs
         val navigateToSim = XTTaeFragmentDirections.actionXTTaeDestToXTVentaSimFragment(xtTae)
         val navigate = XTTaeFragmentDirections.actionXTTaeDestToXTRecargaFragment(xtTae)
@@ -109,7 +118,8 @@ class XTTaeFragment : XTFragmentBase() {
             findNavController().navigate(navigate)
         }
     }
-    fun renderizarLista(marcas: List<XTTaeModel>){
+
+    fun renderizarLista(marcas: List<XTTaeModel>) {
         binding.recyclerTae.layoutManager = GridLayoutManager(safeActivity, 2)
         binding.recyclerTae.setHasFixedSize(true)
         binding.recyclerTae.adapter = XTTaeAdapter(marcas) { onItemSelected(it) }

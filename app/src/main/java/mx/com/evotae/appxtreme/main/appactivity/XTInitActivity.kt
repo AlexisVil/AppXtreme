@@ -46,22 +46,13 @@ class XTInitActivity : AppCompatActivity() {
     override fun onBackPressed() {
         if (cuenta == 0) {
             super.onBackPressed()
-            exitProcess(0)
+            //exitProcess(0)
+            finish()
         } else {
             navHostFragment.childFragmentManager.popBackStack()
         }
     }
 
-//    override fun onBackPressed() {
-//        if (cuenta == 0){
-//            super.onBackPressed()
-//            exitProcess(0)
-//            finish()
-//        }else{
-//            var f =supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-//            f.childFragmentManager.popBackStack()
-//        }
-//    }
 
 
     //Conecta la vista de la bottom bar
