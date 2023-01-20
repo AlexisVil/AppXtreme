@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:157466344059:android:239078e1844c1ffe9440de",
         "android_client_info": {
-          "package_name": "mx.com.evotae.appxtreme"
+          "package_name": "mx.com.evocell.appxtreme"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "157466344059-4gjd5v0prim2t863l8dvhifdfhigjrlq.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "mx.com.evotae.appxtreme",
+            "package_name": "mx.com.evocell.appxtreme",
             "certificate_hash": "c6cfb3d43b48e365a72eb446c2bc858508b13297"
           }
         },
